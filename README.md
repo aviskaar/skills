@@ -31,6 +31,7 @@ Skills follow the open [Agent Skills Specification](https://agentskills.io/speci
 | [code-replication](skills/code-replication/) | Reproduce results from papers with documented methodology |
 | [hypothesis-generation](skills/hypothesis-generation/) | Generate, refine, and stress-test novel research hypotheses |
 | [auto-benchmark](skills/auto-benchmark/) | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 with minimal human involvement |
+| [calendar-pipeline](skills/calendar-pipeline/) | Autonomous revenue engine that identifies VP/Director/C-suite targets, builds prospect intel, crafts hyper-personalized outreach, runs multi-touch sequences, and fills the calendar with 8 hours of meetings daily — zero manual prospecting effort |
 
 ---
 
