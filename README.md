@@ -39,6 +39,9 @@ computer-scientist          Survey a domain, discover & prioritize open problems
     │
     ├── lead-researcher     Run one complete research project end-to-end,
     │   │                   coordinating all sub-skills in sequence
+    │   │                   ↕ (collaborates with)
+    │   │   ai-engineer     Bridge research to product: PRD, tech stack, AI integration,
+    │   │                   UI, backend, scaling — working alongside the research team
     │   │
     │   ├── hypothesis-generation      Generate & stress-test candidate hypotheses
     │   ├── literature-synthesis       Synthesize findings across a body of papers
@@ -60,6 +63,7 @@ computer-scientist          Survey a domain, discover & prioritize open problems
 | [computer-scientist](skills/computer-scientist/) | Strategic | Survey a research domain, discover and formulate open problems worth solving, prioritize by impact and feasibility, and commission Principal Scientist agents to execute the research |
 | [principal-scientist](skills/principal-scientist/) | Portfolio | Portfolio orchestrator that spawns and manages multiple Lead Researcher agents in parallel across competing hypotheses or independent research tracks, integrates Auto-Benchmark for continuous competitive validation, and synthesizes findings into a unified strategic output |
 | [lead-researcher](skills/lead-researcher/) | Project | End-to-end research orchestrator that conducts a full project — hypothesis generation, literature synthesis, experiment design, optional code replication and paper review, through to publication-ready research writing — by coordinating all research sub-skills in sequence |
+| [ai-engineer](skills/ai-engineer/) | Engineering | Full-stack AI engineer that works alongside the research lead and researcher team to transform a research paper into a production-ready product — writing the PRD, selecting the tech stack, designing AI/ML integration, building UI and backend, and scaling the system |
 | [auto-benchmark](skills/auto-benchmark/) | Continuous | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
 | [hypothesis-generation](skills/hypothesis-generation/) | Task | Generate, refine, and stress-test novel research hypotheses grounded in existing literature |
 | [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a body of research into coherent summaries |
@@ -68,6 +72,14 @@ computer-scientist          Survey a domain, discover & prioritize open problems
 | [research-paper-review](skills/research-paper-review/) | Task | Structured critique and analysis of AI/ML research papers |
 | [research-writing](skills/research-writing/) | Task | Draft and refine research papers, abstracts, related work, and rebuttals |
 | [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
+
+### Engineering Skills
+
+Skills for transforming research outputs into production software — from requirements and architecture through deployment and scaling.
+
+| Skill | Description |
+|-------|-------------|
+| [ai-engineer](skills/ai-engineer/) | Full-stack AI engineer that partners with the research lead and researcher team to build a production-ready product from a research paper — writing the PRD, designing the tech stack, integrating AI/ML models, building UI and backend services, and hardening the system for scale |
 
 ### GTM / Sales Skills
 
@@ -168,6 +180,7 @@ aviskaar/skills/
 │   ├── lead-researcher/          # Research — project orchestrator
 │   ├── principal-scientist/      # Research — portfolio orchestrator
 │   ├── computer-scientist/       # Research — strategic agenda-setter
+│   ├── ai-engineer/              # Engineering — research-to-product full-stack builder
 │   └── calendar-pipeline/        # GTM / Sales
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
