@@ -1,35 +1,35 @@
 ---
 name: proposal-automation
-description: "Use this skill when a Client Partner, Account Manager, Sales Engineer, Solutions Engineer, or Solutions Architect needs to transform a raw customer problem statement into a complete, enterprise-grade commercial package. This skill automates the full pre-sales and proposal lifecycle: deep problem analysis, use case identification, enterprise architecture design, POC/MVP specification, full proposal document, team structure and resourcing, US and offshore costing with blended rates, and a legally structured Statement of Work. Trigger this skill when any of these roles receives a customer brief, RFP, RFI, discovery call notes, or pain-point description and needs to move quickly to a polished, boardroom-ready proposal with defensible cost estimates and a signed-ready SOW."
+description: "Use this skill when a Client Partner, Account Manager, Sales Engineer, Solutions Engineer, or Solutions Architect needs to transform a raw customer problem statement into a complete, enterprise-grade commercial package. This skill automates the full pre-sales and proposal lifecycle: deep problem analysis, use case identification, competitive analysis and industry benchmarking, enterprise architecture design, autonomous build of a fully functional enterprise-grade POC or MVP (no placeholders, no AI slop — real working code with competitive UI/UX), full proposal document, team structure and resourcing, US and offshore costing with blended rates, and a legally structured Statement of Work. Trigger this skill when any of these roles receives a customer brief, RFP, RFI, discovery call notes, or pain-point description and needs to move quickly to a polished, boardroom-ready proposal backed by a working product demo."
 license: Apache-2.0
 metadata:
   author: aviskaar
-  version: "1.0"
-  tags: [sales, pre-sales, proposal, sow, costing, architecture, poc, mvp, client-partner, account-manager, solutions-engineer, solutions-architect]
+  version: "2.0"
+  tags: [sales, pre-sales, proposal, sow, costing, architecture, poc, mvp, build, competitive-analysis, ux, client-partner, account-manager, solutions-engineer, solutions-architect]
   sub-skills: []
 ---
 
-# Proposal Automation — End-to-End Pre-Sales & Commercial Workflow
+# Proposal Automation — End-to-End Pre-Sales, Build & Commercial Workflow
 
-Transforms a raw customer problem statement into a complete commercial package: use cases, enterprise architecture, POC/MVP specification, proposal document, team plan, cost model, and signed-ready SOW — in a single automated workflow.
+Transforms a raw customer problem statement into a complete commercial package **and a fully functional, enterprise-grade POC/MVP** — use cases, competitive analysis, architecture, working code with production UX, proposal, team plan, cost model, and signed-ready SOW.
 
 ```
 PROBLEM STATEMENT
       │
       ▼
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│  PHASE 1    │───▶│  PHASE 2    │───▶│  PHASE 3    │───▶│  PHASE 4    │
-│  Problem    │    │  Use Case   │    │  Architecture│    │  POC / MVP  │
-│  Analysis   │    │  Discovery  │    │  Design     │    │  Blueprint  │
-└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
-                                                                │
-      ┌─────────────────────────────────────────────────────────┘
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│ PHASE 1  │─▶│ PHASE 2  │─▶│PHASE 2.5 │─▶│ PHASE 3  │─▶│ PHASE 4  │
+│ Problem  │  │ Use Case │  │Competitive│  │Enterprise│  │AUTONOMOUS│
+│ Analysis │  │Discovery │  │ Analysis │  │ Arch     │  │BUILD     │
+└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
+                                                               │
+      ┌────────────────────────────────────────────────────────┘
       ▼
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│  PHASE 5    │───▶│  PHASE 6    │───▶│  PHASE 7    │───▶│  PHASE 8    │
-│  Proposal   │    │  Team &     │    │  Cost       │    │  SOW        │
-│  Document   │    │  Resourcing │    │  Model      │    │  Generation │
-└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│ PHASE 5  │─▶│ PHASE 6  │─▶│ PHASE 7  │─▶│ PHASE 8  │
+│ Proposal │  │ Team &   │  │  Cost    │  │   SOW    │
+│ Document │  │Resourcing│  │  Model   │  │Generation│
+└──────────┘  └──────────┘  └──────────┘  └──────────┘
 ```
 
 ---
@@ -60,11 +60,11 @@ For every ambiguity, state an explicit assumption. Format:
 ASSUMPTION [A-001]: [What is assumed] — [Why reasonable] — [Risk if wrong: Low/Med/High]
 ```
 
-List all assumptions; they will carry forward into the SOW.
+List all assumptions; they carry forward into the SOW.
 
 ### 1.3 Problem Statement Summary
 
-Produce a crisp 150-word restatement of the customer's problem in your own words — the "We understand that…" paragraph used to open the proposal.
+Produce a crisp 150-word restatement — the "We understand that…" paragraph used to open the proposal.
 
 ---
 
@@ -72,7 +72,7 @@ Produce a crisp 150-word restatement of the customer's problem in your own words
 
 ### 2.1 Use Case Generation
 
-Generate a ranked list of use cases addressing the problem. For each:
+Generate a ranked list of use cases. For each:
 
 ```
 USE CASE [UC-###]: [Name]
@@ -86,18 +86,59 @@ Priority   : [P1-POC / P2-Phase1 / P3-Phase2 / P4-Backlog]
 
 ### 2.2 Prioritization Matrix
 
-Plot use cases on a 2×2 (Impact vs Feasibility). Identify:
+Plot on a 2×2 (Impact vs Feasibility):
 - **P1 — POC Candidates**: High impact + High feasibility → prove value fast
 - **P2 — Phase 1 Build**: High impact + Medium feasibility → core product
-- **P3 — Phase 2 Build**: Medium impact or medium feasibility → roadmap
-- **P4 — Backlog**: Low priority; note but don't scope
+- **P3 — Phase 2 Build**: Medium impact or feasibility → roadmap
+- **P4 — Backlog**: Note but don't scope
 
 ### 2.3 Success Metrics
 
-For each P1 and P2 use case, define 2–3 measurable KPIs:
-- Baseline value (current state)
-- Target value (post-implementation)
-- Measurement method and timeline
+For each P1 and P2 use case, define 2–3 measurable KPIs with baseline, target, and measurement method.
+
+---
+
+## PHASE 2.5 — Competitive Analysis & Industry Benchmarking
+
+**Purpose**: Understand the competitive landscape before designing the architecture or building anything. The POC must be visibly superior to what already exists. Every design decision in Phases 3–4 is informed by this phase.
+
+See `references/competitive-analysis-framework.md` for full research methodology, tooling, and output format.
+
+### 2.5.1 Competitive Landscape Map
+
+Identify 4–8 relevant competitors or comparable solutions (direct, indirect, DIY):
+
+| Competitor | Type | Strengths | Weaknesses | Pricing Signal |
+|---|---|---|---|---|
+| [Name] | [Direct/Adjacent/DIY] | [Top 2–3] | [Top 2–3] | [Free/$/$$/$$$] |
+
+### 2.5.2 Feature Gap Matrix
+
+Build a matrix: your P1/P2 use cases as rows, top 5 competitors as columns. Mark each cell:
+- `✓` competitor has it · `~` partial · `✗` gap · `★` you will do it better
+
+### 2.5.3 Industry Benchmarks
+
+Pull quantified benchmarks for the customer's domain. Example targets by vertical:
+
+| Vertical | Benchmark KPI | Industry Standard | Best-in-Class |
+|---|---|---|---|
+| FinServ | Loan decisioning time | 3–5 days | < 4 hours |
+| Healthcare | Claim processing time | 14 days | < 48 hours |
+| Retail | Order fulfillment cycle | 3 days | Same-day |
+| Logistics | Exception resolution | 24 hours | < 2 hours |
+
+Replace with actual benchmarks for the customer's vertical (see `references/competitive-analysis-framework.md` §3 for benchmark sources by industry).
+
+### 2.5.4 Differentiation Statement
+
+Write a 3-bullet "We beat the market because…" statement that will anchor the proposal narrative and directly drive Phase 4 build decisions:
+
+```
+DIFF-1: [Specific capability] — competitors [do X]; we will [do Y] — visible in the POC
+DIFF-2: [UX / speed / accuracy claim] — measurable in the demo
+DIFF-3: [Integration / data / AI advantage] — unique to this customer's context
+```
 
 ---
 
@@ -105,19 +146,18 @@ For each P1 and P2 use case, define 2–3 measurable KPIs:
 
 ### 3.1 Architecture Principles
 
-Apply these non-negotiables to every design:
+Non-negotiables for every design:
 - **Security by Design**: Zero-trust, least-privilege, encryption at rest and in transit
 - **Cloud-Native**: Prefer managed services; avoid undifferentiated heavy lifting
 - **Event-Driven**: Async where possible; decouple producers from consumers
 - **Observable**: Logs, metrics, traces (OpenTelemetry standard)
 - **Resilient**: Target 99.9%+ availability; define RTO/RPO upfront
-- **Compliant**: Enforce regulatory controls (see constraints from Phase 1)
+- **Compliant**: Enforce regulatory controls (see Phase 1 constraints)
 
 ### 3.2 High-Level Architecture
 
-Design and describe the full architecture including:
+Design and describe the full architecture:
 
-**Layers to address**:
 ```
 ┌─────────────────────────────────────────────────┐
 │  Presentation Layer  (Web / Mobile / API Portal) │
@@ -140,8 +180,6 @@ For each layer: recommended services/tools, justification, alternatives consider
 
 ### 3.3 Technology Stack Selection
 
-Produce a stack decision table:
-
 | Component | Recommended | Rationale | Alternative |
 |---|---|---|---|
 | Cloud Platform | AWS / Azure / GCP | [customer context] | Multi-cloud |
@@ -155,111 +193,189 @@ Produce a stack decision table:
 
 ### 3.4 Integration Map
 
-List all external systems that must integrate. For each:
-- Integration pattern (REST / event / batch / CDC)
-- Data exchanged
-- Frequency and volume
-- Authentication method
-- Owner (customer team responsible)
+For each external system: integration pattern, data exchanged, frequency/volume, auth method, owner.
 
 ### 3.5 Security & Compliance Architecture
 
-Detail:
-- Identity and Access Management (SSO, MFA, RBAC/ABAC)
-- Network segmentation (VPC, private subnets, WAF)
-- Data classification and handling policies
-- Audit logging and SIEM integration
-- Compliance controls mapping (SOC 2 / HIPAA / GDPR / PCI-DSS as applicable)
+Detail IAM (SSO, MFA, RBAC/ABAC), network segmentation, data classification, audit logging, and compliance controls mapping.
 
-See `references/architecture-patterns.md` for common enterprise architecture patterns by industry.
+See `references/architecture-patterns.md` for industry-specific patterns.
 
 ---
 
-## PHASE 4 — POC / MVP Blueprint
+## PHASE 4 — Autonomous POC/MVP Build Engine
 
-### 4.1 POC Scope Definition
+**Build Mandate**: Produce a fully functional, enterprise-grade working application that a customer CTO can place in front of their engineering team without embarrassment. **Zero placeholders. Zero slop.** Every screen works. Every API returns domain-accurate data. Every business rule executes. The POC visually and functionally beats competitors identified in Phase 2.5.
 
-Select 1–2 P1 use cases from Phase 2. The POC must:
-- Be completable within 4–8 weeks
-- Demonstrate the highest-risk technical assumption
-- Produce a tangible, demonstrable artifact
-- Map directly to a business KPI from Phase 2
+See `references/build-quality-standards.md` for the complete anti-slop ruleset, code standards, and screen-level requirements.
+See `references/ux-design-system.md` for UI component library selection and design system setup.
 
-### 4.2 POC Architecture (Thin Slice)
+### 4.1 Pre-Build Gate (All Required Before Writing Code)
 
-Design a simplified architecture that proves the concept without full production hardening. Mark explicitly what is IN and OUT of POC scope.
+- [ ] Competitive differentiation points (Phase 2.5.4) mapped to specific build tasks
+- [ ] P1 use cases documented with explicit acceptance criteria (each is a testable statement)
+- [ ] Tech stack finalized (Phase 3.3) — no ambiguity
+- [ ] Data model drafted: entity names, key fields, relationships, domain-accurate naming
+- [ ] API contracts defined: every endpoint has method, path, request schema, response schema
+- [ ] UX wireframes agreed for each screen (ASCII diagrams acceptable at minimum)
+- [ ] Non-functional targets locked: response time, auth method, deployment target
 
-**POC Deliverables Template**:
+### 4.2 Repository Structure
+
 ```
-Deliverable D1: [Name] — [Description] — [Demo format]
-Deliverable D2: [Name] — [Description] — [Demo format]
-Success Gate  : [Measurable pass/fail criteria for the POC]
+[project-name]/
+├── .github/workflows/        # CI: lint → test → build → docker
+├── apps/
+│   ├── api/                  # Backend service
+│   │   ├── src/
+│   │   │   ├── modules/      # Domain modules — named after business domain, not "controller"
+│   │   │   ├── middleware/   # Auth, validation, error handling
+│   │   │   └── config/       # Environment, feature flags
+│   │   ├── tests/            # ≥80% coverage on business logic
+│   │   ├── openapi.yaml      # Contract-first: written before handlers
+│   │   └── Dockerfile
+│   └── web/                  # Frontend
+│       ├── src/
+│       │   ├── pages/        # Route-level components
+│       │   ├── components/   # Reusable UI (from chosen component library)
+│       │   ├── hooks/        # Data fetching, state abstractions
+│       │   ├── services/     # API client (typed, generated from openapi.yaml)
+│       │   └── types/        # TypeScript interfaces — match API contracts exactly
+│       └── Dockerfile
+├── db/migrations/            # Versioned schema migrations (never ad-hoc ALTER TABLE)
+├── infra/terraform/          # Cloud resources as code
+├── docker-compose.yml        # Full local stack: API + web + DB + cache
+└── README.md                 # `docker-compose up` → working app in ≤5 commands
 ```
 
-### 4.3 MVP Scope (Post-POC)
+### 4.3 Backend Build Standards
 
-After POC success, define the MVP:
-- Minimum feature set for production-grade release
-- P1 + selected P2 use cases
-- Non-functional requirements (performance targets, SLA, security hardening)
-- MVP exit criteria
+**Contract-First API**:
+- Write `openapi.yaml` before any handler code; generate server stubs from it
+- Request validation on every endpoint (Zod / Pydantic / Bean Validation)
+- Domain-specific field names — never `name`, `data`, `value`; use the actual domain noun
+- Business logic lives in the service layer; controllers are thin wiring only
+- Structured error responses: `{ "error": { "code": "DOMAIN_SPECIFIC_CODE", "message": "...", "details": {} } }`
+- HTTP status codes used correctly (422 for validation, 404 not found, 409 conflict, 201 created)
 
-### 4.4 POC Tech Stack
+**Data Layer**:
+- Real schema: proper types, constraints (NOT NULL, UNIQUE, FK), indexes on every query column
+- Domain-realistic seed data: minimum 15–20 records per core entity, statistically plausible values
+- Every state-changing operation records audit trail: who, what, when, previous state
+- Versioned migrations: every schema change is a migration file
 
-List the specific technologies for POC implementation — may differ from full production stack where justified (e.g., a monolith for POC vs microservices in production).
+**Forbidden Patterns** (any of these fails the quality gate):
+- `// TODO: implement`, `pass`, `raise NotImplementedError`, `return null` for real paths
+- Hardcoded credentials or API keys in source files
+- `console.log` debug output left in production paths
+- Generic test data: "John Doe", "test@test.com", "12345", "Lorem ipsum"
+
+### 4.4 Frontend Build Standards
+
+**Design System** (select from `references/ux-design-system.md`):
+- Use a production component library: shadcn/ui, Ant Design, MUI, Chakra UI, or Radix
+- Establish design tokens (color, spacing, typography) in `theme.ts` / `tokens.css` before building screens
+- Mobile-responsive from screen 1: CSS Grid / Flexbox; no fixed-width layouts
+- WCAG 2.1 AA minimum: semantic HTML, ARIA labels, keyboard navigation
+
+**UX Non-Negotiables**:
+- Every form: inline validation, loading state, error state, success feedback
+- Every data table: sortable, paginated, empty state with CTA, loading skeleton
+- Every async action: visible loading indicator — no frozen UI
+- Every error: recovery path visible — no dead ends
+
+**Screens Required for Each P1 Use Case**:
+1. **Dashboard**: KPI cards wired to real data — baseline vs. current vs. target from Phase 2.3
+2. **Core Workflow**: The primary action screen — what a user does 20× a day
+3. **Detail View**: Full record drill-down with all domain attributes and action buttons
+4. **List/Search View**: Data table with filters, search, export — minimum 15 seeded records
+5. **Configuration Panel**: System settings relevant to the use case
+
+Implement happy path AND the two most common error/edge paths for every screen.
+
+### 4.5 Competitive Advantage — Visible in the Demo
+
+Map Phase 2.5 findings directly to POC features. The demo must visibly show each DIFF-1/2/3:
+
+| Phase 2.5 Finding | Build Response |
+|---|---|
+| Competitors have slow load times | Instrument and display p95 latency in the UI footer |
+| Competitors have no mobile support | Demo the same flow on a 375px viewport |
+| Competitors lack real-time updates | Add WebSocket or SSE-based live refresh on the dashboard |
+| Competitors have poor UX on main workflow | Invest extra design effort on that specific workflow |
+| Competitors have no AI capability | Add one AI-enhanced feature: smart search, prediction, or summarization |
+
+### 4.6 Quality Gates (All Must Pass Before Any Customer Demo)
+
+**Functional**:
+- [ ] Every P1 use case acceptance criterion passes end-to-end in the running application
+- [ ] Zero console errors during any demo flow
+- [ ] Zero 500 errors from API during any demo flow
+- [ ] All forms: valid data submits successfully; invalid data shows correct field-level errors
+
+**Code Quality**:
+- [ ] Linter passes with zero errors (ESLint / pylint / golint configured as strict)
+- [ ] All tests pass: `npm test` / `pytest` / `go test ./...`
+- [ ] Business logic test coverage ≥ 80%
+- [ ] No secrets in source; `.env.example` documents every required variable
+
+**UX**:
+- [ ] All screens render correctly at 1440px (desktop) and 375px (mobile)
+- [ ] All interactive elements keyboard-accessible (tab order logical, focus visible)
+- [ ] Lighthouse accessibility score ≥ 85 on every primary screen
+
+**Infrastructure**:
+- [ ] `docker-compose up` → full working stack within 60 seconds on a clean machine
+- [ ] README setup instructions verified by a second person
+- [ ] GitHub Actions CI pipeline green: lint → test → build → docker build
+
+### 4.7 Demo Script (15 Minutes)
+
+```
+[0:00–2:00]  Context: "Before, the team had to [manual process]. Today..."
+[2:00–6:00]  Core workflow: P1 use case happy path — show the actual business operation
+[6:00–9:00]  Dashboard: KPI movement from baseline to current demo state
+[9:00–12:00] Differentiator: AI feature / real-time update / mobile / speed advantage
+[12:00–14:00] Integration: data flowing to/from the customer's existing system
+[14:00–15:00] Success gate: "We committed to X. Here is X measured."
+```
 
 ---
 
 ## PHASE 5 — Proposal Document
 
-Structure the proposal as follows. Use `assets/proposal-template.md` as the document shell.
+Structure using `assets/proposal-template.md`.
 
 ### 5.1 Executive Summary (1 page)
-- Customer challenge restatement (from Phase 1.3)
-- Proposed solution in 3 bullets
-- Business value / ROI headline numbers
-- Engagement model summary
-- Call to action
+- Problem restatement (Phase 1.3) · Solution in 3 bullets · ROI headline · Engagement model · CTA
 
 ### 5.2 Understanding of Requirements
-- Restated problem (Phase 1.3)
-- Assumption log (Phase 1.2)
-- Stakeholder map
+- Restated problem · Assumption log · Stakeholder map
 
 ### 5.3 Proposed Solution
-- Solution overview narrative
-- Use case coverage table (all UC-### with priority)
-- Architecture overview (from Phase 3)
-- POC/MVP roadmap with phases
+- Solution narrative · Use case coverage table · Architecture overview · Competitive positioning (Phase 2.5.4 DIFF statements) · POC/MVP roadmap
 
 ### 5.4 Implementation Roadmap
 
-Build a phased plan:
-
 | Phase | Name | Duration | Key Deliverables | Exit Criteria |
 |---|---|---|---|---|
-| 0 | POC | 4–8 wks | POC build, demo, success gate | POC sign-off |
+| 0 | POC | 4–8 wks | Working POC, demo, success gate | POC sign-off |
 | 1 | Foundation | 8–16 wks | Core platform, P1 use cases | MVP go-live |
 | 2 | Expansion | 12–20 wks | P2 use cases, integrations | Feature complete |
 | 3 | Optimization | 8–12 wks | Performance, AI/ML, analytics | Production SLA met |
 
 ### 5.5 Why Us
-- Relevant industry experience and case studies (use placeholders if unknown)
-- Differentiators (3–5 specific points)
-- Partnership/alliance advantages (cloud partnerships, ISV relationships)
+- Relevant case studies · Differentiators (Phase 2.5 grounded) · Partnership/certification advantages
 
 ### 5.6 Risk Register
 
 | Risk | Likelihood | Impact | Mitigation |
 |---|---|---|---|
-| Scope creep | Med | High | Change control process in SOW |
-| Data access delays | High | High | Data access pre-conditions in SOW |
-| … | … | … | … |
+| Scope creep | Med | High | Change control in SOW |
+| Data access delays | High | High | Blocking dependency in SOW |
 
 ### 5.7 Investment Summary
-- Reference cost model from Phase 7
-- Present 3 options: POC only / POC + Phase 1 / Full engagement
-- ROI calculation: [Cost avoided] + [Revenue enabled] vs [Engagement cost]
+- Cost model from Phase 7 · 3 options · ROI: [avoided cost + revenue enabled] vs. investment
 
 ---
 
@@ -267,37 +383,29 @@ Build a phased plan:
 
 ### 6.1 Required Roles
 
-For each phase of the roadmap, define the roles needed:
+| Role | Seniority | Phase 0 | Phase 1 | Phase 2 | Phase 3 |
+|---|---|---|---|---|---|
+| Engagement Manager | Senior | 0.25 FTE | 0.5 | 0.5 | 0.25 |
+| Solutions Architect | Senior | 1.0 | 0.5 | 0.25 | 0.25 |
+| Tech Lead | Senior | 1.0 | 1.0 | 1.0 | 0.5 |
+| Backend Engineer | Mid | 1.0 | 2.0 | 2.0 | 1.0 |
+| Frontend Engineer | Mid | 0.5 | 1.0 | 1.0 | 0.5 |
+| Data Engineer | Mid | 0.5 | 1.0 | 1.0 | 0.5 |
+| ML / AI Engineer | Mid | 0.5 | 1.0 | 1.0 | 0.5 |
+| QA / SDET | Mid | 0.5 | 1.0 | 1.0 | 0.5 |
+| DevOps / SRE | Mid | 0.5 | 1.0 | 0.5 | 0.5 |
+| Security Engineer | Senior | 0.25 | 0.5 | 0.25 | 0.25 |
+| Business Analyst | Mid | 0.5 | 1.0 | 1.0 | 0.25 |
 
-| Role | Seniority | Responsibility | Phase 0 | Phase 1 | Phase 2 | Phase 3 |
-|---|---|---|---|---|---|---|
-| Engagement Manager | Senior | Delivery oversight, client comms | 0.25 FTE | 0.5 FTE | 0.5 FTE | 0.25 FTE |
-| Solutions Architect | Senior | Architecture, technical governance | 1.0 | 0.5 | 0.25 | 0.25 |
-| Tech Lead / Sr. Engineer | Senior | Hands-on build, code quality | 1.0 | 1.0 | 1.0 | 0.5 |
-| Backend Engineer | Mid | Service development | 1.0 | 2.0 | 2.0 | 1.0 |
-| Frontend Engineer | Mid | UI/UX implementation | 0.5 | 1.0 | 1.0 | 0.5 |
-| Data Engineer | Mid | Pipelines, data lake, ETL | 0.5 | 1.0 | 1.0 | 0.5 |
-| ML Engineer | Mid | Model development, MLOps | 0.5 | 1.0 | 1.0 | 0.5 |
-| QA / SDET | Mid | Test automation, quality | 0.5 | 1.0 | 1.0 | 0.5 |
-| DevOps / SRE | Mid | Infrastructure, CI/CD, observability | 0.5 | 1.0 | 0.5 | 0.5 |
-| Security Engineer | Senior | SecOps, compliance review | 0.25 | 0.5 | 0.25 | 0.25 |
-| Business Analyst | Mid | Requirements, UAT support | 0.5 | 1.0 | 1.0 | 0.25 |
-
-Adjust FTE allocations based on actual project scope from Phases 3–4.
+Adjust FTE allocations to actual scope from Phases 3–4.
 
 ### 6.2 Team Composition Models
 
-Present three team models to the customer:
-
-**Model A — US Onshore**: Full US-based team. Premium quality, timezone alignment, higher cost.
-
-**Model B — Blended**: US leads + offshore execution. Balanced cost/quality. Standard recommendation.
-
-**Model C — Offshore-Led**: Offshore team with US oversight only. Cost-optimized; suitable for well-defined scope.
+- **Model A — US Onshore**: Premium quality, timezone alignment, highest cost
+- **Model B — Blended** *(recommended)*: US leads + offshore execution; balanced cost/quality
+- **Model C — Offshore-Led**: US oversight only; cost-optimized; suitable for well-defined scope
 
 ### 6.3 Org Chart
-
-Draw the team hierarchy for the recommended model:
 
 ```
 Client Steering Committee
@@ -307,193 +415,137 @@ Engagement Manager (US)
    ┌────┴────────────┐
 Solutions Architect  Tech Lead
 (US)                 (US/offshore)
-   │                  │
-  [Support teams]    [Dev teams]
 ```
 
-See `references/team-rate-guide.md` for role definitions, seniority criteria, and rate benchmarks.
+See `references/team-rate-guide.md` for full role definitions and rate benchmarks.
 
 ---
 
 ## PHASE 7 — Cost Model
 
-Use `assets/costing-template.md` as the calculation worksheet.
+Use `assets/costing-template.md` as the worksheet.
 
-### 7.1 Rate Card Application
+### 7.1 Rate Card
 
-Apply rates from `references/team-rate-guide.md`. Structure as:
+Apply from `references/team-rate-guide.md`:
 
 ```
-Role              | Level  | US Rate/hr | Offshore Rate/hr | Blended Rate/hr
-Engagement Mgr    | Senior | $195       | $65              | $130
-Solutions Arch    | Senior | $225       | $80              | $155
-Tech Lead         | Senior | $200       | $70              | $135
-Backend Engineer  | Mid    | $150       | $45              | $95
-Frontend Engineer | Mid    | $140       | $40              | $90
-Data Engineer     | Mid    | $155       | $50              | $100
-ML Engineer       | Mid    | $165       | $55              | $110
-QA / SDET         | Mid    | $120       | $35              | $75
-DevOps / SRE      | Mid    | $155       | $50              | $100
-Security Engineer | Senior | $190       | $70              | $130
-Business Analyst  | Mid    | $130       | $40              | $85
+Role              | US Rate/hr | Offshore/hr | Blended (30/70)
+Solutions Arch    | $225       | $80         | $123.50
+Tech Lead         | $200       | $70         | $109.00
+Backend Engineer  | $150       | $45         | $ 76.50
+Frontend Engineer | $140       | $40         | $ 70.00
+ML Engineer       | $165       | $55         | $ 88.00
+DevOps / SRE      | $155       | $50         | $ 81.50
+QA / SDET         | $120       | $35         | $ 60.50
+Business Analyst  | $130       | $40         | $ 67.00
 ```
 
 ### 7.2 Effort Estimation
 
-For each phase, calculate:
+`Cost = FTE × weeks × 40 hrs × 0.875 (utilization) × blended rate`
 
-```
-Phase 0 (POC):
-  Role × FTE × weeks × hours_per_week = hours
-  hours × rate = cost
-
-  Example:
-  Solutions Architect: 1.0 FTE × 6 wks × 40 hrs = 240 hrs × $155 = $37,200
-  ...
-  Phase 0 Subtotal: $[X]
-```
-
-Repeat for Phases 1, 2, 3.
+Repeat per role per phase. Add 15% contingency to each phase subtotal.
 
 ### 7.3 Non-Labor Costs
 
-| Category | Estimate | Notes |
-|---|---|---|
-| Cloud Infrastructure (POC) | $2,000–5,000/mo | Size by architecture |
-| Cloud Infrastructure (Prod) | $X,000–Y,000/mo | Estimate from architecture |
-| Software Licenses | $X,000 | List tools requiring licenses |
-| Third-party APIs | $X,000 | Based on volume estimates |
-| Travel & Expenses | 5% of labor | If onsite required |
+| Category | Estimate |
+|---|---|
+| Cloud Infra (POC) | $2,000–5,000/mo |
+| Cloud Infra (Prod) | Sized from Phase 3 architecture |
+| Software Licenses | Itemized from Phase 3.3 stack |
+| Third-party APIs | Estimated from integration map |
+| Travel & Expenses | 5% of labor if onsite required |
 
-### 7.4 Cost Summary Table
+### 7.4 Cost Summary
 
-| Phase | Duration | Labor Cost | Infra/Tools | Total |
+| Phase | Duration | Labor | Infra/Tools | Total |
 |---|---|---|---|---|
 | Phase 0 — POC | X wks | $X | $X | **$X** |
 | Phase 1 — Foundation | X wks | $X | $X | **$X** |
 | Phase 2 — Expansion | X wks | $X | $X | **$X** |
 | Phase 3 — Optimization | X wks | $X | $X | **$X** |
-| **TOTAL ENGAGEMENT** | **~X months** | **$X** | **$X** | **$X** |
+| **TOTAL** | **~X months** | **$X** | **$X** | **$X** |
 
-### 7.5 ROI Narrative
+### 7.5 ROI & Pricing Options
 
-Calculate and present:
 ```
-Year 1 Benefits:
-  Cost reduction:     $X (manual process automation)
-  Revenue uplift:     $X (faster time-to-market, new capabilities)
-  Risk avoidance:     $X (compliance penalties avoided)
-  Total Year 1:       $X
-
-Engagement Investment: $X
-Payback Period:        X months
-3-Year ROI:            X%
+Year 1 Benefits: $X  |  Investment: $X  |  Payback: X months  |  3-yr ROI: X%
 ```
 
-### 7.6 Pricing Options
-
-Present as three tiers:
-- **Option 1 — POC Only**: Fixed-price, lowest risk entry point
-- **Option 2 — POC + Phase 1**: Phased commitment, most common
-- **Option 3 — Full Engagement**: Time & materials or milestone-based, complete roadmap
+Options: POC Only (fixed) · POC + Phase 1 · Full Engagement (T&M NTE)
 
 ---
 
 ## PHASE 8 — Statement of Work (SOW)
 
-Generate a complete SOW using `assets/sow-template.md`. Populate every section:
+Generate using `assets/sow-template.md`. All 21 sections required:
 
-### 8.1 SOW Sections (Required)
+Parties · Background · Scope of Work · Deliverables (with acceptance criteria) · Out of Scope · Timeline & Milestones · Team & RACI · Commercial Terms · Assumptions (from Phase 1.2) · Dependencies · Change Management · IP · Confidentiality · Data Protection · Warranties · Limitation of Liability · Indemnification · Termination · Governing Law · General Provisions · Signatures
 
-1. **Parties & Effective Date** — Legal names, addresses, execution date
-2. **Background & Purpose** — Problem context (Phase 1.3), why this engagement
-3. **Scope of Work** — Detailed description of what will be built/delivered
-4. **Deliverables** — Numbered list with acceptance criteria for each
-5. **Out of Scope** — Explicit exclusions to prevent scope creep
-6. **Timeline & Milestones** — Phase schedule with milestone dates and payment triggers
-7. **Team & Responsibilities** — RACI matrix (Responsible / Accountable / Consulted / Informed)
-8. **Commercial Terms** — Fees, payment schedule, invoicing cadence
-9. **Assumptions** — Carry forward all ASSUMPTIONs from Phase 1.2
-10. **Dependencies** — What the customer must provide (access, data, decisions, environments)
-11. **Change Management** — Process for scope changes, approval authority, cost impact
-12. **Intellectual Property** — Ownership of deliverables, pre-existing IP, licensing
-13. **Confidentiality** — Data handling, NDA reference or standalone clause
-14. **Warranties & Representations** — Service quality commitments, defect correction period
-15. **Limitation of Liability** — Cap language, exclusions
-16. **Termination** — Notice period, termination for convenience, for cause
-17. **Governing Law & Dispute Resolution** — Jurisdiction, arbitration/litigation preference
-18. **Signatures** — Authorized signatories, title, date
+### 8.1 Milestone-Payment Schedule
 
-### 8.2 RACI Matrix
-
-Build a RACI for the key activities:
-
-| Activity | Vendor PM | Vendor Tech | Client Sponsor | Client IT |
-|---|---|---|---|---|
-| Architecture approval | C | R | A | I |
-| Environment provisioning | I | C | A | R |
-| Data access setup | C | I | A | R |
-| UAT execution | C | I | R | A |
-| Go-live sign-off | C | C | A | R |
-
-### 8.3 Milestone-Payment Schedule
-
-| Milestone | Deliverable | % of Contract | Payment Due |
+| Milestone | Deliverable | % | Trigger |
 |---|---|---|---|
 | Contract execution | SOW signed | 20% | On signing |
-| POC completion | POC demo, success gate met | 15% | On acceptance |
+| POC acceptance | Working POC, success gate met | 15% | On acceptance |
 | Phase 1 go-live | MVP in production | 30% | On acceptance |
-| Phase 2 complete | All P2 use cases live | 25% | On acceptance |
-| Final acceptance | Phase 3, production SLA met | 10% | On acceptance |
+| Phase 2 complete | P2 use cases live | 25% | On acceptance |
+| Final acceptance | Phase 3, SLA met | 10% | On acceptance |
 
 ---
 
 ## FINAL OUTPUT PACKAGE
 
-Deliver the following as a structured set of documents:
-
 ```
 📁 [Customer Name] — Proposal Package
 ├── 01_Executive_Summary.md
-├── 02_Full_Proposal.md          (Phases 1–5 content)
-├── 03_Architecture_Diagrams.md  (Phase 3 diagrams)
-├── 04_POC_Blueprint.md          (Phase 4 detail)
-├── 05_Team_Plan.md              (Phase 6 org chart + FTE table)
-├── 06_Cost_Model.md             (Phase 7 full costing)
-└── 07_Statement_of_Work.md      (Phase 8 signed-ready SOW)
+├── 02_Full_Proposal.md           (Phases 1–5 narrative)
+├── 03_Competitive_Analysis.md    (Phase 2.5 full output)
+├── 04_Architecture_Diagrams.md   (Phase 3 diagrams)
+├── 05_POC_Repository/            (Phase 4 — working code)
+│   ├── apps/api/
+│   ├── apps/web/
+│   ├── db/migrations/
+│   ├── docker-compose.yml
+│   └── README.md
+├── 06_Team_Plan.md               (Phase 6 org chart + FTE table)
+├── 07_Cost_Model.md              (Phase 7 full worksheet)
+└── 08_Statement_of_Work.md       (Phase 8 signed-ready SOW)
 ```
+
+---
 
 ## CROSS-PHASE PRINCIPLES
 
-**Consistency**: Every assumption, use case ID, cost figure, and role referenced in later phases must trace back to an earlier phase. No orphaned numbers.
+**No Slop, Ever**: Every output — document or code — must be production-quality. No `[placeholder]`, no generic filler, no half-implemented functions. If a section requires information not yet known, state the gap explicitly and provide a reasoned estimate.
 
-**Customer Language**: Use the customer's own terminology from their problem statement wherever possible. Mirror their vocabulary in the proposal and SOW.
+**Consistency**: Every assumption, use case ID, cost figure, and role referenced in later phases traces back to an earlier phase. No orphaned numbers.
 
-**Modular Output**: Each phase produces a standalone document section. The customer can receive outputs incrementally as phases complete.
+**Competitive Edge is Built In**: Phase 2.5 findings must visibly manifest in Phase 4 — the POC should make the customer think "we cannot get this elsewhere."
 
-**Version Control**: Every document starts with `Version 1.0 — Draft` and includes a revision table. Never send a document without a version label.
+**Customer Language**: Mirror the customer's vocabulary throughout. Use their terminology in the proposal and SOW.
+
+**Version Control**: Every document starts `Version 1.0 — Draft` with a revision table.
 
 **Red Flags to Surface Immediately**:
-- Budget signal is below $100K for a multi-phase enterprise build → flag mismatch, propose POC-only as entry point
-- Timeline demand is unrealistic (e.g., full platform in 4 weeks) → document risk, propose phased delivery
-- No data access commitment → make it a blocking dependency in the SOW
+- Budget < $100K for a multi-phase enterprise build → propose POC-only entry
+- Timeline demand is unrealistic → document risk, propose phased delivery
+- No data access commitment → make it a blocking dependency in SOW
 - Unclear decision-maker → identify economic buyer before proposal submission
 
 ---
 
 ## QUICK-START CHECKLIST
 
-Before running the workflow, confirm:
-
-- [ ] Customer problem statement or brief received (text, PDF, call notes)
+- [ ] Customer problem statement or brief received
 - [ ] Industry and company name known
 - [ ] Budget range known (even ballpark)
 - [ ] Target go-live or demo date known
 - [ ] Cloud platform preference known (or leave open)
-- [ ] Compliance requirements known (HIPAA, SOC2, GDPR, PCI-DSS, none)
+- [ ] Compliance requirements known
 - [ ] Customer's existing tech stack known (even partial)
 - [ ] Decision-maker and champion identified
 
-**If fewer than 5 items are known**: run Phase 1 only and output a Discovery Questions document before proceeding to Phases 2–8.
-
-**If 5 or more items are known**: run all 8 phases end-to-end and deliver the full proposal package.
+**< 5 items known** → Run Phase 1 only; output a Discovery Questions document.
+**≥ 5 items known** → Run all phases end-to-end; deliver the full proposal package including working POC code.
