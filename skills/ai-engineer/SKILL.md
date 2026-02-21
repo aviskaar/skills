@@ -1,12 +1,13 @@
 ---
 name: ai-engineer
-description: Use this skill when a research paper or research team output needs to be transformed into a working full-stack product. Activate when the task involves bridging research findings into production software — including writing a PRD, selecting a tech stack, designing AI/ML integration, building UI and backend, and scaling the system. This skill coordinates with the research lead and researcher team throughout, acting as the engineering counterpart to the research pipeline.
+description: Use this skill when a research paper or research team output needs to be transformed into a working full-stack product. Activate when the task involves bridging research findings into production software — including writing a PRD, selecting a tech stack, designing AI/ML integration, building UI (delegated to auto-website-builder), backend development, and scaling the system. This skill acts as the engineering lead: it consults the research lead at every critical junction, coordinates the researcher team, and delegates the complete web presence and UI build to the auto-website-builder sub-skill.
 license: Apache-2.0
 metadata:
   author: aviskaar
-  version: "1.0"
-  tags: engineering, full-stack, ai, product, prd, tech-stack, ui, backend, scaling, research-to-product
+  version: "1.1"
+  tags: engineering, full-stack, ai, product, prd, tech-stack, ui, backend, scaling, research-to-product, orchestration
   sub-skills:
+    - auto-website-builder
     - lead-researcher
     - literature-synthesis
     - research-paper-review
@@ -14,13 +15,15 @@ metadata:
 
 # AI Engineer
 
-Bridge research and production: partner with the research lead and researcher team to transform a research paper or set of research findings into a deployed, scalable full-stack application.
+Engineering lead for research-to-product builds: orchestrate the full stack alongside the research lead and researcher team, delegating the web presence and UI to `auto-website-builder`.
 
 ---
 
 ## Overview
 
 The AI Engineer skill is the engineering counterpart to the research pipeline. Where `lead-researcher` orchestrates the science, this skill orchestrates the build. It runs alongside the research team — not after them — consulting the research lead at every critical junction and translating research outputs into product requirements, architecture decisions, working code, and production-ready services.
+
+**The AI Engineer does not build the UI alone.** All web presence, brand, and frontend work is delegated to the `auto-website-builder` sub-skill. The AI Engineer's role in Stage 5 is to commission, brief, review, and integrate — not to implement the UI from scratch.
 
 **Pipeline stages:**
 
@@ -31,10 +34,10 @@ The AI Engineer skill is the engineering counterpart to the research pipeline. W
        ↓
 3. Tech Stack Architecture
        ↓
-4. AI/ML Integration Design          [← continuous research-team touchpoint]
+4. AI/ML Integration Design     [← continuous research-team touchpoint]
        ↓
-5. UI Development
-       ↓
+5. UI & Web Presence            [→ delegate to: auto-website-builder]
+   ↕ (parallel)
 6. Backend Development
        ↓
 7. Integration, Testing & QA
@@ -45,6 +48,21 @@ The AI Engineer skill is the engineering counterpart to the research pipeline. W
 ```
 
 All stages involve active collaboration with the research lead. Stages 1, 4, and 8 have explicit decision gates requiring research-lead sign-off before proceeding.
+
+---
+
+## Sub-skill Delegation
+
+The AI Engineer orchestrates the following sub-skills. Invoke them at the stages indicated — do not duplicate their work inline.
+
+| Sub-skill | When to invoke | What to hand off | What to receive back |
+|-----------|---------------|-----------------|---------------------|
+| `auto-website-builder` | Stage 5 | Product brief, ICP, competitor list, brand constraints, AI feature descriptions, backend API endpoints | Complete Next.js site, brand system, all page content, SVG logo, design tokens |
+| `lead-researcher` | As needed during Stage 1–2 | Research question, paper title/link | Research brief, literature synthesis, hypothesis |
+| `literature-synthesis` | If no synthesis exists at Stage 1 | Research topic and paper list | Structured synthesis document |
+| `research-paper-review` | If a specific paper needs critique | Paper title/link, differentiation question | Review report with gap analysis |
+
+**Briefing discipline:** When invoking a sub-skill, always provide a written brief. Never hand off verbally or with ambiguous context. The brief for `auto-website-builder` is specified in Stage 5 below.
 
 ---
 
@@ -195,40 +213,76 @@ Before writing integration code, agree in writing with the researcher team on:
 
 ---
 
-## Stage 5 — UI Development
+## Stage 5 — UI & Web Presence
+
+**Sub-skill:** `auto-website-builder`
 
 **Trigger:** After AI integration design is confirmed (parallel with Stage 6 where feasible).
 
-### Design-first approach
+**The AI Engineer does not build the UI directly.** This stage has three responsibilities: write a precise brief for `auto-website-builder`, review its output against research and product requirements, and integrate the generated frontend with the backend and AI layers.
 
-1. **Information architecture**: Map user journeys from the PRD user stories. Identify screens, modals, and states.
-2. **Wireframes or mockups**: Text-based wireframes are acceptable; escalate to visual tools if ambiguity exists.
-3. **Component inventory**: List reusable components. Prioritize components that surface AI/ML outputs (result cards, confidence indicators, streaming text displays).
-4. **Accessibility baseline**: All interactive elements keyboard-navigable; WCAG 2.1 AA color contrast minimum.
+### 5a — Write the auto-website-builder Brief
 
-### AI-specific UI patterns
+Compose a written brief covering every input `auto-website-builder` needs. Do not invoke it before the brief is complete.
 
-- **Streaming output**: Use server-sent events (SSE) or WebSockets; show incremental rendering for generative outputs.
-- **Confidence visualization**: Display uncertainty with appropriate UI cues (e.g., progress bars, badges, tooltips) — validate display thresholds with research lead.
-- **Loading states**: Async inference requires explicit loading, progress, and timeout states.
-- **Error states**: Distinguish model errors from system errors in user-facing copy.
-- **Feedback loops**: Add thumbs-up/down or correction UI if the research team needs user feedback for model improvement.
+| Brief field | Source | Notes |
+|-------------|--------|-------|
+| What does the product do? (1–3 sentences) | PRD problem statement | Translate from research jargon to user language |
+| Primary buyer and end user | PRD Stage 1 ICP | |
+| Biggest pain eliminated | PRD user stories | Lead with benefit, not feature |
+| 3 direct or indirect competitors | Research brief / PRD | |
+| Industry vertical | PRD | |
+| B2B, B2C, or developer-facing? | PRD | |
+| Product stage | PRD | MVP / Early access / GA |
+| Existing name, logo, or brand assets | Stage 1 intake | Provide if researcher team has brand constraints |
+| Primary goal of the site | PRD goals section | Leads / signups / downloads / docs traffic |
+| AI feature descriptions (for product page) | Stage 4 AI-INTEGRATION.md | Plain-language descriptions of what the AI does; avoid model internals |
+| Backend API endpoints (for docs / implementation page) | Stage 6 OpenAPI spec | Share endpoint list so auto-website-builder can generate accurate implementation steps |
+| Hard constraints | PRD constraints section | Privacy policy requirements, compliance badges, on-prem availability |
+| Research paper or publication link (if public) | Stage 1 | For credibility / "Built on research" section |
 
-### Implementation checklist
+### 5b — Invoke auto-website-builder
 
-- [ ] Component library or design system selected
-- [ ] Core screens implemented (from PRD P0 features)
-- [ ] AI output components built and tested with mock data
-- [ ] Responsive design (mobile and desktop breakpoints)
-- [ ] Error and empty states implemented
-- [ ] Basic accessibility audit passed
-- [ ] Frontend connected to backend API (from Stage 6)
+Hand off the completed brief and let `auto-website-builder` run its full pipeline (Phases 1–7). Do not interrupt or override its brand, messaging, or code generation decisions unless they conflict with a constraint in the brief.
+
+**Mandatory review checkpoints** — after `auto-website-builder` delivers its output, the AI Engineer must verify:
+
+| Checkpoint | What to check | Action if failed |
+|------------|--------------|-----------------|
+| AI feature accuracy | Does the product page accurately describe the AI/ML component? No overclaiming, no underclaiming. | Provide corrected copy to `auto-website-builder` for revision |
+| Research fidelity | Are any research-derived claims (accuracy numbers, benchmarks, paper citations) correct? | Escalate to research lead for approval before launch |
+| API documentation accuracy | Do implementation steps and docs match the actual backend API endpoints and auth model? | Update with correct endpoint details |
+| Compliance section | Does the privacy policy cover the actual data the product collects? | Flag gaps; advise user to have legal review |
+| Brand alignment | Do brand constraints from Stage 1 (e.g., researcher team's existing color scheme) conflict with generated brand? | Surface conflict; defer to research lead |
+
+### 5c — AI-specific UI integration
+
+After `auto-website-builder` delivers the Next.js codebase, the AI Engineer extends it with AI-specific components that require engineering knowledge to implement:
+
+| Component | Purpose | Implementation notes |
+|-----------|---------|---------------------|
+| **Streaming output display** | Render incremental model responses | Use SSE or WebSocket; add incremental `<TextStream>` component |
+| **Confidence / uncertainty indicator** | Surface model confidence scores | Validate display thresholds with research lead before shipping |
+| **Async job status poller** | Track long-running inference jobs | Poll `GET /jobs/{id}` or use WebSocket push |
+| **Model error states** | Distinguish model errors from system errors | Separate error copy: "Our AI couldn't process this" vs "Service unavailable" |
+| **Feedback capture** | Thumbs up/down or correction input | Only add if research team needs production feedback for model improvement |
+| **API key / auth flow** | Connect frontend auth to backend | Wire Clerk/Auth0 tokens to backend API authorization header |
+
+### Integration checklist
+
+- [ ] Brief delivered to `auto-website-builder` with all required fields
+- [ ] `auto-website-builder` output reviewed against all 5 checkpoints above
+- [ ] AI-specific components added to the generated codebase
+- [ ] Frontend environment variables set for backend API base URL and auth provider
+- [ ] All API calls from frontend point to correct backend endpoints (from Stage 6 OpenAPI spec)
+- [ ] End-to-end smoke test: user can complete the core AI-powered journey from homepage to result
 
 ### Output of Stage 5
 
-- Working frontend application (repository or module)
-- Component documentation
-- Screenshot or recorded walkthrough of core user journey
+- Generated Next.js site from `auto-website-builder` (brand, all pages, copy, design tokens, SVG logo)
+- AI-specific component extensions (streaming, confidence, feedback)
+- Completed integration of frontend ↔ backend ↔ AI layer
+- Review report: checkpoint results, any corrected content, research-lead approvals for public claims
 
 ---
 
@@ -404,9 +458,10 @@ Engineering velocity does not justify silently degrading the AI/ML component's f
 
 | User intent | Entry point | Notes |
 |-------------|-------------|-------|
-| "We have a paper, build the product" | Stage 1 → full pipeline | Run research-paper-review in parallel with Stage 1 |
-| "PRD exists, build it" | Stage 3 → full pipeline | Confirm research dependencies table exists before starting |
-| "Stack is chosen, build AI integration + app" | Stage 4 → 5 → 6 → 7 → 8 | Verify interface contract with research team before Stage 4 |
+| "We have a paper, build the product" | Stage 1 → full pipeline | Run `research-paper-review` in parallel with Stage 1; `auto-website-builder` runs at Stage 5 |
+| "PRD exists, build it" | Stage 3 → full pipeline | Confirm research dependencies table exists; brief `auto-website-builder` at Stage 5 |
+| "Stack is chosen, build AI integration + app" | Stage 4 → 5 → 6 → 7 → 8 | Verify interface contract with research team before Stage 4; run `auto-website-builder` at Stage 5 in parallel with Stage 6 |
+| "Just build the website/marketing site" | Stage 5 only | Write the brief from PRD and invoke `auto-website-builder` directly |
 | "MVP built, make it production-ready" | Stage 7 → 8 → 9 | Run QA first to identify gaps before hardening |
 | "Scale an existing deployment" | Stage 8 directly | Use scaling-playbook reference |
 
@@ -414,15 +469,15 @@ Engineering velocity does not justify silently degrading the AI/ML component's f
 
 ## Output Summary
 
-| Stage | Artifact |
-|-------|----------|
-| 1 | Research-to-Product Brief (approved by research lead) |
-| 2 | PRD.md, RESEARCH-DEPENDENCIES.md |
-| 3 | ARCHITECTURE.md, ADRs/ |
-| 4 | AI-INTEGRATION.md, model client module, integration tests |
-| 5 | Frontend application, component docs |
-| 6 | Backend service, OpenAPI spec, DB migrations, test suite |
-| 7 | QA report, edge case test suite, load test results |
-| 8 | RUNBOOK.md, IaC, observability config, cost model |
-| 9 | Engineering handoff doc, research integration guide, open items register |
-| All | ENGINEERING-LOG.md with stage-by-stage entries |
+| Stage | Artifact | Owner |
+|-------|----------|-------|
+| 1 | Research-to-Product Brief (approved by research lead) | AI Engineer |
+| 2 | PRD.md, RESEARCH-DEPENDENCIES.md | AI Engineer |
+| 3 | ARCHITECTURE.md, ADRs/ | AI Engineer |
+| 4 | AI-INTEGRATION.md, model client module, integration tests | AI Engineer |
+| 5 | Next.js site (all pages, brand, copy) from `auto-website-builder`; AI-specific component extensions; integration review report | `auto-website-builder` → AI Engineer integrates |
+| 6 | Backend service, OpenAPI spec, DB migrations, test suite | AI Engineer |
+| 7 | QA report, edge case test suite, load test results | AI Engineer + researcher team |
+| 8 | RUNBOOK.md, IaC, observability config, cost model | AI Engineer |
+| 9 | Engineering handoff doc, research integration guide, open items register | AI Engineer |
+| All | ENGINEERING-LOG.md with stage-by-stage entries | AI Engineer |
