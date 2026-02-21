@@ -26,18 +26,48 @@ Skills follow the open [Agent Skills Specification](https://agentskills.io/speci
 
 Skills for AI/ML research workflows — from ideation and literature review through experimentation, replication, and publication.
 
-| Skill | Description |
-|-------|-------------|
-| [hypothesis-generation](skills/hypothesis-generation/) | Generate, refine, and stress-test novel research hypotheses grounded in existing literature |
-| [literature-synthesis](skills/literature-synthesis/) | Synthesize findings across a body of research into coherent summaries |
-| [experiment-design](skills/experiment-design/) | Design rigorous ML experiments with proper baselines and evaluation protocols |
-| [code-replication](skills/code-replication/) | Reproduce results from papers with documented methodology and discrepancy tracking |
-| [research-paper-review](skills/research-paper-review/) | Structured critique and analysis of AI/ML research papers |
-| [research-writing](skills/research-writing/) | Draft and refine research papers, abstracts, related work, and rebuttals |
-| [ieee-paper-generator](skills/ieee-paper-generator/) | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
-| [auto-benchmark](skills/auto-benchmark/) | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
-| [lead-researcher](skills/lead-researcher/) | End-to-end research orchestrator that conducts a full project — hypothesis generation, literature synthesis, experiment design, optional code replication and paper review, through to publication-ready research writing — by coordinating all research sub-skills in sequence |
-| [principal-scientist](skills/principal-scientist/) | Top-level portfolio orchestrator that spawns and manages multiple Lead Researcher agents in parallel across competing hypotheses or independent research tracks, integrates Auto-Benchmark for continuous competitive validation, and synthesizes findings into a unified strategic output |
+#### Orchestration Hierarchy
+
+Research skills are organized in a hierarchy from highest-level strategy to task-level execution. Each layer commands the layers below it.
+
+```
+computer-scientist          Survey a domain, discover & prioritize open problems,
+│                           commission Principal Scientists to attack them
+│
+└── principal-scientist     Manage a portfolio of parallel research tracks;
+    │                       spawn multiple Lead Researchers & integrate Auto-Benchmark
+    │
+    ├── lead-researcher     Run one complete research project end-to-end,
+    │   │                   coordinating all sub-skills in sequence
+    │   │
+    │   ├── hypothesis-generation      Generate & stress-test candidate hypotheses
+    │   ├── literature-synthesis       Synthesize findings across a body of papers
+    │   ├── experiment-design          Design rigorous ML experiments
+    │   ├── code-replication           Reproduce & validate baseline results
+    │   ├── research-paper-review      Structured critique of specific papers
+    │   ├── research-writing           Draft sections, abstracts, rebuttals
+    │   └── ieee-paper-generator       Generate full publication-ready IEEE papers
+    │
+    └── auto-benchmark      Continuous competitive benchmarking loop;
+                            monitors leaderboards, runs improvement experiments,
+                            defends rank #1
+```
+
+#### Skill Reference
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [computer-scientist](skills/computer-scientist/) | Strategic | Survey a research domain, discover and formulate open problems worth solving, prioritize by impact and feasibility, and commission Principal Scientist agents to execute the research |
+| [principal-scientist](skills/principal-scientist/) | Portfolio | Portfolio orchestrator that spawns and manages multiple Lead Researcher agents in parallel across competing hypotheses or independent research tracks, integrates Auto-Benchmark for continuous competitive validation, and synthesizes findings into a unified strategic output |
+| [lead-researcher](skills/lead-researcher/) | Project | End-to-end research orchestrator that conducts a full project — hypothesis generation, literature synthesis, experiment design, optional code replication and paper review, through to publication-ready research writing — by coordinating all research sub-skills in sequence |
+| [auto-benchmark](skills/auto-benchmark/) | Continuous | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
+| [hypothesis-generation](skills/hypothesis-generation/) | Task | Generate, refine, and stress-test novel research hypotheses grounded in existing literature |
+| [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a body of research into coherent summaries |
+| [experiment-design](skills/experiment-design/) | Task | Design rigorous ML experiments with proper baselines and evaluation protocols |
+| [code-replication](skills/code-replication/) | Task | Reproduce results from papers with documented methodology and discrepancy tracking |
+| [research-paper-review](skills/research-paper-review/) | Task | Structured critique and analysis of AI/ML research papers |
+| [research-writing](skills/research-writing/) | Task | Draft and refine research papers, abstracts, related work, and rebuttals |
+| [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
 
 ### GTM / Sales Skills
 
@@ -134,9 +164,10 @@ aviskaar/skills/
 │   ├── research-paper-review/    # Research
 │   ├── research-writing/         # Research
 │   ├── ieee-paper-generator/     # Research
-│   ├── auto-benchmark/           # Research
-│   ├── lead-researcher/          # Research
-│   ├── principal-scientist/      # Research
+│   ├── auto-benchmark/           # Research — continuous benchmarking
+│   ├── lead-researcher/          # Research — project orchestrator
+│   ├── principal-scientist/      # Research — portfolio orchestrator
+│   ├── computer-scientist/       # Research — strategic agenda-setter
 │   └── calendar-pipeline/        # GTM / Sales
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
