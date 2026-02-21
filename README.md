@@ -36,6 +36,7 @@ Skills for AI/ML research workflows — from ideation and literature review thro
 | [research-writing](skills/research-writing/) | Draft and refine research papers, abstracts, related work, and rebuttals |
 | [ieee-paper-generator](skills/ieee-paper-generator/) | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
 | [auto-benchmark](skills/auto-benchmark/) | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
+| [lead-researcher](skills/lead-researcher/) | End-to-end research orchestrator that conducts a full project — hypothesis generation, literature synthesis, experiment design, optional code replication and paper review, through to publication-ready research writing — by coordinating all research sub-skills in sequence |
 
 ### GTM / Sales Skills
 
@@ -133,6 +134,7 @@ aviskaar/skills/
 │   ├── research-writing/         # Research
 │   ├── ieee-paper-generator/     # Research
 │   ├── auto-benchmark/           # Research
+│   ├── lead-researcher/          # Research
 │   └── calendar-pipeline/        # GTM / Sales
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
