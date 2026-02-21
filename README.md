@@ -30,7 +30,7 @@ Skills follow the open [Agent Skills Specification](https://agentskills.io/speci
 | [research-writing](skills/research-writing/) | Draft and refine research papers, abstracts, and sections |
 | [code-replication](skills/code-replication/) | Reproduce results from papers with documented methodology |
 | [hypothesis-generation](skills/hypothesis-generation/) | Generate, refine, and stress-test novel research hypotheses |
-| [auto-benchmark](skills/auto-benchmark/) | Automatically orchestrate, run, and report benchmarks across multiple experiment configurations |
+| [auto-benchmark](skills/auto-benchmark/) | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 with minimal human involvement |
 
 ---
 
