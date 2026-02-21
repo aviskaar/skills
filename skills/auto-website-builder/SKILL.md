@@ -1,11 +1,11 @@
 ---
 name: auto-website-builder
-description: Use this skill when a user wants to build a high-converting product or company website from scratch — including brand naming, logo SVG design, landing page architecture, messaging strategy, competitor benchmarking, investor-grade content, and all supporting pages (contact, privacy policy, terms, blog, resources, events, whitepapers, GitHub, social media). Triggers when a user describes a product, solution, or startup idea and needs a fully automated website that replaces what a top-tier agency would produce. Also triggers for: redesigning an existing site to be more conversion-focused, building an MVP marketing site for a new product, or creating a complete brand + web presence from zero.
+description: Use this skill when a user wants to build a high-converting product or company website from scratch — including brand naming, logo SVG design, landing page architecture, messaging strategy, competitor benchmarking, investor-grade content, implementation steps page, explainer video script, product architecture diagrams, full pricing tier strategy, and all supporting pages (contact, privacy policy, terms, blog, resources, events, whitepapers, GitHub, social media). Triggers when a user describes a product, solution, or startup idea and needs a fully automated website that replaces what a top-tier agency would produce. Also triggers for: redesigning an existing site to be more conversion-focused, building an MVP marketing site for a new product, or creating a complete brand + web presence from zero.
 license: Apache-2.0
 metadata:
   author: aviskaar
-  version: "1.0"
-  tags: website, branding, landing-page, conversion, startup, product-marketing, design-system, logo, copywriting
+  version: "1.1"
+  tags: website, branding, landing-page, conversion, startup, product-marketing, design-system, logo, copywriting, pricing, architecture, explainer-video
 ---
 
 # Auto Website Builder
@@ -195,8 +195,10 @@ Generate a complete sitemap:
 
 ```
 / (Home / Landing)
-/product          → Features deep-dive
-/pricing          → Pricing tiers
+/product          → Features deep-dive + architecture diagram
+/pricing          → Full tier breakdown, ROI calculator, add-ons
+/implementation   → Step-by-step onboarding and setup guide
+/architecture     → System architecture, data flow, security model
 /customers        → Case studies & logos
 /about            → Mission, team, investors
 /blog             → Thought leadership
@@ -239,35 +241,44 @@ For each page below, generate complete content. See `references/page-blueprints.
 
 1. **Navigation bar** — logo, nav links, CTA button
 2. **Hero** — headline, subheadline, dual CTA, hero visual (describe or generate SVG/illustration spec), social proof strip (5–8 customer logos)
-3. **Problem section** — 3 pain points as headlines with 1-line elaborations; use icons
-4. **Solution overview** — product screenshot or diagram + 3 key differentiators
-5. **How it works** — 3–4 step visual flow (numbered, icon-forward)
-6. **Feature highlights** — 3–6 feature blocks (icon + headline + 2-line benefit copy)
-7. **Metrics bar** — 3–4 impressive numbers with labels (animate on scroll)
-8. **Case study teaser** — 1 featured customer story with logo, quote, and outcome metric
-9. **Architecture / Trust section** — SOC 2, GDPR, enterprise logos, security badge; for technical products: system architecture diagram description
-10. **Pricing preview** — teaser or full pricing (link to /pricing)
-11. **Testimonials** — 3–6 quotes with name, title, company, photo placeholder
-12. **Integration logos** — ecosystem/compatibility strip (tools they already use)
-13. **Investor logos** — if applicable; "Backed by" strip
-14. **Final CTA banner** — bold headline + primary CTA + optional secondary CTA
-15. **Footer** — full 4-column footer with all links and social icons
+3. **Explainer video embed** — 60–90 second video (or animated demo) placed directly below the hero fold; include play-button overlay on a branded thumbnail; link to `/watch` or use inline YouTube/Vimeo embed. Generate the full video script using Phase 5.14.
+4. **Problem section** — 3 pain points as headlines with 1-line elaborations; use icons
+5. **Solution overview** — product screenshot or diagram + 3 key differentiators
+6. **How it works / Implementation steps** — 3–4 step visual flow (numbered, icon-forward); link to full `/implementation` page
+7. **Feature highlights** — 3–6 feature blocks (icon + headline + 2-line benefit copy)
+8. **Product architecture preview** — simplified architecture diagram (SVG) showing major system components; "See full architecture →" links to `/architecture`
+9. **Metrics bar** — 3–4 impressive numbers with labels (animate on scroll)
+10. **Case study teaser** — 1 featured customer story with logo, quote, and outcome metric
+11. **Architecture / Trust section** — SOC 2, GDPR, enterprise logos, security badge
+12. **Pricing preview** — 3-tier card strip (truncated); primary tier highlighted; link to `/pricing` for full detail
+13. **Testimonials** — 3–6 quotes with name, title, company, photo placeholder
+14. **Integration logos** — ecosystem/compatibility strip (tools they already use)
+15. **Investor logos** — if applicable; "Backed by" strip
+16. **Final CTA banner** — bold headline + primary CTA + optional secondary CTA
+17. **Footer** — full 4-column footer with all links and social icons
 
 ### 5.2 Product / Features Page
 
 - Feature grid or tabbed layout
 - For each feature: hero image/screenshot, headline, 2-para description, benefit callout, link to docs
 - Comparison table vs. competitors (feature-by-feature)
-- Architecture diagram (describe as SVG-ready flowchart spec)
+- **Architecture section**: embed the simplified system diagram from Phase 5.15; "See full architecture →" link to `/architecture`
+- CTA to `/implementation` — "Ready to see how it fits your stack?"
 
 ### 5.3 Pricing Page
 
-- 3-tier pricing (Starter / Pro / Enterprise) or usage-based
-- Feature comparison table
-- FAQ section (8–10 questions)
-- Enterprise CTA (book a call)
-- Annual vs. monthly toggle
-- Trust signals: money-back guarantee, no credit card required, cancel anytime
+Generate a complete, conversion-optimized pricing page. See `references/page-blueprints.md` § Pricing Page Deep-Dive for full specs.
+
+- **Pricing model selection**: choose the right model for the product type (per-seat, usage-based, flat-rate, tiered usage, or hybrid) and justify the choice
+- **3-tier card layout**: Starter / Pro / Enterprise (or equivalent) with annual/monthly toggle; default to annual to anchor on savings
+- **Per-tier feature matrix**: full breakdown of what each tier includes — limits, capabilities, support level, SLA, integrations
+- **Add-ons and overages**: explicitly spec what happens at limit boundaries and what optional add-ons exist
+- **ROI calculator section**: interactive calculator showing "If you save X hours per week at $Y/hr, payback in Z weeks"
+- **Upgrade path narrative**: make it obvious why customers move from Starter → Pro → Enterprise
+- **Feature comparison table**: exhaustive row-by-row across all tiers
+- **FAQ section** (8–10 questions)
+- **Enterprise CTA strip**: custom quote, procurement support, security review, SLA negotiation
+- **Trust signals**: money-back guarantee, no credit card required, cancel anytime, SOC 2 badge
 
 ### 5.4 Customers / Case Studies Page
 
@@ -342,6 +353,50 @@ Generate complete ToS covering:
 - Termination conditions
 - Changes to terms
 
+### 5.13 Implementation Steps Page (`/implementation`)
+
+A dedicated page showing exactly how to go from zero to value. See `references/page-blueprints.md` § Implementation Steps Page Blueprint for full specs.
+
+Structure:
+1. **Page hero** — "Up and running in [timeframe]" headline; estimated time to first value
+2. **Prerequisites checklist** — what the user needs before starting (accounts, API keys, dependencies)
+3. **Step-by-step guide** — numbered implementation phases with code snippets, screenshots, and expected outputs at each step
+4. **Integration recipes** — for the top 5 integrations: copy-paste setup instructions
+5. **Validation checkpoints** — "You know it's working when you see..." — clear success signals at each phase
+6. **Troubleshooting section** — top 5 setup errors and their solutions
+7. **Next steps** — links to docs, community, office hours
+
+Generate all code snippets for the actual product. Include copy-to-clipboard UI for each snippet.
+
+### 5.14 Explainer Video Script & Spec
+
+Generate a complete production-ready video package. See `references/page-blueprints.md` § Explainer Video Blueprint for full specs.
+
+Produce:
+1. **60–90 second voiceover script** — structured as: Hook (0–5s) → Problem (5–20s) → Solution (20–50s) → How it works (50–75s) → CTA (75–90s)
+2. **Scene-by-scene storyboard** — for each scene: screen content, voiceover line, motion direction, duration
+3. **Thumbnail design spec** — branded still frame for the video preview card (1280×720px)
+4. **Embed component code** — Next.js component with lazy-loading, branded play button overlay, and thumbnail
+5. **Video CTA overlay** — end-card design: product URL, primary CTA button, secondary link
+
+Place the video:
+- Homepage: below the hero, above the problem section
+- Product page: as the hero element replacing a static screenshot
+- Resources page: as a featured item in the ungated section
+
+### 5.15 Product Architecture Page (`/architecture`)
+
+A dedicated technical deep-dive for engineers, architects, and security reviewers. See `references/page-blueprints.md` § Product Architecture Page Blueprint for full specs.
+
+Produce:
+1. **System architecture diagram** — SVG flowchart covering all major components, data flows, and external integrations
+2. **Component inventory** — table of every service/module: name, responsibility, tech stack, scalability notes
+3. **Data flow walkthrough** — step-by-step numbered narrative of a request through the system
+4. **Deployment architecture** — how it deploys (cloud-native, self-hosted, hybrid); regions and availability zones
+5. **Security architecture section** — auth model, encryption at rest and in transit, network isolation, secrets management
+6. **Scalability and SLA** — how the system scales under load; what the limits are; failover behavior
+7. **Integration architecture** — how external systems connect (webhooks, APIs, SDKs, event streams)
+
 ---
 
 ## Phase 6 — Code Generation
@@ -364,10 +419,12 @@ If user prefers plain HTML/CSS/JS, generate vanilla files with no build step req
 ```
 [company-name]/
 ├── app/
-│   ├── layout.tsx          ← root layout, fonts, meta
-│   ├── page.tsx            ← homepage
+│   ├── layout.tsx                ← root layout, fonts, meta
+│   ├── page.tsx                  ← homepage
 │   ├── product/page.tsx
 │   ├── pricing/page.tsx
+│   ├── implementation/page.tsx   ← step-by-step onboarding
+│   ├── architecture/page.tsx     ← system architecture deep-dive
 │   ├── customers/page.tsx
 │   ├── about/page.tsx
 │   ├── blog/page.tsx
@@ -379,16 +436,21 @@ If user prefers plain HTML/CSS/JS, generate vanilla files with no build step req
 │   ├── privacy/page.tsx
 │   └── terms/page.tsx
 ├── components/
-│   ├── ui/                 ← Button, Card, Badge, Input, etc.
-│   ├── layout/             ← Navbar, Footer
-│   ├── sections/           ← Hero, Features, Metrics, Testimonials, etc.
-│   └── Logo.tsx            ← SVG logo component
+│   ├── ui/                       ← Button, Card, Badge, Input, etc.
+│   ├── layout/                   ← Navbar, Footer
+│   ├── sections/                 ← Hero, Features, Metrics, Testimonials, etc.
+│   ├── ExplainerVideo.tsx        ← lazy video embed with branded overlay
+│   ├── ArchitectureDiagram.tsx   ← SVG system diagram component
+│   ├── PricingTiers.tsx          ← tier cards + toggle + ROI calculator
+│   ├── ImplementationSteps.tsx   ← numbered steps with code snippets
+│   └── Logo.tsx                  ← SVG logo component
 ├── lib/
-│   └── tokens.ts           ← Design tokens as JS constants
+│   └── tokens.ts                 ← Design tokens as JS constants
 ├── public/
 │   ├── favicon.ico
-│   └── og-image.png        ← Open Graph image spec
-├── tailwind.config.ts      ← Extend with brand tokens
+│   ├── og-image.png              ← Open Graph image spec
+│   └── video-thumbnail.png       ← Explainer video thumbnail (1280×720)
+├── tailwind.config.ts            ← Extend with brand tokens
 └── next.config.ts
 ```
 
@@ -436,6 +498,9 @@ Produce a launch-ready checklist:
 - [ ] All numbers verified or clearly labeled as estimates
 - [ ] Legal pages reviewed by user (not legal advice; advise user to consult counsel)
 - [ ] Blog seeded with 3+ articles before launch
+- [ ] Explainer video produced, uploaded to YouTube/Vimeo, and embedded on homepage + product page
+- [ ] Implementation steps page tested end-to-end (all code snippets verified)
+- [ ] Architecture diagrams reviewed by an engineer for technical accuracy
 
 **Technical**
 - [ ] Domain purchased and DNS configured
@@ -462,8 +527,8 @@ Deliver all phases in sequence. Use this order:
 2. **Brand Book** — name recommendation, logo brief, SVG logo code, color tokens, typography
 3. **Messaging Document** — positioning statement, tagline, hero copy, metrics, benefit table
 4. **Sitemap** — full URL tree with page descriptions
-5. **Content Document** — all page copy, section by section
-6. **Codebase** — complete Next.js project files, one file per code block
+5. **Content Document** — all page copy, section by section (including implementation steps, architecture narrative, pricing tiers, explainer video script)
+6. **Codebase** — complete Next.js project files, one file per code block (including `ExplainerVideo.tsx`, `ArchitectureDiagram.tsx`, `PricingTiers.tsx`, `ImplementationSteps.tsx`)
 7. **Launch Checklist** — ready-to-action markdown checklist
 
 If the output is very long, deliver phases as separate responses and ask the user which phase to expand first.
