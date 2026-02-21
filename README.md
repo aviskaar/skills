@@ -1,8 +1,8 @@
-# Aviskaar AI Research Skills
+# Aviskaar AI Skills
 
-Public repository for AI Research Skills — reusable instruction sets that extend AI agent capabilities for research workflows.
+Public repository for AI Skills — reusable instruction sets that extend AI agent capabilities for research workflows and go-to-market operations.
 
-> **Skills** are folders of instructions, scripts, and resources that an AI agent loads dynamically to improve performance on specialized research tasks.
+> **Skills** are folders of instructions, scripts, and resources that an AI agent loads dynamically to improve performance on specialized tasks.
 
 ## What are Skills?
 
@@ -22,16 +22,28 @@ Skills follow the open [Agent Skills Specification](https://agentskills.io/speci
 
 ## Available Skills
 
+### Research Skills
+
+Skills for AI/ML research workflows — from ideation and literature review through experimentation, replication, and publication.
+
 | Skill | Description |
 |-------|-------------|
-| [research-paper-review](skills/research-paper-review/) | Structured critique and analysis of AI/ML research papers |
+| [hypothesis-generation](skills/hypothesis-generation/) | Generate, refine, and stress-test novel research hypotheses grounded in existing literature |
 | [literature-synthesis](skills/literature-synthesis/) | Synthesize findings across a body of research into coherent summaries |
-| [experiment-design](skills/experiment-design/) | Design rigorous ML experiments with proper baselines and evaluation |
-| [research-writing](skills/research-writing/) | Draft and refine research papers, abstracts, and sections |
-| [code-replication](skills/code-replication/) | Reproduce results from papers with documented methodology |
-| [hypothesis-generation](skills/hypothesis-generation/) | Generate, refine, and stress-test novel research hypotheses |
-| [auto-benchmark](skills/auto-benchmark/) | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 with minimal human involvement |
-| [calendar-pipeline](skills/calendar-pipeline/) | Autonomous revenue engine that identifies VP/Director/C-suite targets, builds prospect intel, crafts hyper-personalized outreach, runs multi-touch sequences, and fills the calendar with 8 hours of meetings daily — zero manual prospecting effort |
+| [experiment-design](skills/experiment-design/) | Design rigorous ML experiments with proper baselines and evaluation protocols |
+| [code-replication](skills/code-replication/) | Reproduce results from papers with documented methodology and discrepancy tracking |
+| [research-paper-review](skills/research-paper-review/) | Structured critique and analysis of AI/ML research papers |
+| [research-writing](skills/research-writing/) | Draft and refine research papers, abstracts, related work, and rebuttals |
+| [ieee-paper-generator](skills/ieee-paper-generator/) | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
+| [auto-benchmark](skills/auto-benchmark/) | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
+
+### GTM / Sales Skills
+
+Skills for go-to-market and revenue workflows — autonomous prospecting, outreach, and pipeline generation.
+
+| Skill | Description |
+|-------|-------------|
+| [calendar-pipeline](skills/calendar-pipeline/) | Autonomous revenue engine that identifies VP/Director/C-suite targets, builds prospect intel, crafts hyper-personalized outreach, runs multi-touch sequences, and fills the calendar with high-value meetings daily |
 
 ---
 
@@ -97,7 +109,7 @@ Write your skill instructions here.
 
 ## Contributing
 
-We welcome contributions from the research community.
+We welcome contributions from the research and GTM communities.
 
 1. Fork this repository
 2. Create a new branch: `git checkout -b skill/your-skill-name`
@@ -113,13 +125,15 @@ Please follow the [Agent Skills Specification](https://agentskills.io/specificat
 ```
 aviskaar/skills/
 ├── skills/                   # Individual skill packages
-│   ├── research-paper-review/
-│   ├── literature-synthesis/
-│   ├── experiment-design/
-│   ├── research-writing/
-│   ├── code-replication/
-│   ├── hypothesis-generation/
-│   └── auto-benchmark/
+│   ├── hypothesis-generation/    # Research
+│   ├── literature-synthesis/     # Research
+│   ├── experiment-design/        # Research
+│   ├── code-replication/         # Research
+│   ├── research-paper-review/    # Research
+│   ├── research-writing/         # Research
+│   ├── ieee-paper-generator/     # Research
+│   ├── auto-benchmark/           # Research
+│   └── calendar-pipeline/        # GTM / Sales
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
 ├── spec/                     # Pointer to the Agent Skills Specification
@@ -134,4 +148,4 @@ Skills in this repository are released under the [Apache 2.0 License](LICENSE) u
 
 ---
 
-*Aviskaar — Advancing AI Research through open, composable tooling.*
+*Aviskaar — Advancing AI through open, composable tooling.*
