@@ -33,6 +33,7 @@
   - [Engineering Skills](#engineering-skills)
   - [Enterprise / Operations Skills](#enterprise--operations-skills)
   - [GTM / Sales Skills](#gtm--sales-skills)
+  - [Marketing Skills](#marketing-skills)
 - [Using Skills](#-using-skills)
 - [Creating a Skill](#-creating-a-skill)
 - [Contributing](#-contributing)
@@ -130,6 +131,40 @@ graph TD
 | [proposal-automation](skills/proposal-automation/) | Pre-Sales | Transforms customer briefs into complete commercial packages and POCs. |
 | [calendar-pipeline](skills/calendar-pipeline/) | Sales | Autonomous engine for C-suite prospecting and meeting generation. |
 
+### Marketing Skills
+Automating the full marketing department — from brand and content through demand generation and retention.
+
+#### Marketing Team Hierarchy
+```mermaid
+graph TD
+    CMO[cmo-marketing] --> CM[content-marketing]
+    CMO --> DG[demand-gen]
+    CMO --> PM[product-marketing]
+    CMO --> CG[community-growth]
+    CMO --> EV[events-webinars]
+    CMO --> RM[retention-marketing]
+    
+    CM --> SEO[seo-automation]
+    CM --> WE[whitepaper-engine]
+    
+    DG --> PAM[paid-ads-manager]
+    DG --> LR[lead-routing]
+    
+    PM --> CI[customer-intel]
+    CI -.-> CP[calendar-pipeline]
+    
+    CG --> CB[community-builder]
+```
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [cmo-marketing](skills/cmo-marketing/) | Strategic | CMO orchestrator running strategy, budget, and cross-functional campaigns. |
+| [content-marketing](skills/content-marketing/) | Orchestrator | VP Content: plans editorial calendar and multi-platform distribution. |
+| [demand-gen](skills/demand-gen/) | Orchestrator | VP Demand Gen: orchestrates pipeline creation, paid ads, and lead routing. |
+| [product-marketing](skills/product-marketing/) | Orchestrator | VP Product Marketing: positioning, messaging, and sales enablement. |
+| [community-growth](skills/community-growth/) | Orchestrator | VP Community & Ecosystem: strategy across GitHub, Discord, and Slack. |
+| [retention-marketing](skills/retention-marketing/) | VP | VP Lifecycle & Retention: maximize LTV through onboarding and NPS. |
+
 ---
 
 ## 🚀 Using Skills
@@ -187,8 +222,10 @@ We welcome contributions! Please follow these steps:
 ```text
 .
 ├── skills/                   # Individual skill packages
-│   ├── hypothesis-generation/    # Task-specific instructions
-│   ├── lead-researcher/          # High-level orchestrators
+│   ├── hypothesis-generation/    # Research — task
+│   ├── lead-researcher/          # Research — project orchestrator
+│   ├── ai-engineer/              # Engineering — orchestrator
+│   ├── cmo-marketing/            # Marketing — strategic orchestrator
 │   └── ...
 ├── template/                 # Starter template for new skills
 └── spec/                     # Agent Skills Specification reference
