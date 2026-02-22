@@ -107,7 +107,71 @@ Skills for building and deploying AI agents across enterprise platforms and indu
 
 ### GTM / Sales Skills
 
-Skills for go-to-market and revenue workflows — autonomous prospecting, outreach, and pipeline generation.
+Skills for go-to-market and revenue workflows — from product intelligence and discovery through pre-sales proposals, prospecting, and pipeline generation.
+
+#### Product Intelligence Hierarchy
+
+Product intelligence skills are organized in a hierarchy from portfolio-level strategy down to task-level execution. Each layer orchestrates the layers below it.
+
+```
+pm-ai-research          Portfolio PM intelligence platform: manages multiple product areas
+│                       simultaneously, runs cross-portfolio signal aggregation, commissions
+│                       pm-lead cycles per area, synthesizes portfolio roadmaps, and produces
+│                       proposals at scale — the always-on research partner for the PM team
+│
+└── pm-lead             End-to-end product discovery and planning orchestrator for a single
+    │                   product area — runs the complete cycle from stakeholder intel through
+    │                   competitive research, ideation, PRD writing, roadmap, and proposals
+    │
+    ├── stakeholder-intel      Gather, structure, and synthesize signals from sales, customers,
+    │                          marketing, engineering, executives, and investors into a unified
+    │                          intelligence brief with Act Now / Investigate / Monitor tiers
+    │
+    ├── competitive-research   Deep competitive intelligence — landscape mapping, feature
+    │                          matrix, positioning analysis, pricing intelligence, momentum
+    │                          scoring, and white-space opportunity identification
+    │
+    ├── idea-generation        Research-backed product ideation across H1/H2/H3 horizons
+    │                          using Gap Attack, Analogous Markets, First Principles, Inversion,
+    │                          Trend Intersection, Blue Ocean, Jobs to Be Done, and SCAMPER
+    │
+    ├── prd-writer             Translate research, stakeholder signals, and ideas into complete,
+    │                          testable PRDs — user stories, acceptance criteria, functional and
+    │                          non-functional requirements, success metrics, and risk register
+    │
+    ├── roadmap-planner        Build prioritized roadmaps with RICE / Opportunity / Strategic
+    │                          Stack Rank scoring, capacity mapping, trade-off documentation,
+    │                          and three audience-specific narratives (Engineering, Executive, GTM)
+    │
+    └── proposal-writer        Write internal proposals (resource requests, strategy bets,
+                               cross-functional alignment) and external customer-facing proposals
+                               (strategic accounts, beta programs, partnerships, co-development)
+```
+
+#### Product Intelligence Skill Reference
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [pm-ai-research](skills/pm-ai-research/) | Portfolio | Portfolio PM intelligence platform that manages multiple product areas simultaneously, runs continuous competitive and market monitoring, commissions and oversees `pm-lead` planning cycles, synthesizes cross-portfolio roadmaps, and produces a Proposal Catalog at scale |
+| [pm-lead](skills/pm-lead/) | Project | End-to-end product discovery and planning orchestrator that runs a complete cycle for a single product area — from stakeholder intelligence and competitive research through ideation, PRD writing, roadmap planning, and proposals — coordinating all PM sub-skills in sequence |
+| [stakeholder-intel](skills/stakeholder-intel/) | Task | Gather, structure, and synthesize stakeholder signals from sales, customers, sales engineers, marketing, engineering, executives, and investors into an actionable intelligence brief with prioritized Act Now / Investigate / Monitor tiers |
+| [competitive-research](skills/competitive-research/) | Task | Deep competitive intelligence covering landscape mapping, feature and capability matrices, positioning analysis, pricing intelligence, momentum and trajectory scoring, and white-space opportunity identification |
+| [idea-generation](skills/idea-generation/) | Task | Research-backed product ideation engine that generates ideas across H1/H2/H3 horizons using seven structured modes (Gap Attack, Analogous Markets, First Principles, Inversion, Trend Intersection, Blue Ocean, Jobs to Be Done) and SCAMPER provocations |
+| [prd-writer](skills/prd-writer/) | Task | Translate research findings, stakeholder signals, competitive context, and product ideas into complete, unambiguous PRDs — with user stories, acceptance criteria, functional and non-functional requirements, success metrics, and risk register |
+| [roadmap-planner](skills/roadmap-planner/) | Task | Build prioritized product roadmaps using RICE, Opportunity, or Strategic Stack Rank scoring with capacity mapping, trade-off documentation, and three audience-specific narratives: Engineering, Executive, and Customer/GTM |
+| [proposal-writer](skills/proposal-writer/) | Task | Write structured, evidence-backed proposals for two audiences: internal (resource requests, strategy pivots, executive alignment) and customer-facing (strategic accounts, beta programs, partnerships, co-development agreements) |
+
+#### Pre-Sales Skills
+
+Skills for transforming customer briefs and RFPs into boardroom-ready commercial packages — complete with working POC code, competitive analysis, architecture, cost models, and statements of work.
+
+| Skill | Description |
+|-------|-------------|
+| [proposal-automation](skills/proposal-automation/) | End-to-end pre-sales and proposal lifecycle for Client Partners, Account Managers, Solutions Engineers, and Solutions Architects. Transforms a raw customer problem statement into a complete commercial package: problem analysis, use case discovery, competitive benchmarking, enterprise architecture design, fully functional POC/MVP build (no placeholders — real working code), proposal document, team and resourcing plan, US and offshore cost model with blended rates, and a legally structured Statement of Work |
+
+#### Sales Pipeline Skills
+
+Skills for autonomous prospecting, outreach, and pipeline generation.
 
 | Skill | Description |
 |-------|-------------|
@@ -193,13 +257,13 @@ Please follow the [Agent Skills Specification](https://agentskills.io/specificat
 ```
 aviskaar/skills/
 ├── skills/                   # Individual skill packages
-│   ├── hypothesis-generation/    # Research
-│   ├── literature-synthesis/     # Research
-│   ├── experiment-design/        # Research
-│   ├── code-replication/         # Research
-│   ├── research-paper-review/    # Research
-│   ├── research-writing/         # Research
-│   ├── ieee-paper-generator/     # Research
+│   ├── hypothesis-generation/    # Research — task
+│   ├── literature-synthesis/     # Research — task
+│   ├── experiment-design/        # Research — task
+│   ├── code-replication/         # Research — task
+│   ├── research-paper-review/    # Research — task
+│   ├── research-writing/         # Research — task
+│   ├── ieee-paper-generator/     # Research — task
 │   ├── auto-benchmark/           # Research — continuous benchmarking
 │   ├── lead-researcher/          # Research — project orchestrator
 │   ├── principal-scientist/      # Research — portfolio orchestrator
@@ -207,7 +271,16 @@ aviskaar/skills/
 │   ├── ai-engineer/              # Engineering — orchestrates full research-to-product build
 │   ├── auto-website-builder/     # Engineering — web presence, brand, UI (sub-skill of ai-engineer)
 │   ├── dynamic-enterprise-agent/ # Enterprise / Operations — real-time agent builder
-│   └── calendar-pipeline/        # GTM / Sales
+│   ├── pm-ai-research/           # GTM / Product Intelligence — portfolio orchestrator
+│   ├── pm-lead/                  # GTM / Product Intelligence — project orchestrator
+│   ├── stakeholder-intel/        # GTM / Product Intelligence — task
+│   ├── competitive-research/     # GTM / Product Intelligence — task
+│   ├── idea-generation/          # GTM / Product Intelligence — task
+│   ├── prd-writer/               # GTM / Product Intelligence — task
+│   ├── roadmap-planner/          # GTM / Product Intelligence — task
+│   ├── proposal-writer/          # GTM / Product Intelligence — task
+│   ├── proposal-automation/      # GTM / Pre-Sales — end-to-end proposal + POC build
+│   └── calendar-pipeline/        # GTM / Sales Pipeline — autonomous prospecting
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
 ├── spec/                     # Pointer to the Agent Skills Specification
