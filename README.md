@@ -1,4 +1,5 @@
 <p align="center">
+  <img src="open-org-logo.png" alt="Open Org Logo" width="200">
   <h1 align="center">Open Org</h1>
 </p>
 
