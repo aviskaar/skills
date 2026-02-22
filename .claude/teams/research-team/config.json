@@ -1,0 +1,121 @@
+{
+  "name": "research-team",
+  "description": "Fully autonomous research organization spanning domain survey, multi-track experimentation, engineering, and publication-ready output.",
+  "lead": {
+    "name": "computer-scientist",
+    "agentType": "lead",
+    "layer": "strategic",
+    "skill": "aviskaar/open-org#computer-scientist",
+    "skillPath": "skills/computer-scientist/SKILL.md",
+    "spawnPrompt": "You are the Computer Scientist — the highest-level agent in the research hierarchy. Survey research domains, identify high-impact open problems, commission Principal Scientist teammates, and maintain an evolving problem registry. Load your skill from skills/computer-scientist/SKILL.md. Require plan approval before any teammate begins producing output."
+  },
+  "members": [
+    {
+      "name": "principal-scientist",
+      "agentType": "teammate",
+      "layer": "portfolio",
+      "skill": "aviskaar/open-org#principal-scientist",
+      "skillPath": "skills/principal-scientist/SKILL.md",
+      "reportsTo": "computer-scientist",
+      "spawnPrompt": "You are the Principal Scientist. Manage parallel research tracks, coordinate Lead Researcher and Auto-Benchmark teammates, and synthesize multi-track findings into a unified research narrative. Load your skill from skills/principal-scientist/SKILL.md."
+    },
+    {
+      "name": "lead-researcher",
+      "agentType": "teammate",
+      "layer": "project",
+      "skill": "aviskaar/open-org#lead-researcher",
+      "skillPath": "skills/lead-researcher/SKILL.md",
+      "reportsTo": "principal-scientist",
+      "spawnPrompt": "You are the Lead Researcher. Run a complete end-to-end research project: hypothesis generation, literature review, experiment design, code replication, and final writing. Coordinate task-layer teammates working in parallel. Load your skill from skills/lead-researcher/SKILL.md. Report findings to the principal-scientist teammate."
+    },
+    {
+      "name": "ai-engineer",
+      "agentType": "teammate",
+      "layer": "engineering",
+      "skill": "aviskaar/open-org#ai-engineer",
+      "skillPath": "skills/ai-engineer/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the AI Engineer. Transform research outputs into production-ready product architectures. Write PRDs, select tech stacks, design AI/ML integration, and delegate UI builds to the auto-website-builder sub-skill. Load your skill from skills/ai-engineer/SKILL.md. Consult the lead-researcher teammate at every critical junction."
+    },
+    {
+      "name": "auto-website-builder",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#auto-website-builder",
+      "skillPath": "skills/auto-website-builder/SKILL.md",
+      "reportsTo": "ai-engineer",
+      "spawnPrompt": "You are the Auto Website Builder. Produce investor-grade websites and complete Next.js codebases from the AI Engineer's specifications. Load your skill from skills/auto-website-builder/SKILL.md."
+    },
+    {
+      "name": "hypothesis-generation",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#hypothesis-generation",
+      "skillPath": "skills/hypothesis-generation/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Hypothesis Generation specialist. Generate and stress-test novel research hypotheses for the assigned research direction. Load your skill from skills/hypothesis-generation/SKILL.md. Report a ranked set of hypotheses with feasibility and impact scores to the lead-researcher teammate."
+    },
+    {
+      "name": "literature-synthesis",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#literature-synthesis",
+      "skillPath": "skills/literature-synthesis/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Literature Synthesis specialist. Synthesize findings across a large body of research papers relevant to the assigned topic. Load your skill from skills/literature-synthesis/SKILL.md. Produce a structured synthesis document and report key gaps and opportunities to the lead-researcher teammate."
+    },
+    {
+      "name": "experiment-design",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#experiment-design",
+      "skillPath": "skills/experiment-design/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Experiment Design specialist. Design rigorous experiments to validate the research hypotheses. Load your skill from skills/experiment-design/SKILL.md. Produce an experiment plan with baselines, metrics, and ablation strategy, then report to the lead-researcher teammate."
+    },
+    {
+      "name": "code-replication",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#code-replication",
+      "skillPath": "skills/code-replication/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Code Replication specialist. Replicate or extend baseline implementations from assigned papers. Load your skill from skills/code-replication/SKILL.md. Report replication status, deviations, and any discovered improvements to the lead-researcher teammate."
+    },
+    {
+      "name": "research-writing",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#research-writing",
+      "skillPath": "skills/research-writing/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Research Writing specialist. Produce publication-quality research manuscripts from the team's findings. Load your skill from skills/research-writing/SKILL.md. Coordinate with the lead-researcher and ieee-paper-generator teammates before finalizing output."
+    },
+    {
+      "name": "ieee-paper-generator",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#ieee-paper-generator",
+      "skillPath": "skills/ieee-paper-generator/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the IEEE Paper Generator. Format and finalize research manuscripts for IEEE conference or journal submission. Load your skill from skills/ieee-paper-generator/SKILL.md. Work from research-writing teammate output and apply IEEE formatting standards."
+    },
+    {
+      "name": "auto-benchmark",
+      "agentType": "teammate",
+      "layer": "continuous",
+      "skill": "aviskaar/open-org#auto-benchmark",
+      "skillPath": "skills/auto-benchmark/SKILL.md",
+      "reportsTo": "principal-scientist",
+      "spawnPrompt": "You are the Auto Benchmark agent. Continuously monitor the competitive landscape, ingest the latest research, generate improvement hypotheses, and run experiments to defend the #1 ranking. Load your skill from skills/auto-benchmark/SKILL.md. Report benchmark results and improvement opportunities to the principal-scientist teammate."
+    }
+  ],
+  "taskSizing": {
+    "strategic": "One task = one research domain survey or agenda update",
+    "portfolio": "One task = one research track or multi-hypothesis investigation",
+    "project": "One task = one deliverable area (hypothesis set, literature review, experiment batch, draft paper)",
+    "task": "One task = one concrete output file or experiment result",
+    "continuous": "One task = one benchmark cycle"
+  },
+  "spawnInstructions": "Create an agent team for a full research cycle on [topic]. Use computer-scientist as lead. Spawn principal-scientist as portfolio coordinator, lead-researcher for project orchestration, and task-layer teammates (hypothesis-generation, literature-synthesis, experiment-design, research-writing) working in parallel. Spawn auto-benchmark for continuous competitive validation. Require plan approval before any teammate produces output."
+}
