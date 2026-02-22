@@ -90,6 +90,12 @@ graph TD
 ### Engineering Skills
 Transforming research into products with high-converting web presence.
 
+#### Engineering Hierarchy
+```mermaid
+graph TD
+    AE[ai-engineer] --> AWB[auto-website-builder]
+```
+
 | Skill | Layer | Description |
 |-------|-------|-------------|
 | [ai-engineer](skills/ai-engineer/) | Lead | Owns the full engineering pipeline, PRD, and tech stack design. |
@@ -104,6 +110,18 @@ Real-time agent construction for enterprise platforms.
 
 ### GTM / Sales Skills
 Product intelligence, pre-sales automation, and autonomous prospecting.
+
+#### Product Intelligence Hierarchy
+```mermaid
+graph TD
+    PAR[pm-ai-research] --> PL[pm-lead]
+    PL --> SI[stakeholder-intel]
+    PL --> CR[competitive-research]
+    PL --> IG[idea-generation]
+    PL --> PW[prd-writer]
+    PL --> RP[roadmap-planner]
+    PL --> PRW[proposal-writer]
+```
 
 | Skill | Category | Description |
 |-------|----------|-------------|
