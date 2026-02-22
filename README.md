@@ -24,10 +24,43 @@
 
 ---
 
-**Skills** are portable packages of instructions, scripts, and resources that an AI agent loads dynamically to achieve deep, domain-specific expertise. Each skill follows the [Agent Skills Specification](https://agentskills.io/specification), making them composable, version-controlled, and shareable.
+## 🚀 Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/aviskaar/open-org.git
+cd open-org
+
+# Browse available skills
+ls skills/
+
+# Load a skill into Claude Code with one command
+/plugin install aviskaar/open-org#lead-researcher
+```
+
+---
+
+## 🌐 Vision
+
+OpenOrg generalizes AI skills for enterprise automation, enabling fully autonomous organizations run by one person – scaling to unicorn status while prioritizing human good. By open-sourcing the skill layer, we give every builder the same leverage that once required entire departments.
+
+---
+
+## 🛠️ Core Features
+
+- **🤖 Multi-AI model support** — Skills work across Claude, GPT, Gemini, and any model that accepts a system prompt.
+- **🏢 Org-wide automation** — Pre-built hierarchies cover Research, Engineering, GTM, Marketing, and Operations end-to-end.
+- **🔗 Composable skill stacks** — Orchestrator skills chain specialist skills, mirroring real team structures.
+- **📦 Open-source extensibility** — Fork any skill, publish your own, and share across the community.
+- **⚡ Agentic teams support** — Coordinate multi-agent pipelines using the [Agent Teams](AGENTS.md) model for parallel, autonomous execution.
+
+---
 
 ## 📖 Table of Contents
 
+- [Quick Start](#-quick-start)
+- [Vision](#-vision)
+- [Core Features](#️-core-features)
 - [What are Skills?](#-what-are-skills)
 - [Available Skills](#-available-skills)
   - [Research Skills](#research-skills)
@@ -38,8 +71,13 @@
 - [Using Skills](#-using-skills)
 - [Creating a Skill](#-creating-a-skill)
 - [Contributing](#-contributing)
+- [Roadmap](#-roadmap)
 - [Repository Structure](#-repository-structure)
 - [License](#-license)
+
+---
+
+**Skills** are portable packages of instructions, scripts, and resources that an AI agent loads dynamically to achieve deep, domain-specific expertise. Each skill follows the [Agent Skills Specification](https://agentskills.io/specification), making them composable, version-controlled, and shareable.
 
 ---
 
@@ -210,11 +248,15 @@ Detailed behavioral instructions go here.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please follow these steps:
+We welcome contributions from the community! Skills live in the [/skills](skills/) directory — browse existing ones for inspiration.
+
+**Steps to contribute:**
 1. Fork the repo and create your branch: `skill/your-skill-name`.
 2. Adhere to the [Agent Skills Specification](https://agentskills.io/specification).
 3. Ensure no hardcoded credentials or proprietary data are included.
-4. Open a Pull Request with a clear description of the use cases and problem description.
+4. Open a Pull Request with a clear description of the use cases and problem being solved.
+
+**Adding agent team workflows?** See [AGENTS.md](AGENTS.md) for how to document multi-agent coordination patterns.
 
 ---
 
@@ -231,6 +273,20 @@ We welcome contributions! Please follow these steps:
 ├── template/                 # Starter template for new skills
 └── spec/                     # Agent Skills Specification reference
 ```
+
+---
+
+## 📈 Roadmap
+
+| Milestone | Description | Status |
+|-----------|-------------|--------|
+| **v0.5 — Skill Library** | Publish 20+ production-ready skills across all org functions | ✅ In progress |
+| **v1.0 — Autonomy Benchmarks** | Define and publish benchmarks for single-person org automation (research, GTM, engineering) | 🔜 Planned |
+| **v1.5 — Agent Teams Integration** | First-class multi-agent orchestration with the [Agent Teams](AGENTS.md) model baked into every skill hierarchy | 🔜 Planned |
+| **v2.0 — Enterprise Runtime** | Hosted skill execution, usage analytics, and SSO/RBAC for enterprise deployments | 🔜 Planned |
+| **v3.0 — Unicorn Playbook** | End-to-end autonomous org template: one founder, full AI team, verified unicorn-track metrics | 🔜 Planned |
+
+Have a feature request? [Open an issue](https://github.com/aviskaar/open-org/issues) or start a discussion.
 
 ---
 
