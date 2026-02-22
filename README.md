@@ -214,7 +214,7 @@ We welcome contributions! Please follow these steps:
 1. Fork the repo and create your branch: `skill/your-skill-name`.
 2. Adhere to the [Agent Skills Specification](https://agentskills.io/specification).
 3. Ensure no hardcoded credentials or proprietary data are included.
-4. Open a Pull Request with a clear description of the use cases.
+4. Open a Pull Request with a clear description of the use cases and problem description.
 
 ---
 
