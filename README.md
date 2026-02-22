@@ -69,6 +69,14 @@ computer-scientist          Survey a domain, discover & prioritize open problems
 | [research-writing](skills/research-writing/) | Task | Draft and refine research papers, abstracts, related work, and rebuttals |
 | [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
 
+### Enterprise / Operations Skills
+
+Skills for building and deploying AI agents across enterprise platforms and industries — in real time, during the conversation.
+
+| Skill | Description |
+|-------|-------------|
+| [dynamic-enterprise-agent](skills/dynamic-enterprise-agent/) | Build a fully specified, code-ready, deployable AI agent on-the-fly from a spoken or written business problem. Covers any enterprise platform (ServiceNow, Salesforce, Workday, SAP, Snowflake, Microsoft 365/Azure, AWS, GCP, Okta, CyberArk, Splunk, Epic, Veeva, Bloomberg, and more) and any industry (healthcare, life sciences, fintech, banking, retail, manufacturing, federal, and beyond). The agent is live before the meeting ends |
+
 ### GTM / Sales Skills
 
 Skills for go-to-market and revenue workflows — autonomous prospecting, outreach, and pipeline generation.
@@ -168,6 +176,7 @@ aviskaar/skills/
 │   ├── lead-researcher/          # Research — project orchestrator
 │   ├── principal-scientist/      # Research — portfolio orchestrator
 │   ├── computer-scientist/       # Research — strategic agenda-setter
+│   ├── dynamic-enterprise-agent/ # Enterprise / Operations — real-time agent builder
 │   └── calendar-pipeline/        # GTM / Sales
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
