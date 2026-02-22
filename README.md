@@ -7,13 +7,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/aviskaar/skills/blob/main/LICENSE">
+  <a href="https://github.com/aviskaar/open-org/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
   </a>
-  <a href="https://github.com/aviskaar/skills/issues">
-    <img src="https://img.shields.io/github/issues/aviskaar/skills" alt="Issues">
+  <a href="https://github.com/aviskaar/open-org/issues">
+    <img src="https://img.shields.io/github/issues/aviskaar/open-org" alt="Issues">
   </a>
-  <a href="https://github.com/aviskaar/skills/pulls">
+  <a href="https://github.com/aviskaar/open-org/pulls">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
   </a>
   <a href="https://agentskills.io/specification">
@@ -172,7 +172,7 @@ graph TD
 ### Claude Code
 Install directly into your project:
 ```bash
-/plugin install aviskaar/skills#research-paper-review
+/plugin install aviskaar/open-org#research-paper-review
 ```
 
 ### Claude.ai
