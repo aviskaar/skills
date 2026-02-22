@@ -1,298 +1,189 @@
-# Aviskaar AI Skills
+<p align="center">
+  <h1 align="center">🚀 Aviskaar AI Skills</h1>
+</p>
 
-Public repository for AI Skills — reusable instruction sets that extend AI agent capabilities for research workflows and go-to-market operations.
+<p align="center">
+  <strong>Reusable instruction sets that extend AI agent capabilities for research workflows, engineering, and go-to-market operations.</strong>
+</p>
 
-> **Skills** are folders of instructions, scripts, and resources that an AI agent loads dynamically to improve performance on specialized tasks.
-
-## What are Skills?
-
-A skill is a lightweight, portable package that gives an AI agent deep, domain-specific expertise. Each skill lives in its own folder with a `SKILL.md` file at the root:
-
-```
-my-skill/
-└── SKILL.md          # Required: instructions + metadata frontmatter
-    scripts/          # Optional: executable helpers
-    references/       # Optional: additional docs loaded on-demand
-    assets/           # Optional: static resources, templates, data
-```
-
-Skills follow the open [Agent Skills Specification](https://agentskills.io/specification). They are composable, version-controlled, and shareable across teams.
+<p align="center">
+  <a href="https://github.com/aviskaar/skills/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
+  </a>
+  <a href="https://github.com/aviskaar/skills/issues">
+    <img src="https://img.shields.io/github/issues/aviskaar/skills" alt="Issues">
+  </a>
+  <a href="https://github.com/aviskaar/skills/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  </a>
+  <a href="https://agentskills.io/specification">
+    <img src="https://img.shields.io/badge/Spec-Agent%20Skills-orange" alt="Specification">
+  </a>
+</p>
 
 ---
 
-## Available Skills
+**Skills** are portable packages of instructions, scripts, and resources that an AI agent loads dynamically to achieve deep, domain-specific expertise. Each skill follows the [Agent Skills Specification](https://agentskills.io/specification), making them composable, version-controlled, and shareable.
+
+## 📖 Table of Contents
+
+- [What are Skills?](#-what-are-skills)
+- [Available Skills](#-available-skills)
+  - [Research Skills](#research-skills)
+  - [Engineering Skills](#engineering-skills)
+  - [Enterprise / Operations Skills](#enterprise--operations-skills)
+  - [GTM / Sales Skills](#gtm--sales-skills)
+- [Using Skills](#-using-skills)
+- [Creating a Skill](#-creating-a-skill)
+- [Contributing](#-contributing)
+- [Repository Structure](#-repository-structure)
+- [License](#-license)
+
+---
+
+## 🛠 What are Skills?
+
+A skill lives in its own directory with a `SKILL.md` file at the root. This structure allows agents to understand both the high-level intent and the low-level execution details required for specialized tasks.
+
+```text
+my-skill/
+├── SKILL.md          # Required: instructions + metadata frontmatter
+├── scripts/          # Optional: executable helpers
+├── references/       # Optional: additional docs loaded on-demand
+└── assets/           # Optional: static resources, templates, data
+```
+
+---
+
+## 🏗 Available Skills
 
 ### Research Skills
-
-Skills for AI/ML research workflows — from ideation and literature review through experimentation, replication, and publication.
+Orchestration for AI/ML research — from ideation and literature review to publication-ready papers.
 
 #### Orchestration Hierarchy
-
-Research skills are organized in a hierarchy from highest-level strategy to task-level execution. Each layer commands the layers below it.
-
+```mermaid
+graph TD
+    CS[computer-scientist] --> PS[principal-scientist]
+    PS --> LR[lead-researcher]
+    PS --> AB[auto-benchmark]
+    LR --> AE[ai-engineer]
+    LR --> HG[hypothesis-generation]
+    LR --> LS[literature-synthesis]
+    LR --> ED[experiment-design]
+    LR --> CR[code-replication]
+    LR --> RW[research-writing]
+    LR --> IPG[ieee-paper-generator]
+    AE --> AWB[auto-website-builder]
 ```
-computer-scientist          Survey a domain, discover & prioritize open problems,
-│                           commission Principal Scientists to attack them
-│
-└── principal-scientist     Manage a portfolio of parallel research tracks;
-    │                       spawn multiple Lead Researchers & integrate Auto-Benchmark
-    │
-    ├── lead-researcher     Run one complete research project end-to-end,
-    │   │                   coordinating all sub-skills in sequence
-    │   │                   ↕ (collaborates with)
-    │   │
-    │   │   ai-engineer     Engineering lead: PRD, tech stack, AI integration,
-    │   │   │               backend, scaling — works alongside the research team
-    │   │   │               and delegates the entire web/UI layer to:
-    │   │   │
-    │   │   └── auto-website-builder   Complete website, brand, all pages,
-    │   │                              design system, and Next.js codebase
-    │   │
-    │   ├── hypothesis-generation      Generate & stress-test candidate hypotheses
-    │   ├── literature-synthesis       Synthesize findings across a body of papers
-    │   ├── experiment-design          Design rigorous ML experiments
-    │   ├── code-replication           Reproduce & validate baseline results
-    │   ├── research-paper-review      Structured critique of specific papers
-    │   ├── research-writing           Draft sections, abstracts, rebuttals
-    │   └── ieee-paper-generator       Generate full publication-ready IEEE papers
-    │
-    └── auto-benchmark      Continuous competitive benchmarking loop;
-                            monitors leaderboards, runs improvement experiments,
-                            defends rank #1
-```
-
-#### Skill Reference
 
 | Skill | Layer | Description |
 |-------|-------|-------------|
-| [computer-scientist](skills/computer-scientist/) | Strategic | Survey a research domain, discover and formulate open problems worth solving, prioritize by impact and feasibility, and commission Principal Scientist agents to execute the research |
-| [principal-scientist](skills/principal-scientist/) | Portfolio | Portfolio orchestrator that spawns and manages multiple Lead Researcher agents in parallel across competing hypotheses or independent research tracks, integrates Auto-Benchmark for continuous competitive validation, and synthesizes findings into a unified strategic output |
-| [lead-researcher](skills/lead-researcher/) | Project | End-to-end research orchestrator that conducts a full project — hypothesis generation, literature synthesis, experiment design, optional code replication and paper review, through to publication-ready research writing — by coordinating all research sub-skills in sequence |
-| [ai-engineer](skills/ai-engineer/) | Engineering | Engineering lead that orchestrates a research paper into a production-ready product — writing the PRD, designing the tech stack, directing AI/ML integration, running backend development, scaling the system, and delegating all web presence and UI work to `auto-website-builder` |
-| [auto-benchmark](skills/auto-benchmark/) | Continuous | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
-| [hypothesis-generation](skills/hypothesis-generation/) | Task | Generate, refine, and stress-test novel research hypotheses grounded in existing literature |
-| [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a body of research into coherent summaries |
-| [experiment-design](skills/experiment-design/) | Task | Design rigorous ML experiments with proper baselines and evaluation protocols |
-| [code-replication](skills/code-replication/) | Task | Reproduce results from papers with documented methodology and discrepancy tracking |
-| [research-paper-review](skills/research-paper-review/) | Task | Structured critique and analysis of AI/ML research papers |
-| [research-writing](skills/research-writing/) | Task | Draft and refine research papers, abstracts, related work, and rebuttals |
-| [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
+| [computer-scientist](skills/computer-scientist/) | Strategic | Survey research domains and formulate high-impact open problems. |
+| [principal-scientist](skills/principal-scientist/) | Portfolio | Manage parallel research tracks and synthesize multi-track findings. |
+| [lead-researcher](skills/lead-researcher/) | Project | End-to-end research orchestrator from hypothesis to publication. |
+| [ai-engineer](skills/ai-engineer/) | Engineering | Transform research papers into production-ready product architectures. |
+| [auto-benchmark](skills/auto-benchmark/) | Continuous | Continuous competitive benchmarking loop to defend #1 rankings. |
+| [hypothesis-generation](skills/hypothesis-generation/) | Task | Generate and stress-test novel research hypotheses. |
+| [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a large body of research papers. |
+| [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate publication-ready IEEE conference and journal papers. |
 
 ### Engineering Skills
-
-Skills for transforming research outputs into production software — from requirements and architecture through a fully deployed, scaled product with a high-converting web presence.
-
-#### Engineering Hierarchy
-
-```
-ai-engineer         Engineering lead: consults the research team, owns PRD, tech stack,
-│                   AI/ML integration, backend, QA, scaling, and handoff
-│
-└── auto-website-builder    Full web presence: brand identity, all site pages,
-                            design system, SVG logo, pricing, and Next.js codebase
-```
+Transforming research into products with high-converting web presence.
 
 | Skill | Layer | Description |
 |-------|-------|-------------|
-| [ai-engineer](skills/ai-engineer/) | Engineering Lead | Orchestrates the full engineering pipeline from a research paper to a deployed product. Consults the research lead at every critical junction and delegates all web presence and UI work to `auto-website-builder` |
-| [auto-website-builder](skills/auto-website-builder/) | Engineering Task | Produces a complete, investor-grade website and brand identity — naming, logo, all pages, design tokens, pricing strategy, and a production-ready Next.js codebase. Invoked and briefed by `ai-engineer` at Stage 5 |
+| [ai-engineer](skills/ai-engineer/) | Lead | Owns the full engineering pipeline, PRD, and tech stack design. |
+| [auto-website-builder](skills/auto-website-builder/) | Task | Produces investor-grade websites and complete Next.js codebases. |
 
 ### Enterprise / Operations Skills
-
-Skills for building and deploying AI agents across enterprise platforms and industries — in real time, during the conversation.
+Real-time agent construction for enterprise platforms.
 
 | Skill | Description |
 |-------|-------------|
-| [dynamic-enterprise-agent](skills/dynamic-enterprise-agent/) | Build a fully specified, code-ready, deployable AI agent on-the-fly from a spoken or written business problem. Covers any enterprise platform (ServiceNow, Salesforce, Workday, SAP, Snowflake, Microsoft 365/Azure, AWS, GCP, Okta, CyberArk, Splunk, Epic, Veeva, Bloomberg, and more) and any industry (healthcare, life sciences, fintech, banking, retail, manufacturing, federal, and beyond). The agent is live before the meeting ends |
+| [dynamic-enterprise-agent](skills/dynamic-enterprise-agent/) | Build deployable AI agents on-the-fly for ServiceNow, Salesforce, AWS, and more. |
 
 ### GTM / Sales Skills
+Product intelligence, pre-sales automation, and autonomous prospecting.
 
-Skills for go-to-market and revenue workflows — from product intelligence and discovery through pre-sales proposals, prospecting, and pipeline generation.
-
-#### Product Intelligence Hierarchy
-
-Product intelligence skills are organized in a hierarchy from portfolio-level strategy down to task-level execution. Each layer orchestrates the layers below it.
-
-```
-pm-ai-research          Portfolio PM intelligence platform: manages multiple product areas
-│                       simultaneously, runs cross-portfolio signal aggregation, commissions
-│                       pm-lead cycles per area, synthesizes portfolio roadmaps, and produces
-│                       proposals at scale — the always-on research partner for the PM team
-│
-└── pm-lead             End-to-end product discovery and planning orchestrator for a single
-    │                   product area — runs the complete cycle from stakeholder intel through
-    │                   competitive research, ideation, PRD writing, roadmap, and proposals
-    │
-    ├── stakeholder-intel      Gather, structure, and synthesize signals from sales, customers,
-    │                          marketing, engineering, executives, and investors into a unified
-    │                          intelligence brief with Act Now / Investigate / Monitor tiers
-    │
-    ├── competitive-research   Deep competitive intelligence — landscape mapping, feature
-    │                          matrix, positioning analysis, pricing intelligence, momentum
-    │                          scoring, and white-space opportunity identification
-    │
-    ├── idea-generation        Research-backed product ideation across H1/H2/H3 horizons
-    │                          using Gap Attack, Analogous Markets, First Principles, Inversion,
-    │                          Trend Intersection, Blue Ocean, Jobs to Be Done, and SCAMPER
-    │
-    ├── prd-writer             Translate research, stakeholder signals, and ideas into complete,
-    │                          testable PRDs — user stories, acceptance criteria, functional and
-    │                          non-functional requirements, success metrics, and risk register
-    │
-    ├── roadmap-planner        Build prioritized roadmaps with RICE / Opportunity / Strategic
-    │                          Stack Rank scoring, capacity mapping, trade-off documentation,
-    │                          and three audience-specific narratives (Engineering, Executive, GTM)
-    │
-    └── proposal-writer        Write internal proposals (resource requests, strategy bets,
-                               cross-functional alignment) and external customer-facing proposals
-                               (strategic accounts, beta programs, partnerships, co-development)
-```
-
-#### Product Intelligence Skill Reference
-
-| Skill | Layer | Description |
-|-------|-------|-------------|
-| [pm-ai-research](skills/pm-ai-research/) | Portfolio | Portfolio PM intelligence platform that manages multiple product areas simultaneously, runs continuous competitive and market monitoring, commissions and oversees `pm-lead` planning cycles, synthesizes cross-portfolio roadmaps, and produces a Proposal Catalog at scale |
-| [pm-lead](skills/pm-lead/) | Project | End-to-end product discovery and planning orchestrator that runs a complete cycle for a single product area — from stakeholder intelligence and competitive research through ideation, PRD writing, roadmap planning, and proposals — coordinating all PM sub-skills in sequence |
-| [stakeholder-intel](skills/stakeholder-intel/) | Task | Gather, structure, and synthesize stakeholder signals from sales, customers, sales engineers, marketing, engineering, executives, and investors into an actionable intelligence brief with prioritized Act Now / Investigate / Monitor tiers |
-| [competitive-research](skills/competitive-research/) | Task | Deep competitive intelligence covering landscape mapping, feature and capability matrices, positioning analysis, pricing intelligence, momentum and trajectory scoring, and white-space opportunity identification |
-| [idea-generation](skills/idea-generation/) | Task | Research-backed product ideation engine that generates ideas across H1/H2/H3 horizons using seven structured modes (Gap Attack, Analogous Markets, First Principles, Inversion, Trend Intersection, Blue Ocean, Jobs to Be Done) and SCAMPER provocations |
-| [prd-writer](skills/prd-writer/) | Task | Translate research findings, stakeholder signals, competitive context, and product ideas into complete, unambiguous PRDs — with user stories, acceptance criteria, functional and non-functional requirements, success metrics, and risk register |
-| [roadmap-planner](skills/roadmap-planner/) | Task | Build prioritized product roadmaps using RICE, Opportunity, or Strategic Stack Rank scoring with capacity mapping, trade-off documentation, and three audience-specific narratives: Engineering, Executive, and Customer/GTM |
-| [proposal-writer](skills/proposal-writer/) | Task | Write structured, evidence-backed proposals for two audiences: internal (resource requests, strategy pivots, executive alignment) and customer-facing (strategic accounts, beta programs, partnerships, co-development agreements) |
-
-#### Pre-Sales Skills
-
-Skills for transforming customer briefs and RFPs into boardroom-ready commercial packages — complete with working POC code, competitive analysis, architecture, cost models, and statements of work.
-
-| Skill | Description |
-|-------|-------------|
-| [proposal-automation](skills/proposal-automation/) | End-to-end pre-sales and proposal lifecycle for Client Partners, Account Managers, Solutions Engineers, and Solutions Architects. Transforms a raw customer problem statement into a complete commercial package: problem analysis, use case discovery, competitive benchmarking, enterprise architecture design, fully functional POC/MVP build (no placeholders — real working code), proposal document, team and resourcing plan, US and offshore cost model with blended rates, and a legally structured Statement of Work |
-
-#### Sales Pipeline Skills
-
-Skills for autonomous prospecting, outreach, and pipeline generation.
-
-| Skill | Description |
-|-------|-------------|
-| [calendar-pipeline](skills/calendar-pipeline/) | Autonomous revenue engine that identifies VP/Director/C-suite targets, builds prospect intel, crafts hyper-personalized outreach, runs multi-touch sequences, and fills the calendar with high-value meetings daily |
+| Skill | Category | Description |
+|-------|----------|-------------|
+| [pm-ai-research](skills/pm-ai-research/) | Product | Portfolio-level PM intelligence and signal aggregation. |
+| [pm-lead](skills/pm-lead/) | Product | End-to-end product discovery for specific product areas. |
+| [proposal-automation](skills/proposal-automation/) | Pre-Sales | Transforms customer briefs into complete commercial packages and POCs. |
+| [calendar-pipeline](skills/calendar-pipeline/) | Sales | Autonomous engine for C-suite prospecting and meeting generation. |
 
 ---
 
-## Using Skills
+## 🚀 Using Skills
 
 ### Claude Code
-
-Install a skill from this repository directly into your project:
-
+Install directly into your project:
 ```bash
-# Install a specific skill
 /plugin install aviskaar/skills#research-paper-review
-
-# Or reference it in your .claude/settings.json
 ```
 
 ### Claude.ai
+Upload any `SKILL.md` file into a **Claude.ai Project** to activate it for your conversation.
 
-Upload any `SKILL.md` file in a Claude.ai Project to activate the skill for that project's conversations.
-
-### Claude API
-
-Pass skill instructions via the system prompt or use the Skills API to attach a pre-built skill deployment to your API calls.
+### API Usage
+Inject skill instructions into the `system_prompt` or use the dedicated Skills API (where available).
 
 ---
 
-## Creating a Skill
+## ✍️ Creating a Skill
 
-Start from the [template](template/SKILL.md):
+Start from the [template](template/SKILL.md). A valid skill requires YAML frontmatter:
 
 ```markdown
 ---
 name: my-skill
-description: What the skill does and when the agent should use it.
+description: "Use this skill when..."
 metadata:
-  author: aviskaar
+  author: your-name
   version: "1.0"
 ---
 
 # Instructions
-
-Write your skill instructions here.
+Detailed behavioral instructions go here.
 ```
 
-**Frontmatter fields:**
-
-| Field | Required | Description |
-|-------|----------|-------------|
-| `name` | Yes | Lowercase letters, numbers, hyphens (1–64 chars) |
-| `description` | Yes | When and why the agent should activate this skill (1–1024 chars) |
-| `license` | No | SPDX license identifier (e.g. `Apache-2.0`) |
-| `compatibility` | No | Environment or tool requirements |
-| `metadata` | No | Arbitrary key-value pairs (author, version, tags, etc.) |
-| `allowed-tools` | No | Pre-approved tools the skill may invoke |
-
-**Best practices:**
-- Keep `SKILL.md` under 500 lines; move dense reference material to `references/`
-- Write the description as a trigger condition: *"Use this skill when…"*
-- Use `scripts/` for reusable automation; document inputs and outputs inline
-- Test your skill with at least three realistic scenarios before publishing
+**Best Practices:**
+- **Trigger-focused:** Write descriptions as activation conditions.
+- **Modular:** Keep `SKILL.md` under 500 lines; use `references/` for data.
+- **Tooling:** Explicitly define `allowed-tools` if the skill requires environment access.
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-We welcome contributions from the research and GTM communities.
-
-1. Fork this repository
-2. Create a new branch: `git checkout -b skill/your-skill-name`
-3. Add your skill under `skills/your-skill-name/SKILL.md`
-4. Open a pull request with a brief description of what the skill does and example use cases
-
-Please follow the [Agent Skills Specification](https://agentskills.io/specification) and keep instructions concise, composable, and free of hardcoded credentials or proprietary data.
+We welcome contributions! Please follow these steps:
+1. Fork the repo and create your branch: `skill/your-skill-name`.
+2. Adhere to the [Agent Skills Specification](https://agentskills.io/specification).
+3. Ensure no hardcoded credentials or proprietary data are included.
+4. Open a Pull Request with a clear description of the use cases.
 
 ---
 
-## Repository Structure
+## 📂 Repository Structure
 
-```
-aviskaar/skills/
+```text
+.
 ├── skills/                   # Individual skill packages
-│   ├── hypothesis-generation/    # Research — task
-│   ├── literature-synthesis/     # Research — task
-│   ├── experiment-design/        # Research — task
-│   ├── code-replication/         # Research — task
-│   ├── research-paper-review/    # Research — task
-│   ├── research-writing/         # Research — task
-│   ├── ieee-paper-generator/     # Research — task
-│   ├── auto-benchmark/           # Research — continuous benchmarking
-│   ├── lead-researcher/          # Research — project orchestrator
-│   ├── principal-scientist/      # Research — portfolio orchestrator
-│   ├── computer-scientist/       # Research — strategic agenda-setter
-│   ├── ai-engineer/              # Engineering — orchestrates full research-to-product build
-│   ├── auto-website-builder/     # Engineering — web presence, brand, UI (sub-skill of ai-engineer)
-│   ├── dynamic-enterprise-agent/ # Enterprise / Operations — real-time agent builder
-│   ├── pm-ai-research/           # GTM / Product Intelligence — portfolio orchestrator
-│   ├── pm-lead/                  # GTM / Product Intelligence — project orchestrator
-│   ├── stakeholder-intel/        # GTM / Product Intelligence — task
-│   ├── competitive-research/     # GTM / Product Intelligence — task
-│   ├── idea-generation/          # GTM / Product Intelligence — task
-│   ├── prd-writer/               # GTM / Product Intelligence — task
-│   ├── roadmap-planner/          # GTM / Product Intelligence — task
-│   ├── proposal-writer/          # GTM / Product Intelligence — task
-│   ├── proposal-automation/      # GTM / Pre-Sales — end-to-end proposal + POC build
-│   └── calendar-pipeline/        # GTM / Sales Pipeline — autonomous prospecting
+│   ├── hypothesis-generation/    # Task-specific instructions
+│   ├── lead-researcher/          # High-level orchestrators
+│   └── ...
 ├── template/                 # Starter template for new skills
-│   └── SKILL.md
-├── spec/                     # Pointer to the Agent Skills Specification
-└── README.md
+└── spec/                     # Agent Skills Specification reference
 ```
 
 ---
 
-## License
+## 📄 License
 
-Skills in this repository are released under the [Apache 2.0 License](LICENSE) unless otherwise noted in the individual skill's frontmatter.
+Unless otherwise specified in a skill's frontmatter, all content is licensed under the [Apache 2.0 License](LICENSE).
 
 ---
 
-*Aviskaar — Advancing AI through open, composable tooling.*
+<p align="center">
+  <i>Aviskaar — Advancing AI through open, composable tooling.</i>
+</p>
