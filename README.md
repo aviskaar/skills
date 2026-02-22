@@ -179,6 +179,99 @@ Skills for autonomous prospecting, outreach, and pipeline generation.
 
 ---
 
+### Marketing Skills
+
+Skills for automating the full marketing department — from brand and content through demand generation, paid media, community, events, customer intelligence, and retention. Organized as a complete marketing team hierarchy from CMO strategy down to task-level execution.
+
+#### Marketing Team Hierarchy
+
+```
+cmo-marketing               Chief Marketing Officer — portfolio strategy, budget allocation,
+│                           board reporting, psychological marketing tactics, and cross-
+│                           functional campaign orchestration across all marketing functions
+│
+├── content-marketing       VP Content: editorial calendar, SEO-optimized articles, blog
+│   │                       posts, press releases, LinkedIn/Medium publishing, newsletter,
+│   │                       multi-platform content distribution, and repurposing cascade
+│   │
+│   ├── seo-automation      Technical SEO audits, keyword research engine, on-page
+│   │                       optimization, link building, SERP monitoring, Core Web Vitals,
+│   │                       and automated content pipeline to keep pages in top positions
+│   │
+│   └── whitepaper-engine   Cross-functional whitepaper production — topic selection,
+│                           stakeholder interviews (Engineering, Sales, Product, C-level),
+│                           writing, design briefing, gated landing page, and distribution
+│                           to investors, enterprise buyers, and analysts
+│
+├── demand-gen              VP Demand Generation: pipeline orchestration, MQL/SQL lifecycle,
+│   │                       multi-channel lead gen, nurture sequences, attribution, and
+│   │                       full-funnel reporting — commissions paid-ads-manager and
+│   │                       lead-routing for automated pipeline creation
+│   │
+│   ├── paid-ads-manager    Multi-platform ad management across Meta, LinkedIn, Twitter/X,
+│   │                       Instagram, and Google — creative testing, A/B optimization,
+│   │                       audience refinement (title, industry, geography, age), automatic
+│   │                       ad set management, and ROAS maximization
+│   │
+│   └── lead-routing        Lead capture from all sources (webinars, events, ads, content,
+│                           community), enrichment, fit + engagement scoring, territory-
+│                           based CRM routing, personalized follow-up sequences, and
+│                           automated calendar filling for the sales team
+│
+├── product-marketing       VP Product Marketing: positioning architecture, messaging house,
+│   │                       persona-specific narratives, GTM launch playbooks, competitive
+│   │                       battle cards, psychological tactics for investors / industry
+│   │                       leaders / enterprise buyers / end users, analyst relations,
+│   │                       and complete sales enablement packages
+│   │
+│   └── customer-intel      Account intelligence engine — technology stack mapping, vendor
+│                           relationship profiling, leadership org chart construction,
+│                           contact discovery, hiring signal analysis, buying trigger
+│                           identification, and sales intelligence briefs for every
+│                           target account; feeds directly into calendar-pipeline
+│
+├── community-growth        VP Community & Ecosystem: community strategy across GitHub,
+│   │                       Discord, Slack, Reddit, LinkedIn Groups, and developer forums;
+│   │                       GitHub star campaigns, ambassador programs, community-sourced
+│   │                       pipeline generation, and developer relations programs
+│   │
+│   └── community-builder   Day-to-day community operations — onboarding new members,
+│                           weekly content and engagement calendar, moderation, ambassador
+│                           network management, pipeline signal detection, and weekly
+│                           community health reporting across all platforms
+│
+├── events-webinars         VP Events & Field Marketing: full events program including
+│                           weekly webinars, technology workshops, solution workshops,
+│                           executive roundtables, user conferences, global speaking
+│                           engagements, and conference activations — with complete
+│                           lead capture, post-event routing, and pipeline reporting
+│
+└── retention-marketing     VP Lifecycle & Retention: customer onboarding automation,
+                            stickiness tactics, churn prediction and prevention, NPS
+                            program, expansion/upsell campaigns, win-back sequences,
+                            and community integration to maximize customer lifetime value
+```
+
+#### Marketing Skill Reference
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [cmo-marketing](skills/cmo-marketing/) | Strategic | Chief Marketing Officer orchestrator — runs the full marketing department: strategy, budget allocation, psychological marketing tactics, campaign commissioning, board reporting, and continuous intelligence loop across all marketing functions |
+| [content-marketing](skills/content-marketing/) | VP / Orchestrator | VP Content: plans and executes the editorial calendar, produces SEO-optimized articles, press releases, LinkedIn and Medium posts, and manages multi-platform distribution — orchestrates `seo-automation` and `whitepaper-engine` |
+| [seo-automation](skills/seo-automation/) | Task | Autonomous SEO engine: technical audits, keyword research, on-page optimization, link building, SERP monitoring, Core Web Vitals, and a continuously updated content pipeline that keeps the website in top search positions |
+| [whitepaper-engine](skills/whitepaper-engine/) | Task | Cross-functional whitepaper production: topic selection, contributor interviews across Engineering/Sales/Product/C-level, research synthesis, writing, design briefing, gated landing page, and distribution to investors, enterprise buyers, and analysts |
+| [demand-gen](skills/demand-gen/) | VP / Orchestrator | VP Demand Generation: orchestrates the full pipeline creation engine — MQL/SQL lifecycle, multi-channel programs, nurture sequences, budget allocation, and revenue attribution — commissioning `paid-ads-manager` and `lead-routing` |
+| [paid-ads-manager](skills/paid-ads-manager/) | Task | Multi-platform performance marketing: designs, launches, and continuously optimizes paid campaigns across Meta, LinkedIn, Twitter/X, and Google — creative testing, A/B framework, audience refinement, and ROAS maximization |
+| [lead-routing](skills/lead-routing/) | Task | Autonomous lead processing: captures leads from all sources, enriches with firmographic/behavioral data, scores for fit and intent, routes to the right rep by territory, triggers personalized follow-up, and automatically fills the sales calendar |
+| [product-marketing](skills/product-marketing/) | VP / Orchestrator | VP Product Marketing: positioning architecture, persona messaging, psychological tactics for investors/leaders/enterprise/end users, GTM launch playbooks, competitive battle cards, analyst relations, and sales enablement — commissions `customer-intel` |
+| [customer-intel](skills/customer-intel/) | Task | Account intelligence engine: technology stack mapping, vendor profiling, org chart and leadership hierarchy construction, contact discovery, hiring signal analysis, and sales intelligence briefs to give the sales team an unfair advantage |
+| [community-growth](skills/community-growth/) | VP / Orchestrator | VP Community & Ecosystem: community strategy across GitHub, Discord, Slack, Reddit, and LinkedIn Groups; GitHub star campaigns, ambassador programs, developer relations, and community-sourced pipeline — orchestrates `community-builder` |
+| [community-builder](skills/community-builder/) | Task | Community operations and daily engagement: member onboarding, weekly content calendar, platform moderation, ambassador management, pipeline signal detection, and weekly health reporting across all community platforms |
+| [events-webinars](skills/events-webinars/) | VP | VP Events & Field Marketing: plans and executes webinars, technology workshops, solution workshops, executive roundtables, user conferences, and global speaking programs — with full lead capture, post-event routing, and pipeline reporting |
+| [retention-marketing](skills/retention-marketing/) | VP | VP Lifecycle & Retention: onboarding automation, stickiness tactics, churn prediction/prevention, NPS program, upsell/expansion campaigns, win-back sequences, and community integration to maximize customer lifetime value and NRR |
+
+---
+
 ## Using Skills
 
 ### Claude Code
@@ -280,7 +373,20 @@ aviskaar/skills/
 │   ├── roadmap-planner/          # GTM / Product Intelligence — task
 │   ├── proposal-writer/          # GTM / Product Intelligence — task
 │   ├── proposal-automation/      # GTM / Pre-Sales — end-to-end proposal + POC build
-│   └── calendar-pipeline/        # GTM / Sales Pipeline — autonomous prospecting
+│   ├── calendar-pipeline/        # GTM / Sales Pipeline — autonomous prospecting
+│   ├── cmo-marketing/            # Marketing — CMO strategic orchestrator
+│   ├── content-marketing/        # Marketing — VP Content & editorial (orchestrator)
+│   ├── seo-automation/           # Marketing — Technical SEO & organic growth engine
+│   ├── whitepaper-engine/        # Marketing — Cross-functional whitepaper production
+│   ├── demand-gen/               # Marketing — VP Demand Generation (orchestrator)
+│   ├── paid-ads-manager/         # Marketing — Multi-platform paid ads & ROAS optimization
+│   ├── lead-routing/             # Marketing — Lead processing, scoring & calendar filling
+│   ├── product-marketing/        # Marketing — VP Product Marketing (orchestrator)
+│   ├── customer-intel/           # Marketing — Account intelligence & sales intel engine
+│   ├── community-growth/         # Marketing — VP Community & ecosystem (orchestrator)
+│   ├── community-builder/        # Marketing — Community operations & daily engagement
+│   ├── events-webinars/          # Marketing — VP Events & field marketing
+│   └── retention-marketing/      # Marketing — VP Lifecycle, retention & expansion
 ├── template/                 # Starter template for new skills
 │   └── SKILL.md
 ├── spec/                     # Pointer to the Agent Skills Specification
