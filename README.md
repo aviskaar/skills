@@ -39,6 +39,14 @@ computer-scientist          Survey a domain, discover & prioritize open problems
     │
     ├── lead-researcher     Run one complete research project end-to-end,
     │   │                   coordinating all sub-skills in sequence
+    │   │                   ↕ (collaborates with)
+    │   │
+    │   │   ai-engineer     Engineering lead: PRD, tech stack, AI integration,
+    │   │   │               backend, scaling — works alongside the research team
+    │   │   │               and delegates the entire web/UI layer to:
+    │   │   │
+    │   │   └── auto-website-builder   Complete website, brand, all pages,
+    │   │                              design system, and Next.js codebase
     │   │
     │   ├── hypothesis-generation      Generate & stress-test candidate hypotheses
     │   ├── literature-synthesis       Synthesize findings across a body of papers
@@ -60,6 +68,7 @@ computer-scientist          Survey a domain, discover & prioritize open problems
 | [computer-scientist](skills/computer-scientist/) | Strategic | Survey a research domain, discover and formulate open problems worth solving, prioritize by impact and feasibility, and commission Principal Scientist agents to execute the research |
 | [principal-scientist](skills/principal-scientist/) | Portfolio | Portfolio orchestrator that spawns and manages multiple Lead Researcher agents in parallel across competing hypotheses or independent research tracks, integrates Auto-Benchmark for continuous competitive validation, and synthesizes findings into a unified strategic output |
 | [lead-researcher](skills/lead-researcher/) | Project | End-to-end research orchestrator that conducts a full project — hypothesis generation, literature synthesis, experiment design, optional code replication and paper review, through to publication-ready research writing — by coordinating all research sub-skills in sequence |
+| [ai-engineer](skills/ai-engineer/) | Engineering | Engineering lead that orchestrates a research paper into a production-ready product — writing the PRD, designing the tech stack, directing AI/ML integration, running backend development, scaling the system, and delegating all web presence and UI work to `auto-website-builder` |
 | [auto-benchmark](skills/auto-benchmark/) | Continuous | Continuous competitive benchmarking system that monitors leaderboards, ingests research papers, auto-runs improvement experiments, and keeps a solution ranked #1 |
 | [hypothesis-generation](skills/hypothesis-generation/) | Task | Generate, refine, and stress-test novel research hypotheses grounded in existing literature |
 | [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a body of research into coherent summaries |
@@ -68,6 +77,25 @@ computer-scientist          Survey a domain, discover & prioritize open problems
 | [research-paper-review](skills/research-paper-review/) | Task | Structured critique and analysis of AI/ML research papers |
 | [research-writing](skills/research-writing/) | Task | Draft and refine research papers, abstracts, related work, and rebuttals |
 | [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate complete, publication-ready IEEE conference and journal papers from experiment results |
+
+### Engineering Skills
+
+Skills for transforming research outputs into production software — from requirements and architecture through a fully deployed, scaled product with a high-converting web presence.
+
+#### Engineering Hierarchy
+
+```
+ai-engineer         Engineering lead: consults the research team, owns PRD, tech stack,
+│                   AI/ML integration, backend, QA, scaling, and handoff
+│
+└── auto-website-builder    Full web presence: brand identity, all site pages,
+                            design system, SVG logo, pricing, and Next.js codebase
+```
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [ai-engineer](skills/ai-engineer/) | Engineering Lead | Orchestrates the full engineering pipeline from a research paper to a deployed product. Consults the research lead at every critical junction and delegates all web presence and UI work to `auto-website-builder` |
+| [auto-website-builder](skills/auto-website-builder/) | Engineering Task | Produces a complete, investor-grade website and brand identity — naming, logo, all pages, design tokens, pricing strategy, and a production-ready Next.js codebase. Invoked and briefed by `ai-engineer` at Stage 5 |
 
 ### Enterprise / Operations Skills
 
@@ -176,6 +204,8 @@ aviskaar/skills/
 │   ├── lead-researcher/          # Research — project orchestrator
 │   ├── principal-scientist/      # Research — portfolio orchestrator
 │   ├── computer-scientist/       # Research — strategic agenda-setter
+│   ├── ai-engineer/              # Engineering — orchestrates full research-to-product build
+│   ├── auto-website-builder/     # Engineering — web presence, brand, UI (sub-skill of ai-engineer)
 │   ├── dynamic-enterprise-agent/ # Enterprise / Operations — real-time agent builder
 │   └── calendar-pipeline/        # GTM / Sales
 ├── template/                 # Starter template for new skills
