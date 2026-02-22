@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <strong>Reusable instruction sets that extend AI agent capabilities for research workflows, engineering, and go-to-market operations.</strong>
+  <strong>The World's First Fully Autonomous Organization - Building 1-Person Unicorns</strong>
 </p>
 
 <p align="center">
