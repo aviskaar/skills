@@ -5,22 +5,28 @@ description: >
   describes any business problem, workflow pain, or opportunity in real time and needs an AI
   agent built immediately during that conversation. Activate the moment someone says "we need
   something that can..." or "our team keeps having to manually..." or "what if there were a way
-  to..." Produces a fully specified, code-ready, deployable AI agent on-the-fly — covering any
-  enterprise platform (ServiceNow, Salesforce, Workday, SAP, Snowflake, Microsoft 365/Azure/Teams/
-  Dynamics, AWS, GCP, Okta, CyberArk, Palo Alto, Splunk, Epic, Veeva, Bloomberg, and more) and
-  any industry (healthcare, life sciences, fintech, banking, quant, retail, manufacturing, federal
-  agencies, and beyond). The agent is live before the meeting ends.
+  to..." Orchestrates the full Listen → Decode → Build → Ship pipeline across four specialist
+  skills to produce a fully specified, code-ready, deployable AI agent on-the-fly — covering
+  any enterprise platform (ServiceNow, Salesforce, Workday, SAP, Snowflake, Microsoft 365/Azure/
+  Teams/Dynamics, AWS, GCP, Okta, CyberArk, Palo Alto, Splunk, Epic, Veeva, Bloomberg, and more)
+  and any industry (healthcare, life sciences, fintech, banking, quant, retail, manufacturing,
+  federal agencies, and beyond). The agent is live before the meeting ends.
 license: Apache-2.0
 metadata:
   author: aviskaar
-  version: "1.0"
+  version: "2.0"
   tags: >
-    enterprise, ai-agents, on-the-fly, servicenow, salesforce, workday, sap, snowflake,
-    microsoft, azure, aws, iam, network-security, healthcare, lifesciences, fintech,
+    enterprise, ai-agents, orchestrator, on-the-fly, servicenow, salesforce, workday, sap,
+    snowflake, microsoft, azure, aws, iam, network-security, healthcare, lifesciences, fintech,
     banking, quant, retail, manufacturing, federal, real-time, automation, orchestration
+  sub-skills:
+    - enterprise-signal-listener
+    - enterprise-problem-decoder
+    - enterprise-agent-builder
+    - enterprise-agent-shipper
 ---
 
-# Dynamic Enterprise AI Agent Builder
+# Dynamic Enterprise AI Agent Builder — Strategic Orchestrator
 
 Build a fully functional, deployable AI agent in real time — while the conversation is still
 happening. No post-meeting spec docs. No multi-week discovery. The agent exists before you hang up.
@@ -31,502 +37,106 @@ happening. No post-meeting spec docs. No multi-week discovery. The agent exists 
 
 **Listen → Decode → Build → Ship.**
 
-The moment someone describes a problem, this skill extracts what is needed, maps it to the
-right platform and industry context, generates working code and configuration, and produces a
-deployment-ready agent. Every output is actionable, not a proposal.
+The moment someone describes a problem, this skill orchestrates four specialist skills in sequence:
+extract what is needed, map it to the right platform and industry context, generate working code
+and configuration, and produce a deployment-ready agent. Every output is actionable, not a proposal.
 
 ---
 
-## Phase 0 — Live Signal Capture
+## Pipeline Overview
 
-Do not interrupt the conversation. Capture while the person talks.
-
-### 0.1 What to Listen For
-
-Extract these signals from natural speech — do not require structured input:
-
-| Signal Type | Listen for phrases like... |
-|-------------|---------------------------|
-| **Platform** | "in ServiceNow", "our Salesforce", "Workday tickets", "SAP transactions", "Snowflake warehouse", "Teams channel", "Azure", "AWS", "our Okta", "Splunk alerts" |
-| **Industry** | "patients", "clinical trials", "trades", "claims", "SKUs", "warfighters", "compliance audit", "drug approval", "loan origination", "grid operators" |
-| **Pain trigger** | "manually", "takes too long", "we keep missing", "no one knows", "we get paged at 3am", "the team wastes hours", "audit fails", "we can't see" |
-| **Actor** | Who does this today? (a person, a team, a queue) |
-| **Frequency** | How often does this happen? (every ticket, nightly, on-demand, real-time) |
-| **Outcome wanted** | "automatically", "instantly", "alert us when", "summarize", "route to", "predict", "remediate", "generate", "approve" |
-
-### 0.2 Rapid Intake Form (if direct input is available)
-
-Collect only what is missing from the conversation:
-
-```yaml
-intake:
-  spoken_problem: ""          # verbatim quote or paraphrase of what they said
-  platform_hint: ""           # any system they mentioned
-  industry_hint: ""           # any domain/vertical they mentioned
-  actor: ""                   # who does this today
-  trigger: ""                 # what kicks the process off
-  desired_outcome: ""         # what good looks like
-  urgency: demo_now | this_week | this_sprint
-```
-
-### 0.3 Clarifying Questions (ask at most 2, only if critical signals are missing)
-
-Priority order — stop once you have enough to build:
-1. "Which system does this live in today?" (if no platform detected)
-2. "When this goes wrong, who feels it first?" (surfaces the actor and trigger)
-3. "What would 'fixed' look like in 30 seconds?" (surfaces the outcome)
-
-Never ask about timelines, budget, or architecture in Phase 0. Build first.
+| Phase | Skill | What Happens | Output |
+|-------|-------|-------------|--------|
+| **Listen** | `enterprise-signal-listener` | Extract structured signals from natural conversation without interrupting | Populated intake YAML |
+| **Decode** | `enterprise-problem-decoder` | Resolve platform, apply compliance, classify agent type | Structured agent spec |
+| **Build** | `enterprise-agent-builder` | Design architecture, generate production Python code + platform adapters | Blueprint + working code |
+| **Ship** | `enterprise-agent-shipper` | Configure integration, generate IAM policy, produce demo + checklist | Deployment-ready package |
 
 ---
 
-## Phase 1 — Problem Decoding
+## Orchestration Instructions
 
-Map raw signals to a structured agent specification.
+### Entry Points
 
-### 1.1 Platform Resolution
+Based on what the user provides, enter the pipeline at the right stage:
 
-Resolve the platform from signals. If ambiguous, default to the most likely platform for the
-industry and build for it, noting alternatives.
+| User provides... | Enter at |
+|-----------------|----------|
+| Someone describing a problem in conversation | Listen (enterprise-signal-listener) |
+| A completed intake YAML | Decode (enterprise-problem-decoder) |
+| A structured agent spec | Build (enterprise-agent-builder) |
+| A blueprint + code | Ship (enterprise-agent-shipper) |
+| "Run everything" or open-ended problem description | Listen (full pipeline) |
 
-See `references/platform-connectors.md` for full API and connector details per platform.
+### Stage 1 — Listen
 
-**Platform families and primary agent entry points:**
+**Invoke**: `enterprise-signal-listener`
 
-| Platform | Agent Entry Point | Primary Capability |
-|----------|------------------|--------------------|
-| **ServiceNow** | Flow Designer, Scripted REST, NLU Virtual Agent | ITSM automation, case routing, approvals |
-| **Salesforce** | Einstein Copilot, Agentforce, Apex, Flow, MuleSoft | CRM automation, opportunity management, service |
-| **Workday** | Extend (REST), Prism Analytics, Studio | HR automation, talent workflows, payroll |
-| **SAP** | BTP AI Core, S/4HANA APIs, Build Process Automation | ERP automation, procurement, finance |
-| **Snowflake** | Cortex AI, Snowpark, Tasks, Streams | Data pipelines, ML scoring, analytics agents |
-| **Microsoft** | Copilot Studio, Power Automate, Azure AI, Teams bots | Collaboration, Office workflows, cloud AI |
-| **AWS** | Bedrock Agents, Lambda, Step Functions, Connect | Cloud-native, serverless, contact center |
-| **Azure** | AI Foundry, Logic Apps, Azure Functions, Bot Service | Cloud AI, enterprise integration |
-| **GCP** | Vertex AI, Cloud Run, Apigee, Dialogflow | Cloud AI, API management, NLP |
-| **Okta / Azure Entra** | Hooks, Workflows, SCIM, Graph API | IAM automation, lifecycle mgmt, access reviews |
-| **CyberArk / BeyondTrust** | REST API, CPM plugins, session hooks | PAM automation, credential rotation, audit |
-| **Palo Alto / Zscaler** | XSOAR, Cortex, ZIA API | Security ops, threat response, policy mgmt |
-| **Splunk / QRadar** | SOAR, Adaptive Response, REST API | SIEM automation, alert triage, investigation |
-| **CrowdStrike / SentinelOne** | RTR API, Workflows, SOAR integration | EDR response, hunting, containment |
-| **Epic / Cerner** | FHIR R4 API, CDS Hooks, SMART on FHIR | Clinical workflows, care gap, documentation |
-| **Veeva / Medidata** | Vault REST API, Rave Web Services | Clinical trial mgmt, regulatory submissions |
-| **Bloomberg / FactSet** | B-PIPE, Server API, Open FactSet | Market data, analytics, quant workflows |
-| **Shopify / CommerceCloud** | Admin API, Flow, Einstein Commerce | E-commerce automation, merchandising |
+**Purpose**: Capture signals from the live conversation. Do not interrupt. Do not ask for
+structured input. Extract platform, industry, pain trigger, actor, frequency, and desired outcome
+from natural speech.
 
-### 1.2 Industry Context Resolution
+**Ask at most 2 clarifying questions.** Stop as soon as enough signal exists to decode.
 
-Apply industry-specific rules, compliance constraints, and data models automatically.
+**Gate**: Signal capture is complete when `spoken_problem`, `platform_hint`, and `desired_outcome`
+are all populated. Proceed immediately — do not wait for a perfect intake.
 
-See `references/industry-patterns.md` for full regulatory and domain pattern library.
-
-| Industry | Key constraints auto-applied | Domain data model |
-|----------|------------------------------|-------------------|
-| **Healthcare** | HIPAA, HL7/FHIR, CDS Hooks, de-identification | Patient, Encounter, Observation, CarePlan |
-| **Life Sciences** | 21 CFR Part 11, GxP, audit trail, e-signature | Protocol, Subject, CRF, Adverse Event |
-| **Fintech / Banking** | PCI-DSS, SOX, FFIEC, GDPR, model risk | Transaction, Account, Customer, Position |
-| **Quantitative Finance** | Low-latency, FIX protocol, risk limits, VaR | Instrument, Order, Portfolio, Signal |
-| **Insurance** | NAIC, state regulations, claims workflow | Policy, Claim, Adjudication, Reserve |
-| **Retail / E-Commerce** | PCI, inventory sync, omnichannel | Product, Order, Inventory, Customer360 |
-| **Manufacturing** | OEE, ISO, IEC 62443, safety interlocks | Asset, WorkOrder, BOM, Quality Record |
-| **Federal / Defense** | FedRAMP, FISMA, CMMC, IL4/IL5, Zero Trust | Mission, Asset, Personnel, Incident |
-| **Energy / Utilities** | NERC CIP, ICS/SCADA, OT/IT convergence | Grid, Asset, Event, Outage |
-| **Legal / Compliance** | Privilege, retention, e-discovery | Matter, Contract, Obligation, Risk |
-
-### 1.3 Agent Type Classification
-
-Classify the agent into one of five types based on the decoded problem:
-
-| Type | Trigger phrase | What it does |
-|------|---------------|-------------|
-| **Monitoring Agent** | "alert us when", "we get paged", "we miss" | Watches data/events, surfaces anomalies, notifies |
-| **Triage Agent** | "route to", "who should handle", "we don't know who" | Classifies, prioritizes, assigns work items |
-| **Automation Agent** | "manually", "takes too long", "repetitive" | Executes multi-step workflows without human input |
-| **Decision-Support Agent** | "we don't know", "help us decide", "summarize" | Analyzes context, synthesizes, recommends |
-| **Orchestrator Agent** | "end-to-end", "across systems", "connect" | Coordinates multiple agents, systems, and teams |
+**Output → Decode**: Pass the completed intake YAML to `enterprise-problem-decoder`.
 
 ---
 
-## Phase 2 — Agent Architecture
+### Stage 2 — Decode
 
-Design the complete agent before writing a single line of code.
+**Invoke**: `enterprise-problem-decoder`
 
-### 2.1 Agent Blueprint
+**Purpose**: Map intake signals to a precise agent specification. Resolve the exact platform
+entry point, apply industry compliance constraints automatically, and classify the agent type
+(Monitoring, Triage, Automation, Decision-Support, or Orchestrator).
 
-Produce this blueprint immediately after Phase 1:
+**Gate**: Agent spec is complete when platform, agent type, trigger, and desired outcome are
+all resolved. Flag open questions but do not block — builders resolve ambiguity.
 
-```markdown
-## Agent Blueprint — [Agent Name]
-
-**One-liner:** [What it does in one sentence, in plain language]
-**Type:** [Monitoring | Triage | Automation | Decision-Support | Orchestrator]
-**Platform:** [Primary platform]
-**Industry context:** [Domain + applied constraints]
-
-### Trigger
-- Event: [what kicks the agent off]
-- Source: [which system sends the trigger]
-- Frequency: [real-time / scheduled / on-demand]
-
-### Inputs
-| Input | Source | Format | Notes |
-|-------|--------|--------|-------|
-| [field] | [system] | [JSON/XML/text] | [any enrichment needed] |
-
-### Reasoning / Logic
-1. [Step 1: what the agent decides or detects]
-2. [Step 2: what it looks up or computes]
-3. [Step 3: what action it takes]
-
-### Outputs / Actions
-| Action | Target System | API / Method | Condition |
-|--------|--------------|-------------|-----------|
-| [action] | [system] | [endpoint] | [when] |
-
-### Human-in-the-Loop Gates
-- [Any step where a human must approve before the agent proceeds]
-
-### Compliance Controls
-- [Audit logging destination]
-- [PII/PHI handling rule]
-- [Access control constraint]
-```
-
-### 2.2 Data Flow Diagram (text)
-
-Always produce a text-based flow with the blueprint:
-
-```
-[Trigger Source] → [Ingestion Layer] → [Agent Core (LLM Reasoning)]
-                                              ↓
-                              ┌───────────────┼───────────────┐
-                         [Action A]      [Action B]      [Notify]
-                              ↓               ↓               ↓
-                        [Target Sys 1]  [Target Sys 2]  [Human/Channel]
-```
+**Output → Build**: Pass the `agent_spec` YAML to `enterprise-agent-builder`.
 
 ---
 
-## Phase 3 — Code Generation
+### Stage 3 — Build
 
-Generate production-ready code. Default to Python + Anthropic Claude API unless the platform
-requires a native SDK (e.g., Apex for Salesforce, Groovy for ServiceNow).
+**Invoke**: `enterprise-agent-builder`
 
-See `references/agent-templates.md` for full templates per platform and agent type.
+**Purpose**: Design the complete agent architecture (blueprint + data flow diagram) and generate
+production-ready Python code using the Anthropic Claude API, with platform-specific adaptations
+for ServiceNow (JavaScript), Salesforce (Apex), and Snowflake (Snowpark) where required.
 
-### 3.1 Core Agent Scaffold (Python / Anthropic SDK)
+All guardrails are embedded in the generated code. No irreversible actions without human approval.
+Audit trail on every tool call. Credentials via secrets manager only.
 
-```python
-"""
-Agent: {agent_name}
-Platform: {platform}
-Industry: {industry}
-Generated: on-the-fly during conversation
-"""
-import anthropic
-import json
-from datetime import datetime
+**Gate**: Build is complete when the blueprint, data flow diagram, and runnable code are produced.
+The code must be functional as written — not a skeleton requiring rewrite.
 
-# ── Configuration ──────────────────────────────────────────────
-AGENT_NAME = "{agent_name}"
-PLATFORM   = "{platform}"
-INDUSTRY   = "{industry}"
-MODEL      = "claude-opus-4-6"
-
-client = anthropic.Anthropic()  # uses ANTHROPIC_API_KEY from env
-
-SYSTEM_PROMPT = """
-You are {agent_name}, an AI agent operating within {platform} for a {industry} organization.
-
-Your role: {agent_one_liner}
-
-Rules:
-- Always cite the data source for every finding.
-- Never take irreversible actions without explicit confirmation.
-- Apply {compliance_framework} controls to all data handling.
-- When uncertain, surface the ambiguity to a human rather than guess.
-- Log every action with timestamp, actor, and outcome.
-"""
-
-# ── Tool Definitions ────────────────────────────────────────────
-tools = [
-    {
-        "name": "fetch_context",
-        "description": "Retrieve relevant records from {platform} to inform reasoning.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "query": {"type": "string", "description": "What to look up"},
-                "record_type": {"type": "string", "description": "Entity type (e.g. incident, case, patient)"},
-                "filters": {"type": "object", "description": "Key-value filters"}
-            },
-            "required": ["query", "record_type"]
-        }
-    },
-    {
-        "name": "take_action",
-        "description": "Execute an action in {platform} (create, update, assign, notify).",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "action_type": {"type": "string", "enum": ["create", "update", "assign", "notify", "escalate"]},
-                "target": {"type": "string", "description": "Record ID or destination"},
-                "payload": {"type": "object", "description": "Fields and values to apply"}
-            },
-            "required": ["action_type", "target", "payload"]
-        }
-    },
-    {
-        "name": "request_human_approval",
-        "description": "Pause and request a human decision before proceeding.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "context": {"type": "string", "description": "What the human needs to decide"},
-                "options": {"type": "array", "items": {"type": "string"}},
-                "urgency": {"type": "string", "enum": ["low", "medium", "high", "critical"]}
-            },
-            "required": ["context", "urgency"]
-        }
-    }
-]
-
-# ── Platform Connector (replace with real SDK calls) ────────────
-def fetch_context(query: str, record_type: str, filters: dict = None) -> dict:
-    """Stub: replace with actual {platform} API call."""
-    # e.g. ServiceNow: requests.get(f"{SN_INSTANCE}/api/now/table/{record_type}", params=filters)
-    # e.g. Salesforce: sf.query(f"SELECT ... FROM {record_type} WHERE ...")
-    # e.g. Snowflake:  cursor.execute(f"SELECT ... FROM {record_type} WHERE ...")
-    return {"records": [], "total": 0, "query": query}
-
-def take_action(action_type: str, target: str, payload: dict) -> dict:
-    """Stub: replace with actual {platform} write API call."""
-    print(f"[ACTION] {action_type.upper()} → {target}: {json.dumps(payload, indent=2)}")
-    return {"status": "success", "action": action_type, "target": target, "timestamp": datetime.utcnow().isoformat()}
-
-def request_human_approval(context: str, urgency: str, options: list = None) -> dict:
-    """Stub: replace with Teams/Slack/PagerDuty/ServiceNow approval notification."""
-    print(f"[HUMAN GATE] {urgency.upper()}: {context}")
-    return {"status": "pending", "approval_id": "appr_001", "channel": "teams"}
-
-# ── Tool Dispatch ────────────────────────────────────────────────
-TOOL_MAP = {
-    "fetch_context": fetch_context,
-    "take_action": take_action,
-    "request_human_approval": request_human_approval,
-}
-
-def dispatch_tool(tool_name: str, tool_input: dict) -> str:
-    fn = TOOL_MAP.get(tool_name)
-    if not fn:
-        return json.dumps({"error": f"Unknown tool: {tool_name}"})
-    result = fn(**tool_input)
-    return json.dumps(result)
-
-# ── Agent Loop ───────────────────────────────────────────────────
-def run_agent(event: dict) -> str:
-    """Main agent entry point. `event` is the trigger payload."""
-    print(f"\n[{AGENT_NAME}] Triggered at {datetime.utcnow().isoformat()}")
-    print(f"  Event: {json.dumps(event, indent=2)}\n")
-
-    messages = [
-        {"role": "user", "content": f"Process this event and take the appropriate action:\n\n{json.dumps(event, indent=2)}"}
-    ]
-
-    # Agentic loop
-    while True:
-        response = client.messages.create(
-            model=MODEL,
-            max_tokens=4096,
-            system=SYSTEM_PROMPT,
-            tools=tools,
-            messages=messages,
-        )
-
-        # Collect any tool uses
-        tool_uses = [b for b in response.content if b.type == "tool_use"]
-
-        if response.stop_reason == "end_turn" or not tool_uses:
-            # Extract final text
-            final = next((b.text for b in response.content if hasattr(b, "text")), "Agent completed.")
-            print(f"[{AGENT_NAME}] Done: {final}")
-            return final
-
-        # Execute tools and feed results back
-        messages.append({"role": "assistant", "content": response.content})
-        tool_results = []
-        for tu in tool_uses:
-            print(f"  → Tool: {tu.name}({json.dumps(tu.input)})")
-            result = dispatch_tool(tu.name, tu.input)
-            tool_results.append({
-                "type": "tool_result",
-                "tool_use_id": tu.id,
-                "content": result,
-            })
-        messages.append({"role": "user", "content": tool_results})
-
-
-# ── Entry (Lambda / Cloud Function / ServiceNow Scripted REST) ──
-if __name__ == "__main__":
-    # Replace with your real trigger payload
-    sample_event = {
-        "trigger_type": "{trigger_type}",
-        "source_system": "{platform}",
-        "payload": {}
-    }
-    run_agent(sample_event)
-```
-
-### 3.2 Platform-Specific Adaptations
-
-**ServiceNow (Scripted REST + GlideRecord):**
-```javascript
-// ServiceNow server-side script
-var AgentRunner = Class.create();
-AgentRunner.prototype = {
-    initialize: function() {},
-    process: function(request, response) {
-        var payload = JSON.parse(request.body.dataString);
-        var gr = new GlideRecord('incident');
-        gr.addQuery('state', 1); // New incidents
-        gr.query();
-        while (gr.next()) {
-            // Call Claude API via REST Message
-            var rm = new sn_ws.RESTMessageV2('Claude_Agent', 'POST');
-            rm.setRequestBody(JSON.stringify({event: {sys_id: gr.sys_id.toString(), short_description: gr.short_description.toString()}}));
-            rm.execute();
-        }
-    },
-    type: 'AgentRunner'
-};
-```
-
-**Salesforce (Apex):**
-```apex
-public class DynamicAgentCallout {
-    @future(callout=true)
-    public static void runAgent(String recordId, String objectType) {
-        HttpRequest req = new HttpRequest();
-        req.setEndpoint('callout:Claude_API/v1/messages');
-        req.setMethod('POST');
-        req.setHeader('Content-Type', 'application/json');
-        // Build payload from SObject record
-        SObject record = Database.query('SELECT Id, Name FROM ' + objectType + ' WHERE Id = :recordId');
-        req.setBody(JSON.serialize(new Map<String,Object>{'event' => record}));
-        Http http = new Http();
-        HttpResponse res = http.send(req);
-        // Process response and update record
-    }
-}
-```
-
-**Snowflake (Snowpark + Cortex):**
-```python
-from snowflake.snowpark import Session
-from snowflake.cortex import Complete
-
-def run_snowflake_agent(session: Session, table: str, filter_clause: str):
-    df = session.table(table).filter(filter_clause)
-    for row in df.collect():
-        prompt = f"Analyze this record and recommend action: {dict(row)}"
-        result = Complete("claude-opus-4-6", prompt)
-        # Write result back to Snowflake
-        session.sql(f"UPDATE {table} SET ai_recommendation = '{result}' WHERE id = '{row['ID']}'").collect()
-```
+**Output → Ship**: Pass the blueprint, code, and agent spec to `enterprise-agent-shipper`.
 
 ---
 
-## Phase 4 — Integration Configuration
+### Stage 4 — Ship
 
-### 4.1 Environment Variables and Secrets
+**Invoke**: `enterprise-agent-shipper`
 
-```bash
-# Always use secrets manager — never hardcode
-export ANTHROPIC_API_KEY="$(vault read -field=value secret/anthropic/api_key)"
-export PLATFORM_API_URL="https://{instance}.service-now.com"     # or equivalent
-export PLATFORM_CLIENT_ID="$(vault read -field=value secret/{platform}/client_id)"
-export PLATFORM_CLIENT_SECRET="$(vault read -field=value secret/{platform}/client_secret)"
-export AUDIT_LOG_DESTINATION="splunk://audit-index"              # or S3/CloudWatch/etc
-```
+**Purpose**: Produce the full deployment package: environment variable configuration, secrets
+manager integration, deployment target selection, least-privilege IAM policy, a live demo script,
+and a ship checklist. The agent is deployment-ready when this stage completes.
 
-### 4.2 Deployment Targets
+**Gate**: Ship is complete when the demo script and ship checklist are produced and all open
+items on the checklist are documented (not necessarily resolved — but known).
 
-| Trigger mechanism | Deployment target | Runtime |
-|------------------|------------------|---------|
-| ServiceNow Flow | ServiceNow MID Server / Scripted REST | JS / Rhino |
-| Salesforce event | Apex Future / Platform Event | Apex |
-| Cron / schedule | AWS Lambda, Azure Function, Cloud Run | Python |
-| Webhook / API call | API Gateway + Lambda, Azure API Mgmt | Python |
-| Streaming event | Kafka consumer, EventBridge, Pub/Sub | Python |
-| Teams / Slack message | Bot Framework, Socket Mode | Python |
-| SIEM alert | XSOAR/SOAR playbook, Splunk Adaptive Response | Python |
-
-### 4.3 Minimum IAM Permissions
-
-```yaml
-# Principle of least privilege — generated per platform
-iam_policy:
-  read:
-    - {platform}.records.read        # read trigger source
-    - {platform}.attachments.read    # read supporting context
-  write:
-    - {platform}.records.update      # update handled records only
-    - {platform}.notifications.send  # send alerts/approvals
-  deny:
-    - {platform}.admin.*             # never admin scope
-    - {platform}.delete.*            # never delete without explicit flag
-```
-
----
-
-## Phase 5 — Live Demo Package
-
-Produce this in under 60 seconds when someone asks "can you show me?":
-
-### 5.1 Instant Demo Script
-
-```
-AGENT DEMO: {agent_name}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-SCENARIO: [One sentence describing a realistic event]
-
-TRIGGER: A {trigger_type} arrives in {source_system}
-
-AGENT RESPONSE (live):
-  1. Receives event → extracts: [{key_fields}]
-  2. Calls fetch_context → finds: [{context_found}]
-  3. Reasons: [{what_the_llm_decides}]
-  4. Takes action: [{action_taken}] on {target_system}
-  5. Logs to audit trail: [{audit_entry}]
-
-WITHOUT THIS AGENT:  [{what_a_human_does_today}] — takes {time_today}
-WITH THIS AGENT:     Done in {time_with_agent} — human notified if exception
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-### 5.2 Deployment Checklist (ship today)
-
-```
-SHIP CHECKLIST — {agent_name}
-[ ] ANTHROPIC_API_KEY set in secrets manager
-[ ] Platform API credentials stored (not hardcoded)
-[ ] fetch_context() connected to real {platform} endpoint
-[ ] take_action() connected to real {platform} write endpoint
-[ ] request_human_approval() connected to {notification_channel}
-[ ] Audit log destination configured
-[ ] Test run against a single non-production event
-[ ] Human-in-the-loop gate tested
-[ ] Rate limit / retry logic added for API calls
-[ ] Deployed to {deployment_target}
-```
+**Output**: Deployable agent package. Hand to the client or engineering team with the checklist.
 
 ---
 
 ## Quick-Build Matrix
 
-Match any problem to a pre-configured starting point:
+Match any problem heard in conversation to a pre-configured starting point. Feed the row into
+`enterprise-signal-listener` or skip directly to `enterprise-problem-decoder`:
 
 | Heard this... | Agent type | Platform | Industry | Template entry |
 |---------------|-----------|----------|----------|----------------|
@@ -549,36 +159,42 @@ See `references/agent-templates.md` for full template implementations.
 
 ---
 
-## Guardrails
+## Non-Negotiable Guardrails
 
-Every generated agent automatically includes these controls. Never remove them.
+These apply to every agent produced by this pipeline. They are embedded by `enterprise-agent-builder`
+and verified by `enterprise-agent-shipper`. Never remove them.
 
-### Non-negotiable safety rules
-- **No irreversible action without human gate** — delete, bulk-update, financial transaction, patient record change, or security policy change always requires `request_human_approval` first.
-- **Audit trail on every action** — every tool call is logged with timestamp, actor identity, input, and output.
-- **Credential hygiene** — all secrets via environment variables or secrets manager. Zero hardcoded credentials in generated code.
-- **Scope-limited API credentials** — generated IAM policy is read-heavy with surgical write scope. No admin credentials.
-- **PII/PHI handling** — if industry is healthcare or life sciences, apply de-identification before any LLM call that is not within a compliant boundary.
-- **Rate limiting** — all platform API calls include exponential backoff and per-minute rate limits.
-- **Graceful degradation** — if the agent cannot reach a platform API, it fails safe: it does not guess or hallucinate data; it logs the failure and alerts a human.
+- **No irreversible action without human gate** — delete, bulk-update, financial transaction,
+  patient record change, or security policy change always requires `request_human_approval` first.
+- **Audit trail on every action** — every tool call logged with timestamp, actor identity, input,
+  and output.
+- **Credential hygiene** — all secrets via environment variables or secrets manager. Zero
+  hardcoded credentials.
+- **Scope-limited API credentials** — read-heavy with surgical write scope. No admin credentials.
+- **PII/PHI handling** — if healthcare or life sciences, de-identify before any LLM call not
+  within a compliant boundary.
+- **Rate limiting** — exponential backoff and per-minute rate limits on all platform API calls.
+- **Graceful degradation** — if platform API is unreachable, fail safe: log and alert a human.
+  Never guess or hallucinate data.
 
-### Regulated-industry overrides
-- **HIPAA**: no PHI in logs; encrypted at rest; access-controlled; Business Associate Agreement required for LLM API vendor.
-- **21 CFR Part 11**: electronic signatures on all agent-executed approvals; audit trail is immutable; validated system documentation required.
-- **FedRAMP / IL4+**: LLM API must be FedRAMP-authorized or run in a sovereign boundary (Azure Government, AWS GovCloud); no data egress to commercial endpoints.
-- **PCI-DSS**: cardholder data never passed directly to LLM; tokenize or mask before any AI call.
-- **SOX**: financial agent actions require dual approval; change management controls apply to agent deployments.
+### Regulated-Industry Overrides
+
+| Framework | Override |
+|-----------|---------|
+| HIPAA | No PHI in logs; encrypted at rest; BAA required for LLM API vendor |
+| 21 CFR Part 11 | Electronic signatures on all agent approvals; immutable audit trail; validated system docs required |
+| FedRAMP / IL4+ | LLM API must be FedRAMP-authorized (Azure Government, AWS GovCloud); no commercial endpoint egress |
+| PCI-DSS | Cardholder data never passed to LLM; tokenize or mask before any AI call |
+| SOX | Financial agent actions require dual approval; change management controls apply to deployments |
 
 ---
 
-## Output Summary
+## Pipeline Output Summary
 
-| Phase | Artifact | Delivered |
-|-------|----------|-----------|
-| 0 | Signal capture log | During conversation |
-| 1 | Platform + industry mapping | During conversation |
-| 2 | Agent blueprint + data flow | Before call ends |
-| 3 | Working Python code + platform adapter | Before call ends |
-| 4 | Integration config + IAM policy | Before call ends |
-| 5 | Demo script + ship checklist | Before call ends |
-| All | Deployable agent package | Ready to run |
+| Stage | Skill | Artifact | Delivered |
+|-------|-------|----------|-----------|
+| Listen | enterprise-signal-listener | Signal capture log + intake YAML | During conversation |
+| Decode | enterprise-problem-decoder | Platform + industry mapping + agent spec | During conversation |
+| Build | enterprise-agent-builder | Agent blueprint + data flow + working code | Before call ends |
+| Ship | enterprise-agent-shipper | Integration config + IAM policy + demo + checklist | Before call ends |
+| All | — | Deployable agent package | Ready to run |
