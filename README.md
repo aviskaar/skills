@@ -68,6 +68,7 @@ OpenOrg generalizes AI skills for enterprise automation, enabling fully autonomo
   - [Enterprise / Operations Skills](#enterprise--operations-skills)
   - [GTM / Sales Skills](#gtm--sales-skills)
   - [Marketing Skills](#marketing-skills)
+  - [Strategic Partnerships & Alliances Skills](#strategic-partnerships--alliances-skills)
 - [Using Skills](#-using-skills)
 - [Creating a Skill](#-creating-a-skill)
 - [Contributing](#-contributing)
@@ -203,6 +204,44 @@ graph TD
 | [product-marketing](skills/product-marketing/) | Orchestrator | VP Product Marketing: positioning, messaging, and sales enablement. |
 | [community-growth](skills/community-growth/) | Orchestrator | VP Community & Ecosystem: strategy across GitHub, Discord, and Slack. |
 | [retention-marketing](skills/retention-marketing/) | VP | VP Lifecycle & Retention: maximize LTV through onboarding and NPS. |
+
+### Strategic Partnerships & Alliances Skills
+Full-stack partnership program — from strategy and Big 4 recruitment through negotiation, enablement, joint GTM, alliance marketing, sales operations, and partner finance.
+
+#### Partnership Hierarchy
+```mermaid
+graph TD
+    SP[strategic-partnerships] --> PS[partner-strategy]
+    SP --> PR[partner-recruitment]
+    SP --> PN[partner-negotiation]
+    SP --> PE[partner-enablement]
+    SP --> AG[alliance-gtm]
+    SP --> AM[alliance-marketing]
+    SP --> SO[partner-sales-ops]
+    SP --> PF[partner-finance]
+
+    AG --> CP[calendar-pipeline]
+    AG --> PA[proposal-automation]
+
+    AM --> WE[whitepaper-engine]
+    AM --> EV[events-webinars]
+    AM --> PM[product-marketing]
+
+    SO --> CP2[calendar-pipeline]
+    SO --> LR[lead-routing]
+```
+
+| Skill | Role | Description |
+|-------|------|-------------|
+| [strategic-partnerships](skills/strategic-partnerships/) | CPO / VP Strategic Alliances | Top-level orchestrator: partner portfolio, alliances strategy, board reporting, full program governance. |
+| [partner-strategy](skills/partner-strategy/) | VP Partnership Strategy | Partnership thesis, market mapping, partner tier framework, build-vs-partner decisions, OKRs, multi-year roadmap. |
+| [partner-recruitment](skills/partner-recruitment/) | Director, Partner Development | Identify and pitch Big 4, GSIs, boutique consultancies, and ISVs; executive outreach, business case construction, qualification gate. |
+| [partner-negotiation](skills/partner-negotiation/) | Director, Alliance Negotiations | LOI, MOU, co-sell, reseller, implementation, and JV agreements; commercial term structuring, legal provisions, negotiation playbook. |
+| [partner-enablement](skills/partner-enablement/) | Director, Partner Enablement | 30/60/90-day onboarding, certification programs (Foundation → Expert), sales kit production, battle cards, QBRs, partner portal. |
+| [alliance-gtm](skills/alliance-gtm/) | VP, Alliance GTM | Joint account planning, co-sell motion, implementation partnership framework, JV GTM, upsell and expansion within partner accounts. |
+| [alliance-marketing](skills/alliance-marketing/) | Director, Alliance Marketing | Co-authored thought leadership, joint events, co-branding, company positioning via ecosystem, press strategy, partner awards. |
+| [partner-sales-ops](skills/partner-sales-ops/) | Director, Partner Sales Operations | Deal registration system, AE/SE/AM calendar coordination, partner pipeline tracking, CRM hygiene, attribution, weekly reporting. |
+| [partner-finance](skills/partner-finance/) | Director, Partner Finance & Pricing | Referral fees, reseller margins, MDF program, revenue recognition, partner program P&L, pricing alignment, Finance team coordination. |
 
 ---
 
