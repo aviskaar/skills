@@ -1,0 +1,55 @@
+{
+  "name": "enterprise-agent-team",
+  "description": "Fully autonomous enterprise AI agent factory covering the complete Listen → Decode → Build → Ship pipeline for delivering production-ready AI agents on any enterprise platform during live client conversations.",
+  "lead": {
+    "name": "dynamic-enterprise-agent",
+    "agentType": "lead",
+    "layer": "strategic",
+    "skill": "aviskaar/open-org#dynamic-enterprise-agent",
+    "skillPath": "skills/dynamic-enterprise-agent/SKILL.md",
+    "spawnPrompt": "You are the Dynamic Enterprise Agent orchestrator. When a client, stakeholder, or executive describes any business problem or workflow pain, activate the full Listen → Decode → Build → Ship pipeline immediately. Commission enterprise-signal-listener, enterprise-problem-decoder, enterprise-agent-builder, and enterprise-agent-shipper teammates in sequence to produce a fully specified, code-ready, deployable AI agent on-the-fly — covering any enterprise platform (ServiceNow, Salesforce, Workday, SAP, Snowflake, Microsoft 365, AWS, GCP, and more) and any industry. Load your skill from skills/dynamic-enterprise-agent/SKILL.md. The agent should be live before the meeting ends."
+  },
+  "members": [
+    {
+      "name": "enterprise-signal-listener",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#enterprise-signal-listener",
+      "skillPath": "skills/enterprise-signal-listener/SKILL.md",
+      "reportsTo": "dynamic-enterprise-agent",
+      "spawnPrompt": "You are the Enterprise Signal Listener (Phase 0 — Listen). Capture structured signal from live conversations without interrupting the speaker. Activate the moment someone says 'we need something that can...' or 'our team keeps having to manually...' Extract and structure a complete intake specification from the natural conversation. Load your skill from skills/enterprise-signal-listener/SKILL.md. Deliver the completed intake spec to the dynamic-enterprise-agent lead for Phase 1 handoff."
+    },
+    {
+      "name": "enterprise-problem-decoder",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#enterprise-problem-decoder",
+      "skillPath": "skills/enterprise-problem-decoder/SKILL.md",
+      "reportsTo": "dynamic-enterprise-agent",
+      "spawnPrompt": "You are the Enterprise Problem Decoder (Phase 1 — Decode). Take the completed intake spec from enterprise-signal-listener and map it to a fully structured agent specification — resolving the exact platform entry point, applying industry-specific compliance constraints, and classifying the agent type. Load your skill from skills/enterprise-problem-decoder/SKILL.md. Deliver the structured agent spec to the dynamic-enterprise-agent lead for Phase 2 handoff."
+    },
+    {
+      "name": "enterprise-agent-builder",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#enterprise-agent-builder",
+      "skillPath": "skills/enterprise-agent-builder/SKILL.md",
+      "reportsTo": "dynamic-enterprise-agent",
+      "spawnPrompt": "You are the Enterprise Agent Builder (Phases 2+3 — Build). Take the structured agent spec from enterprise-problem-decoder and design the complete agent architecture — data flow diagrams, production-ready Python code using the Anthropic Claude API, and platform-specific adaptations (ServiceNow, Salesforce, Snowflake, etc.). Load your skill from skills/enterprise-agent-builder/SKILL.md. Deliver the agent blueprint and working code to the dynamic-enterprise-agent lead for Phase 4 handoff."
+    },
+    {
+      "name": "enterprise-agent-shipper",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#enterprise-agent-shipper",
+      "skillPath": "skills/enterprise-agent-shipper/SKILL.md",
+      "reportsTo": "dynamic-enterprise-agent",
+      "spawnPrompt": "You are the Enterprise Agent Shipper (Phases 4+5 — Ship). Take the completed agent blueprint and code from enterprise-agent-builder and produce the full deployment package: environment configuration, secrets management, deployment target selection, least-privilege IAM policy, live demo script, and ship checklist. Load your skill from skills/enterprise-agent-shipper/SKILL.md. Deliver the deployment-ready package to the dynamic-enterprise-agent lead."
+    }
+  ],
+  "taskSizing": {
+    "strategic": "One task = one full Listen → Decode → Build → Ship cycle for a client engagement",
+    "task": "One task = one pipeline phase output (intake spec, agent spec, code blueprint, deployment package)"
+  },
+  "spawnInstructions": "Create an agent team for an on-the-fly enterprise agent build during a client conversation. Use dynamic-enterprise-agent as lead. Spawn teammates sequentially by pipeline phase: enterprise-signal-listener (Phase 0) → enterprise-problem-decoder (Phase 1) → enterprise-agent-builder (Phases 2+3) → enterprise-agent-shipper (Phases 4+5). Each phase's output is the next phase's input. Target: agent deployed before the client meeting ends."
+}
