@@ -69,6 +69,7 @@ OpenOrg generalizes AI skills for enterprise automation, enabling fully autonomo
   - [GTM / Sales Skills](#gtm--sales-skills)
   - [Marketing Skills](#marketing-skills)
   - [Strategic Partnerships & Alliances Skills](#strategic-partnerships--alliances-skills)
+  - [Investor Relations & Fundraising Skills](#investor-relations--fundraising-skills)
 - [Using Skills](#-using-skills)
 - [Creating a Skill](#-creating-a-skill)
 - [Contributing](#-contributing)
@@ -242,6 +243,30 @@ graph TD
 | [alliance-marketing](skills/alliance-marketing/) | Director, Alliance Marketing | Co-authored thought leadership, joint events, co-branding, company positioning via ecosystem, press strategy, partner awards. |
 | [partner-sales-ops](skills/partner-sales-ops/) | Director, Partner Sales Operations | Deal registration system, AE/SE/AM calendar coordination, partner pipeline tracking, CRM hygiene, attribution, weekly reporting. |
 | [partner-finance](skills/partner-finance/) | Director, Partner Finance & Pricing | Referral fees, reseller margins, MDF program, revenue recognition, partner program P&L, pricing alignment, Finance team coordination. |
+
+### Investor Relations & Fundraising Skills
+Fully automated fundraising — from investor discovery and pitch deck production through outreach campaigns, calendar packing, due diligence preparation, and round analytics.
+
+#### Investor Relations Hierarchy
+```mermaid
+graph TD
+    CRO[cro-investor-relations] --> IR[investor-research]
+    CRO --> PD[pitch-deck-builder]
+    CRO --> IO[investor-outreach]
+    CRO --> IC[investor-calendar]
+    CRO --> DD[due-diligence-prep]
+    CRO --> FA[fundraising-analytics]
+```
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [cro-investor-relations](skills/cro-investor-relations/) | Strategic Orchestrator | Top-level fundraising orchestrator: raise strategy, investor relations, board reporting, sub-skill coordination from research to close. |
+| [investor-research](skills/investor-research/) | Intelligence | Discover, profile, score, and prioritize investors — VCs, angels, HNIs, family offices, CVCs — with intel briefs and warm intro mapping. |
+| [pitch-deck-builder](skills/pitch-deck-builder/) | Production | Build investor-grade pitch decks: problem, TAM/SAM/SOM, solution, architecture, traction, case studies, IP/patents, competition, team, and ask. |
+| [investor-outreach](skills/investor-outreach/) | Outreach Engine | Automated personalized multi-channel outreach — cold email, LinkedIn, warm intros — for angels, VCs (Sequoia, a16z, Greylock, Bain Capital), HNIs, and family offices. |
+| [investor-calendar](skills/investor-calendar/) | Calendar Engine | Pack the founder's calendar with investor meetings — scheduling, pre-meeting briefs, day-of prep, post-meeting follow-up, and round momentum management. |
+| [due-diligence-prep](skills/due-diligence-prep/) | DD Engine | Build and organize the investor data room — financials, legal, cap table, technical architecture, customer references, and full DD Q&A preparation. |
+| [fundraising-analytics](skills/fundraising-analytics/) | Intelligence | Track conversion funnel, measure outreach effectiveness, forecast round close, analyze investor sentiment, and produce board-ready fundraising reports. |
 
 ---
 
