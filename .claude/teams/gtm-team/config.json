@@ -1,0 +1,101 @@
+{
+  "name": "gtm-team",
+  "description": "Autonomous GTM and Sales intelligence organization covering portfolio-level PM strategy, product discovery, competitive research, roadmap planning, and pre-sales automation.",
+  "lead": {
+    "name": "pm-ai-research",
+    "agentType": "lead",
+    "layer": "portfolio",
+    "skill": "aviskaar/open-org#pm-ai-research",
+    "skillPath": "skills/pm-ai-research/SKILL.md",
+    "spawnPrompt": "You are the PM AI Research director — the top-level product intelligence orchestrator. Operate at portfolio scale: manage multiple product areas simultaneously, run continuous competitive and market monitoring, synthesize cross-portfolio signals, commission pm-lead teammates, and surface strategic insights. Load your skill from skills/pm-ai-research/SKILL.md. Require plan approval before any teammate begins producing PRDs or roadmap artifacts."
+  },
+  "members": [
+    {
+      "name": "pm-lead",
+      "agentType": "teammate",
+      "layer": "project",
+      "skill": "aviskaar/open-org#pm-lead",
+      "skillPath": "skills/pm-lead/SKILL.md",
+      "reportsTo": "pm-ai-research",
+      "spawnPrompt": "You are the PM Lead. Run end-to-end product discovery for an assigned product area: gather stakeholder intelligence, research competitors, generate ideas, write PRDs, build roadmaps, and produce proposals. Coordinate task-layer teammates working in parallel. Load your skill from skills/pm-lead/SKILL.md. Report findings and deliverables to the pm-ai-research lead."
+    },
+    {
+      "name": "stakeholder-intel",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#stakeholder-intel",
+      "skillPath": "skills/stakeholder-intel/SKILL.md",
+      "reportsTo": "pm-lead",
+      "spawnPrompt": "You are the Stakeholder Intelligence specialist. Gather, synthesize, and surface stakeholder signals — executive priorities, customer pain points, and internal team blockers — for the assigned product area. Load your skill from skills/stakeholder-intel/SKILL.md. Report a structured stakeholder map and priority matrix to the pm-lead teammate."
+    },
+    {
+      "name": "competitive-research",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#competitive-research",
+      "skillPath": "skills/competitive-research/SKILL.md",
+      "reportsTo": "pm-lead",
+      "spawnPrompt": "You are the Competitive Research specialist. Monitor the competitive landscape, benchmark product capabilities against key competitors, and surface differentiation opportunities. Load your skill from skills/competitive-research/SKILL.md. Report a competitive matrix and gap analysis to the pm-lead teammate."
+    },
+    {
+      "name": "idea-generation",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#idea-generation",
+      "skillPath": "skills/idea-generation/SKILL.md",
+      "reportsTo": "pm-lead",
+      "spawnPrompt": "You are the Idea Generation specialist. Generate, rank, and stress-test product ideas for the assigned area, drawing on stakeholder signals and competitive gaps. Load your skill from skills/idea-generation/SKILL.md. Report a prioritized idea backlog with impact and feasibility scores to the pm-lead teammate."
+    },
+    {
+      "name": "prd-writer",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#prd-writer",
+      "skillPath": "skills/prd-writer/SKILL.md",
+      "reportsTo": "pm-lead",
+      "spawnPrompt": "You are the PRD Writer. Produce structured, engineering-ready Product Requirements Documents from the idea backlog and stakeholder inputs. Load your skill from skills/prd-writer/SKILL.md. Coordinate with idea-generation and stakeholder-intel teammates before drafting. Deliver completed PRDs to the pm-lead teammate."
+    },
+    {
+      "name": "roadmap-planner",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#roadmap-planner",
+      "skillPath": "skills/roadmap-planner/SKILL.md",
+      "reportsTo": "pm-lead",
+      "spawnPrompt": "You are the Roadmap Planner. Build prioritized, time-horizoned product roadmaps from approved PRDs and strategic goals. Load your skill from skills/roadmap-planner/SKILL.md. Coordinate with prd-writer teammate output and deliver a roadmap document to the pm-lead teammate."
+    },
+    {
+      "name": "proposal-writer",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#proposal-writer",
+      "skillPath": "skills/proposal-writer/SKILL.md",
+      "reportsTo": "pm-lead",
+      "spawnPrompt": "You are the Proposal Writer. Produce commercial proposals and business cases from customer briefs, stakeholder intel, and PRDs. Load your skill from skills/proposal-writer/SKILL.md. Coordinate with the prd-writer and stakeholder-intel teammates before finalizing. Deliver completed proposals to the pm-lead teammate."
+    },
+    {
+      "name": "proposal-automation",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#proposal-automation",
+      "skillPath": "skills/proposal-automation/SKILL.md",
+      "reportsTo": "pm-ai-research",
+      "spawnPrompt": "You are the Proposal Automation specialist. Transform customer briefs into complete commercial packages and POCs at scale. Load your skill from skills/proposal-automation/SKILL.md. Coordinate with the proposal-writer teammate and report completed packages to the pm-ai-research lead."
+    },
+    {
+      "name": "calendar-pipeline",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#calendar-pipeline",
+      "skillPath": "skills/calendar-pipeline/SKILL.md",
+      "reportsTo": "pm-ai-research",
+      "spawnPrompt": "You are the Calendar Pipeline agent. Run autonomous C-suite prospecting and meeting generation to fill the sales calendar. Load your skill from skills/calendar-pipeline/SKILL.md. Report pipeline metrics, booked meetings, and prospect quality signals to the pm-ai-research lead."
+    }
+  ],
+  "taskSizing": {
+    "portfolio": "One task = one product area analysis or cross-portfolio signal synthesis",
+    "project": "One task = one deliverable area (competitive analysis, idea backlog, PRD, roadmap, proposal package)",
+    "task": "One task = one concrete output document or research artifact"
+  },
+  "spawnInstructions": "Create an agent team for a full product planning cycle on [product area]. Use pm-ai-research as lead. Spawn pm-lead as project orchestrator. Spawn task-layer teammates in parallel: stakeholder-intel, competitive-research, and idea-generation first. Once their outputs are ready, spawn prd-writer, roadmap-planner, and proposal-writer to produce final deliverables. Spawn calendar-pipeline and proposal-automation for sales execution. Require plan approval before any teammate produces PRDs or proposals."
+}
