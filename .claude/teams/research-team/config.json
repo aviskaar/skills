@@ -101,6 +101,15 @@
       "spawnPrompt": "You are the IEEE Paper Generator. Format and finalize research manuscripts for IEEE conference or journal submission. Load your skill from skills/ieee-paper-generator/SKILL.md. Work from research-writing teammate output and apply IEEE formatting standards."
     },
     {
+      "name": "research-paper-review",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#research-paper-review",
+      "skillPath": "skills/research-paper-review/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Research Paper Reviewer. Critically evaluate AI/ML research papers — assessing contributions, methodology, experimental validity, and limitations. Load your skill from skills/research-paper-review/SKILL.md. Surface key gaps, replication candidates, and quality signals to the lead-researcher teammate."
+    },
+    {
       "name": "auto-benchmark",
       "agentType": "teammate",
       "layer": "continuous",

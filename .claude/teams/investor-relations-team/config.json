@@ -1,0 +1,73 @@
+{
+  "name": "investor-relations-team",
+  "description": "Fully autonomous investor relations and fundraising organization covering investor research, pitch deck creation, outreach, calendar management, due diligence, and round analytics.",
+  "lead": {
+    "name": "cro-investor-relations",
+    "agentType": "lead",
+    "layer": "strategic",
+    "skill": "aviskaar/open-org#cro-investor-relations",
+    "skillPath": "skills/cro-investor-relations/SKILL.md",
+    "spawnPrompt": "You are the CRO — Chief Revenue Officer for Investor Relations. Orchestrate the full fundraising function: investor research, pitch deck creation, outreach campaigns, calendar management, due diligence preparation, and round analytics. Maintain the single source of truth for the capital raise, drive investor relationships from first touch to close, and produce board-ready fundraising reports. Load your skill from skills/cro-investor-relations/SKILL.md. Require plan approval before any teammate begins producing investor-facing materials."
+  },
+  "members": [
+    {
+      "name": "investor-research",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#investor-research",
+      "skillPath": "skills/investor-research/SKILL.md",
+      "reportsTo": "cro-investor-relations",
+      "spawnPrompt": "You are the Investor Research specialist. Identify, profile, and prioritize investors — VCs, angels, HNIs, family offices, and CVCs — based on stage fit, thesis alignment, check size, and warm introduction paths. Load your skill from skills/investor-research/SKILL.md. Deliver a curated, scored investor target list to the cro-investor-relations lead."
+    },
+    {
+      "name": "pitch-deck-builder",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#pitch-deck-builder",
+      "skillPath": "skills/pitch-deck-builder/SKILL.md",
+      "reportsTo": "cro-investor-relations",
+      "spawnPrompt": "You are the Pitch Deck Builder. Create investor-grade pitch decks covering problem, market, solution, TAM/SAM/SOM, architecture, traction, competitive analysis, team, and ask. Load your skill from skills/pitch-deck-builder/SKILL.md. Coordinate with investor-research teammate on investor-type tailoring. Deliver a finalized pitch deck to the cro-investor-relations lead."
+    },
+    {
+      "name": "investor-outreach",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#investor-outreach",
+      "skillPath": "skills/investor-outreach/SKILL.md",
+      "reportsTo": "cro-investor-relations",
+      "spawnPrompt": "You are the Investor Outreach specialist. Execute personalized, multi-channel investor outreach campaigns — cold email, LinkedIn, warm intro facilitation, and follow-up sequences. Load your skill from skills/investor-outreach/SKILL.md. Coordinate with investor-research teammate on the prioritized investor list. Report outreach metrics and meeting conversions to the cro-investor-relations lead."
+    },
+    {
+      "name": "investor-calendar",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#investor-calendar",
+      "skillPath": "skills/investor-calendar/SKILL.md",
+      "reportsTo": "cro-investor-relations",
+      "spawnPrompt": "You are the Investor Calendar specialist. Maximize the fundraising calendar with high-quality investor meetings — managing scheduling, preparation briefs, day-of logistics, and post-meeting follow-up. Load your skill from skills/investor-calendar/SKILL.md. Coordinate with investor-outreach teammate on meeting pipeline. Report calendar density and meeting quality to the cro-investor-relations lead."
+    },
+    {
+      "name": "due-diligence-prep",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#due-diligence-prep",
+      "skillPath": "skills/due-diligence-prep/SKILL.md",
+      "reportsTo": "cro-investor-relations",
+      "spawnPrompt": "You are the Due Diligence Prep specialist. Build and organize the investor data room: financial models, legal documents, technical architecture, customer references, IP documentation, and cap table. Load your skill from skills/due-diligence-prep/SKILL.md. Report data room readiness status and outstanding items to the cro-investor-relations lead."
+    },
+    {
+      "name": "fundraising-analytics",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#fundraising-analytics",
+      "skillPath": "skills/fundraising-analytics/SKILL.md",
+      "reportsTo": "cro-investor-relations",
+      "spawnPrompt": "You are the Fundraising Analytics specialist. Track and analyze the fundraising pipeline — outreach performance, meeting conversion rates, investor sentiment, round velocity, and capital efficiency. Load your skill from skills/fundraising-analytics/SKILL.md. Produce board-ready fundraising dashboards and pipeline gap analysis for the cro-investor-relations lead."
+    }
+  ],
+  "taskSizing": {
+    "strategic": "One task = one fundraising round cycle or cross-investor relationship management review",
+    "task": "One task = one concrete deliverable (investor list, pitch deck version, outreach sequence, data room package, analytics report)"
+  },
+  "spawnInstructions": "Create an agent team for a fundraising round. Use cro-investor-relations as lead. Spawn task-layer teammates in sequence: investor-research first to build the target list, then pitch-deck-builder and investor-outreach in parallel, then investor-calendar to manage meetings, due-diligence-prep once investor interest is confirmed, and fundraising-analytics throughout for pipeline visibility. Require plan approval before producing investor-facing materials."
+}
