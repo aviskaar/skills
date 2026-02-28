@@ -335,3 +335,196 @@ not your firm's capabilities.]
 1. **[Specific pitfall 1]:** [Explanation tied to this account — e.g., "Do not lead with an SAP displacement message — [incumbent SI] has been the SAP partner since [year] and [CIO NAME] came from [company] where [incumbent] also holds the relationship. Challenge the incumbent on value, not on presence."]
 
 2. **[Specific pitfall 2]:** [Explanation — e.g., "Do not cold-call the CEO; [CEO NAME] has publicly stated they delegate all technology vendor decisions to [CIO NAME]. Going around [CIO NAME] will flag you as a company that does not do its homework."]
+
+---
+
+## SECTION 12 — AI AGENTIC SOLUTIONS VISION
+
+> This section presents [YOUR FIRM]'s vision for AI and agentic transformation at [TARGET COMPANY].
+> Every score and use case must be grounded in Dimension 8 research — not generic AI capabilities.
+> The section includes two embedded charts (Radar and Priority Matrix) generated programmatically.
+
+---
+
+### 12.1 AI Readiness Assessment
+
+> Score each dimension 1–5. Ground every score in a specific research signal. Never assign a score without evidence.
+> Scores render as color-coded badges in the report: 4–5 = green, 3 = amber, 1–2 = red.
+
+| Dimension | Score (1–5) | Evidence / Signal | Implication for [YOUR FIRM] |
+|---|---|---|---|
+| Data Maturity | [1–5] | [Specific: e.g., "10-K mentions 'data lake modernization' as active 2025 investment"] | [e.g., "Foundation data platform exists — can train agentic models on clean data"] |
+| Infrastructure Readiness | [1–5] | [Specific: e.g., "Confirmed AWS migration (job posting, Mar 2025)"] | [e.g., "Cloud-native — no infrastructure lift required before AI deployment"] |
+| AI / ML Talent | [1–5] | [Specific: e.g., "8 open ML Engineer roles on LinkedIn as of [date]"] | [e.g., "Scaling AI team — they want to build; position [YOUR FIRM] as accelerant, not replacement"] |
+| AI Governance | [1–5] | [Specific: e.g., "No public responsible AI policy found [ASSUMPTION — early governance stage]"] | [e.g., "Governance gap = opportunity for [YOUR FIRM] to lead model risk framework"] |
+| Agentic Readiness | [1–5] | [Specific: e.g., "ServiceNow live (job posting confirmed) — workflow automation foundation in place"] | [e.g., "API-first architecture confirmed — agentic orchestration layer can deploy within 6 months"] |
+
+**[Embedded Radar Chart — generated from scores above]**
+
+---
+
+### 12.2 AI Agentic Use Case Roadmap
+
+> List 6–10 specific AI agentic use cases. Each MUST link to a confirmed strategic priority from Section 4.
+> Tier 1 = Deploy Now (0–6 months), Tier 2 = Build This Year (6–18 months), Tier 3 = Innovate Long-Term (18+ months)
+
+| Use Case | Business Function | Strategic Link | Impact | Complexity | Tier |
+|---|---|---|---|---|---|
+| [Specific use case — e.g., "AI-assisted pharmacovigilance case triage"] | [Function — e.g., Regulatory Affairs] | [Priority 1 — e.g., Pharmacovigilance modernization] | High | Low | 1 |
+| [Use Case 2] | [Function] | [Priority X] | [H/M/L] | [H/M/L] | 1 |
+| [Use Case 3] | [Function] | [Priority X] | [H/M/L] | [H/M/L] | 2 |
+| [Use Case 4] | [Function] | [Priority X] | [H/M/L] | [H/M/L] | 2 |
+| [Use Case 5] | [Function] | [Priority X] | [H/M/L] | [H/M/L] | 3 |
+| [Use Case 6] | [Function] | [Priority X] | [H/M/L] | [H/M/L] | 3 |
+
+> Tier 1 rows render in TEAL, Tier 2 in BLUE, Tier 3 in NAVY for visual distinction.
+
+---
+
+### 12.3 [YOUR FIRM]'s AI Delivery Model for [TARGET COMPANY]
+
+> Specific — not a methodology brochure. Name the platforms. Name the accelerators. Name the sequence.
+
+```
+[YOUR FIRM] would anchor the AI buildout for [TARGET COMPANY] on [SPECIFIC AI PLATFORM —
+e.g., Microsoft Azure OpenAI Service, confirmed as the company's cloud platform from Section 7],
+complemented by [PLATFORM 2] for [specific function].
+
+Phase 1 (Months 1–6): Deploy [Tier 1 use case 1] and [Tier 1 use case 2] using [YOUR FIRM]'s
+pre-built [SPECIFIC ACCELERATOR NAME] agent framework, which reduces implementation time by
+[X weeks ASSUMPTION — based on comparable engagements]. Named champion: [NAME, TITLE].
+
+Phase 2 (Months 6–18): Build [Tier 2 use cases], establishing the enterprise-wide data layer
+required to scale. [YOUR FIRM]'s [PARTNERSHIP TIER, e.g., "Azure AI partner status"] accelerates
+licensing and support.
+
+Governance: [YOUR FIRM] deploys its [SPECIFIC FRAMEWORK NAME] responsible AI framework from
+Day 1 — establishing model cards, bias testing, and human-in-the-loop review gates before
+any production deployment.
+```
+
+**Platform Anchors:** [List specific AI platforms from the company's confirmed tech stack]
+
+---
+
+### 12.4 AI Investment Framing
+
+> All figures are [ASSUMPTION — basis provided]. Never present as confirmed without a source.
+
+| Investment Area | Est. Investment | Est. Annual Value Capture | Payback Period |
+|---|---|---|---|
+| [Area 1 — e.g., "Agent-assisted quality management"] | $[X]M [ASSUMPTION — basis] | $[Y]M [ASSUMPTION — basis] | [X] months |
+| [Area 2] | $[X]M [ASSUMPTION] | $[Y]M [ASSUMPTION] | [X] months |
+| [Area 3] | $[X]M [ASSUMPTION] | $[Y]M [ASSUMPTION] | [X] months |
+
+**CFO Business Case:**
+
+```
+[TARGET COMPANY]'s [CONFIRMED COST PROGRAM / GROWTH MANDATE from Section 4] creates a direct
+mandate for AI investment. [YOUR FIRM]'s analysis suggests [SPECIFIC CLAIM — e.g., "a $[X]M
+investment in AI-assisted [function] would reduce [cost category] by [Y]% — recovering the
+investment in [Z] months [ASSUMPTION — based on comparable client outcomes in this vertical]"].
+
+[CFO NAME]'s focus on [SPECIFIC FINANCIAL PRIORITY from Section 3] makes [AREA] the most
+natural entry point for the AI business case — framing AI as [cost reduction / margin expansion /
+revenue enablement] rather than as a technology investment.
+```
+
+---
+
+## SECTION 13 — IP & RESEARCH OPPORTUNITIES
+
+> This is a forward-looking section identifying where [TARGET COMPANY] has unique IP position
+> and where [YOUR FIRM] can co-develop novel solutions.
+> Every claim about existing IP must be sourced or explicitly flagged [ASSUMPTION].
+> The Pioneering Bets sub-section is the most intriguing part of the report — make it specific.
+
+---
+
+### 13.1 IP Landscape Assessment
+
+| IP Category | Current State | Strength | Gap / Opportunity |
+|---|---|---|---|
+| Patent Portfolio | [e.g., "Holds 240+ patents in [domain] per USPTO, active filings in [area] as of [year]"] | [High / Medium / Low] | [e.g., "Thin coverage in AI-assisted [function] — first-mover opportunity if [innovation] is pursued"] |
+| Proprietary Data Assets | [e.g., "Generates [X] million [data type] records annually — unique in the industry [ASSUMPTION — scale inferred from employee count and product volume]"] | [H/M/L] | [e.g., "Data is undermonetized — licensing to [SEGMENT] or powering a proprietary model is feasible"] |
+| Proprietary Processes / Algorithms | [e.g., "Confirmed: [PLATFORM/PROCESS] named in vendor case study as proprietary implementation [source, date]"] | [H/M/L] | [e.g., "Process could be formalized as a productized offering or licensed to [ADJACENT MARKET]"] |
+
+**[Embedded IP Strength Snapshot Chart — horizontal bars, color-coded by strength]**
+
+---
+
+### 13.2 Research & Innovation Opportunities
+
+| Research Area | Strategic Rationale | Potential Output | [YOUR FIRM] Role | Timeline |
+|---|---|---|---|---|
+| [Area 1 — e.g., "Federated learning for [domain]-specific model training"] | [Why: e.g., "Company generates [unique data] — a domain-specific model would outperform generic LLMs for [use case]"] | [e.g., "Jointly patented ML model + published research in [journal]"] | [e.g., "Lead — provide model architecture and training infrastructure"] | [e.g., 12 months] |
+| [Area 2] | [Rationale] | [Output] | [Role] | [Timeline] |
+| [Area 3] | [Rationale] | [Output] | [Role] | [Timeline] |
+| [Area 4] | [Rationale] | [Output] | [Role] | [Timeline] |
+
+---
+
+### 13.3 Co-Innovation Model
+
+| Dimension | Structure |
+|---|---|
+| Funding Model | [e.g., "70/30 cost-share: [TARGET COMPANY] funds infrastructure and data access; [YOUR FIRM] contributes IP development labor. Joint commercialization rights for 5 years."] |
+| Governance | [e.g., "Joint Innovation Board: [TARGET COMPANY] rep = [TITLE, e.g. Chief AI Officer]; [YOUR FIRM] rep = [YOUR TITLE]; quarterly milestone reviews with IP committee"] |
+| IP Framework | [e.g., "[TARGET COMPANY] retains rights to domain-specific training data; [YOUR FIRM] retains rights to model architecture; jointly developed inference algorithms are co-owned and filed jointly"] |
+| Milestone Plan | [e.g., "Month 6: Proof of concept — [specific deliverable]; Month 12: Production-ready v1 — [deliverable]; Month 24: Commercial-grade platform + IP portfolio established"] |
+
+```
+[YOUR FIRM]'s proposed co-innovation model is appropriate for [TARGET COMPANY] because
+[SPECIFIC REASONING: e.g., "the company's R&D culture — [X]% of revenue invested in R&D per
+most recent 10-K — signals receptivity to structured innovation partnerships, and [CIO/CDO NAME]'s
+prior background at [PRIOR COMPANY] included a similar co-development arrangement with [FIRM TYPE]"].
+
+The critical success factor is securing IP framework agreement before the first engagement —
+[TARGET COMPANY]'s [LEGAL / PROCUREMENT TEAM] will require IP clarity upfront based on their
+standard vendor terms [ASSUMPTION — standard for companies of this type and size; verify with
+[NAME] before first meeting].
+```
+
+---
+
+### 13.4 Pioneering Bets — Where [TARGET COMPANY] Could Lead the Industry
+
+> These are [YOUR FIRM]'s highest-conviction forward-looking bets — written as intriguing,
+> specific innovation theses, not generic predictions. Each bet renders in a gold callout box.
+> Limit to 2–3 bets. Make each one feel like a genuine insight, not a sales pitch.
+
+---
+
+**★ Pioneering Bet 1: [Compelling Title — e.g., "The [Company] Data Moat: Building the Industry's First [Domain]-Native AI Model"]**
+
+**Thesis:** [TARGET COMPANY] sits on [SPECIFIC DATA ASSET — e.g., "the largest longitudinal dataset of [X] in North America, accumulated over [Y] years"], a position no competitor can replicate in less than a decade. Combined with [STRATEGIC MOMENT from Section 4], the company is uniquely positioned to [SPECIFIC INNOVATION].
+
+**The Innovation:** A [SPECIFIC AI CAPABILITY — e.g., "proprietary large language model fine-tuned on [DOMAIN] data"] that [specific outcome: e.g., "reduces [key business metric] by [X]% vs. generic foundation models"]. This is not an AI feature — it is an infrastructure asset.
+
+**Competitive Moat:** [Specific: e.g., "Competitors would need [Y] years and $[Z]M to replicate the training data. The model improves with every [COMPANY OPERATION] — creating a compounding advantage that widens over time."]
+
+**[YOUR FIRM]'s Contribution:** [Specific: e.g., "[YOUR FIRM]'s [SPECIFIC ACCELERATOR / PLATFORM PARTNERSHIP / PRIOR IP] gives [TARGET COMPANY] a [X]-month head start vs. building from scratch. [YOUR FIRM] has done this exact architecture for [COMPARABLE COMPANY TYPE] in [ADJACENT VERTICAL]."]
+
+**Risk:** [Honest: e.g., "Regulatory risk — [RELEVANT REGULATION] may restrict use of [DATA TYPE] in model training. Governance framework must be established before training begins."]
+
+---
+
+**★ Pioneering Bet 2: [Compelling Title]**
+
+**Thesis:** [Specific thesis]
+
+**The Innovation:** [Specific innovation]
+
+**Competitive Moat:** [Specific moat]
+
+**[YOUR FIRM]'s Contribution:** [Specific contribution]
+
+**Risk:** [Specific risk]
+
+---
+
+> Rules for Pioneering Bets:
+> - Never write a generic bet like "Use AI to improve operational efficiency" — this could apply to any company
+> - Every bet must name a specific data asset, strategic moment, or market position unique to this company
+> - The Competitive Moat section must explain WHY this company specifically — not why AI is generally valuable
+> - If you cannot write a genuinely specific bet, flag: "[PIONEERING BETS — requires deeper domain research; consult vertical practice lead before including in a client-facing document]"

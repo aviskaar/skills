@@ -296,6 +296,91 @@ site:usaspending.gov "[AGENCY]" technology prime contractor
 
 ---
 
+### Dimension 8 — AI Maturity & Agentic Readiness
+
+**Goal:** Score the company's AI maturity across 5 dimensions, map agentic use case opportunities, and surface IP / research partnership potential. This is mandatory for all targets — it informs Section 12 (AI Agentic Vision) and Section 13 (IP & Research Opportunities).
+
+**Primary searches — AI program signals (run all):**
+```
+"[COMPANY NAME]" artificial intelligence generative AI LLM 2025 2026
+"[COMPANY NAME]" AI strategy chief AI officer announced 2024 2025
+"[COMPANY NAME]" Azure OpenAI OR AWS Bedrock OR Google Vertex AI 2025
+"[COMPANY NAME]" machine learning data science investment 2025
+"[COMPANY NAME]" AI earnings call investor day 2025 2026
+```
+
+**Secondary searches — AI talent signals:**
+```
+"[COMPANY NAME]" jobs "machine learning engineer" OR "AI engineer" OR "data scientist" 2025
+"[COMPANY NAME]" jobs "chief AI officer" OR "VP AI" OR "Head of AI" 2025
+"[COMPANY NAME]" site:linkedin.com/jobs "LLM" OR "generative AI" OR "agentic"
+```
+
+**Secondary searches — IP and research signals:**
+```
+"[COMPANY NAME]" patent filing 2024 2025 AI machine learning algorithm
+"[COMPANY NAME]" research publication academic partnership university 2025
+"[COMPANY NAME]" R&D spending investment 2024 2025 annual report
+site:patents.google.com "[COMPANY NAME]" AI OR "machine learning"
+"[COMPANY NAME]" innovation lab center incubator 2025
+```
+
+**Secondary searches — agentic / automation signals:**
+```
+"[COMPANY NAME]" automation RPA workflow AI agent 2025
+"[COMPANY NAME]" Salesforce Einstein OR ServiceNow AI OR SAP AI 2025
+"[COMPANY NAME]" autonomous OR agentic OR copilot deployment 2025
+"[COMPANY NAME]" API-first OR microservices OR event-driven architecture 2025
+```
+
+**Federal AI searches (federal targets only):**
+```
+"[AGENCY]" AI use case inventory OMB 2025
+"[AGENCY]" Executive Order AI 2025 compliance
+"[AGENCY]" chief AI officer CDO artificial intelligence 2025
+site:ai.gov "[AGENCY]" use cases
+```
+
+**Signal interpretation table:**
+
+| Signal Found | AI Readiness Score Guidance |
+|---|---|
+| Chief AI Officer appointed (< 18 months) | Agentic Readiness = 4–5; AI Governance = 3–4 |
+| 10+ AI/ML job postings active | AI/ML Talent = 3–4 |
+| Confirmed Azure OpenAI / AWS Bedrock partnership | Infrastructure = 4–5 |
+| GenAI named in earnings call as strategic priority | All dimensions +1 vs. no-signal baseline |
+| Zero AI job postings; no AI press releases | All dimensions = 1–2 |
+| Active patents in AI/data domains | Data Maturity = 4–5; IP Landscape = High |
+| R&D spend > 10% of revenue | Innovation culture confirmed; IP Landscape elevated |
+| Only RPA / rule-based automation found | Agentic Readiness = 2 |
+| Cloud migration recently completed | Infrastructure = 3–4 |
+
+**AI Readiness scoring guidelines:**
+
+Score each of the 5 dimensions on a 1–5 scale based on evidence found:
+
+| Dimension | Score 1 | Score 3 | Score 5 |
+|---|---|---|---|
+| Data Maturity | No data strategy mentioned; siloed systems | Active data lake/warehouse project | Unified data platform live; ML-ready pipelines confirmed |
+| Infrastructure | On-premise only; no cloud signals | Hybrid cloud in progress | Cloud-native; multi-cloud; MLOps platform confirmed |
+| AI / ML Talent | No AI roles found | 3–9 AI/ML postings | 10+ AI/ML roles; Chief AI Officer present |
+| AI Governance | No responsible AI policy found | AI risk mentioned in 10-K; governance starting | Published responsible AI policy; model risk framework active |
+| Agentic Readiness | No API/automation signals | RPA live; some API-first signals | Agentic workflows confirmed; microservices architecture; autonomous agents piloted |
+
+**What to capture for Section 12 data object:**
+- Score (1–5) for each dimension
+- The specific evidence signal that drove each score
+- The implication of each score for the engagement approach
+
+**What to capture for Section 13 data object:**
+- Patent filing activity and domains (from Google Patents, USPTO)
+- R&D spend as % of revenue (from 10-K or earnings press release)
+- Any confirmed academic or research partnerships
+- Any innovation lab or incubation center announcements
+- The company's unique data assets (what data do they generate that competitors don't have?)
+
+---
+
 ## CONFIDENCE SCORING
 
 Before populating the report, assign a confidence score to each major data block:
@@ -367,5 +452,10 @@ Before starting Phase 2, verify:
 - [ ] At least 1 news item from the last 12 months
 - [ ] Federal: at least 1 contract award found on SAM.gov or absence documented
 - [ ] Industry vertical confirmed and correct playbook loaded
+- [ ] All 5 AI readiness dimensions scored with evidence (Dimension 8)
+- [ ] At least 3 AI agentic use cases identified and mapped to confirmed strategic priorities
+- [ ] IP landscape assessed across all 3 categories (patents, data assets, processes)
+- [ ] At least 2 Pioneering Bets drafted with specific thesis tied to this company's unique position
+- [ ] R&D spend signal found or absence documented for Section 13
 
-If fewer than 4 of these are satisfied, the research is insufficient. Do additional searches before writing.
+If fewer than 4 of the first 8 items are satisfied, the research is insufficient. Do additional searches before writing. The AI and IP dimensions (items 9–13) may be partially inferred using vertical playbooks when direct signals are absent — but every inference requires an [ASSUMPTION — basis] flag.

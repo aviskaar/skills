@@ -407,3 +407,239 @@ A C-suite executive who joined < 18 months ago is in their "evaluation window":
 - They may be actively looking for a win to establish their own program
 - They are more likely to take a meeting than an entrenched leader
 - The entry pitch should be: "We know your inherited stack; here's what we see"
+
+---
+
+## AI AGENTIC USE CASES BY VERTICAL
+
+Use this section to calibrate Section 12 (AI Agentic Solutions Vision) with industry-specific use cases mapped to each vertical. Where a company has confirmed a strategic priority from Section 4, cross-reference with the matching use case tier below.
+
+**How to use:**
+1. Load the correct vertical playbook
+2. Cross-reference AI use cases against the company's confirmed strategic priorities from Section 4
+3. Select 6–10 use cases that map to confirmed priorities
+4. Assign tiers based on the company's AI readiness scores from Dimension 8
+5. Adjust complexity ratings up/down based on the company's infrastructure score
+
+---
+
+### AI VERTICAL 1 — LIFE SCIENCES: PHARMA / BIOTECH
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| AI-assisted pharmacovigilance case triage | Regulatory Affairs | 1 | High | Low | Pre-built agent frameworks exist; high ROI via FAERS compliance cost reduction |
+| Autonomous adverse event narrative generation | Regulatory / Safety | 1 | High | Low | LLM-generated narratives with human review gate; FDA-accepted patterns exist |
+| Clinical trial site selection agent | Clinical Operations | 1 | High | Medium | Reduces enrollment delays — major cost driver; confirmed value at comparable biotechs |
+| Regulatory submission assistant (eCTD) | Regulatory Affairs | 2 | High | Medium | Requires validated system; LLM annotation of submission packages |
+| Commercial launch readiness AI command center | Commercial / Sales | 2 | High | Medium | Agent monitors launch KPIs, sales velocity, HCP engagement in real time |
+| Predictive drug interaction screening | R&D | 2 | High | High | Requires proprietary compound data — strong IP co-development candidate |
+| Autonomous gross-to-net reconciliation | Finance | 1 | Medium | Low | Rule-based + ML hybrid; reduces manual reconciliation by 60–80% [ASSUMPTION — benchmark] |
+| AI-powered HCP targeting and engagement | Commercial / Marketing | 2 | High | Medium | LLM-personalized outreach; integrates with Veeva CRM |
+| Clinical data de-identification at scale | Data / IT | 1 | Medium | Low | Required for AI model training on clinical data |
+| Proprietary disease-area foundation model | R&D | 3 | Very High | Very High | Pioneering Bet candidate — company-specific training data creates moat |
+
+**IP Co-development Candidates:** Adverse event prediction model, proprietary clinical trial matching algorithm, disease-area foundation model
+**Typical AI Readiness Score (if no signals found):** Data 3, Infrastructure 3, Talent 2, Governance 2, Agentic 2 [ASSUMPTION — vertical baseline]
+
+---
+
+### AI VERTICAL 2 — LIFE SCIENCES: MEDICAL DEVICES / MEDTECH
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Predictive field service scheduling agent | Field Service / Operations | 1 | High | Low | Reduces truck rolls 20–35% [ASSUMPTION — field service benchmark]; integrates with Salesforce FSL |
+| Connected device anomaly detection | IoT / Engineering | 1 | High | Medium | Near-real-time alert on device performance degradation; prevents recalls |
+| AI-assisted 510(k) / PMA submission prep | Regulatory Affairs | 2 | High | Medium | LLM drafts submission sections from existing documentation; human review gate |
+| Post-market surveillance automation | Regulatory / Quality | 1 | High | Low | MDR / MAUDE data monitoring with autonomous complaint classification |
+| Autonomous CAPA root cause analysis | Quality | 1 | High | Medium | Matches complaint patterns to root causes across historical CAPA data |
+| AI-guided surgical training simulator | Product / Clinical | 3 | High | Very High | Requires proprietary device data; potential IP |
+| Real-world evidence (RWE) analytics platform | Clinical / Regulatory | 2 | High | High | Pioneering Bet candidate for companies with large device field data |
+| Remote patient monitoring AI | Product / Clinical | 2 | High | Medium | Combines device sensor data with patient outcomes for predictive alerts |
+
+**IP Co-development Candidates:** Device-specific anomaly detection models, real-world evidence platform, surgical AI
+**Typical AI Readiness Score (no signals):** Data 2, Infrastructure 3, Talent 2, Governance 3, Agentic 2 [ASSUMPTION — vertical baseline]
+
+---
+
+### AI VERTICAL 3 — LIFE SCIENCES: GENOMICS / DIAGNOSTICS
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| AI variant interpretation assistant | Clinical / Bioinformatics | 1 | Very High | Low | LLM-powered VUS classification reducing report turnaround time |
+| Autonomous NGS pipeline orchestration | Lab / IT | 1 | High | Medium | Agent monitors pipeline failures, auto-restarts jobs, flags QC failures |
+| Physician report generation agent | Clinical | 1 | High | Low | LLM generates structured clinical reports from variant calls; reduces reporting time 40–60% [ASSUMPTION] |
+| Payer prior authorization automation | Revenue Cycle | 1 | High | Low | Agent submits, tracks, and appeals prior auths autonomously |
+| Proprietary genome-phenotype correlation model | R&D | 3 | Very High | Very High | Pioneering Bet — unique dataset creates defensible IP |
+| Population genomics analytics platform | Public Health / Pharma Partnerships | 2 | High | High | Proprietary cohort data as B2B offering to pharma |
+| AI-assisted LIMS workflow optimization | Lab Operations | 2 | Medium | Medium | Reduces sample processing errors and delays |
+
+**IP Co-development Candidates:** Variant interpretation model, genome-phenotype correlation model, population health insights platform
+**Typical AI Readiness Score (no signals):** Data 4, Infrastructure 4, Talent 3, Governance 2, Agentic 2 [ASSUMPTION — vertical baseline; genomics companies tend to have strong data and infrastructure]
+
+---
+
+### AI VERTICAL 4 — FINANCIAL SERVICES: BANKING
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Real-time transaction fraud detection agent | Risk / Compliance | 1 | Very High | Medium | ML model scoring with autonomous case routing; proven ROI |
+| AML/BSA suspicious activity report (SAR) drafting | Compliance | 1 | High | Low | LLM drafts SAR narratives from transaction patterns; examiner-review gate |
+| AI credit underwriting assistant | Lending | 1 | High | Medium | LLM + ML hybrid for credit memo generation and risk scoring |
+| Regulatory change impact assessment agent | Compliance / Legal | 2 | High | Low | Monitors regulatory feeds; auto-maps rule changes to affected processes |
+| Customer 360 personalization engine | Retail Banking | 2 | High | Medium | AI-powered next best offer and proactive service alerts |
+| Autonomous loan modification processing | Servicing | 1 | High | Low | Agent handles standard modification requests end-to-end with human exception handling |
+| AI-assisted core banking modernization documentation | IT / Transformation | 2 | Medium | High | LLM generates migration specs from legacy code analysis |
+| Proprietary credit risk foundation model | Risk | 3 | Very High | High | Pioneering Bet — bank's proprietary transaction history creates model moat |
+| Stress testing scenario automation | Risk / Finance | 2 | High | Medium | Agent generates Basel IV stress scenarios and reports |
+
+**IP Co-development Candidates:** Transaction-trained fraud model, proprietary credit risk model, regulatory change mapping system
+**Typical AI Readiness Score (no signals):** Data 3, Infrastructure 3, Talent 2, Governance 3, Agentic 2 [ASSUMPTION — vertical baseline]
+
+---
+
+### AI VERTICAL 5 — FINANCIAL SERVICES: INSURANCE
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Autonomous first notice of loss (FNOL) processing | Claims | 1 | Very High | Low | Agent extracts, classifies, and routes claims from unstructured FNOL submissions |
+| AI-powered claims fraud detection | Claims / SIU | 1 | High | Medium | ML anomaly detection on claims patterns; proven 10–30% fraud reduction [ASSUMPTION] |
+| Intelligent document processing for underwriting | Underwriting | 1 | High | Low | LLM extracts submission data from unstructured documents |
+| Autonomous renewal pricing recommendations | Actuarial / Pricing | 2 | High | Medium | ML pricing model with agent-assisted actuary review |
+| Claims settlement negotiation assistant | Claims | 2 | High | Medium | AI-assisted settlement range recommendations; improves adjuster efficiency |
+| Policy administration migration agent | IT / Transformation | 2 | High | Very High | AI-assisted code migration for legacy policy admin modernization |
+| Telematics and IoT risk scoring | Underwriting | 2 | High | High | For P&C: connected device data for real-time risk pricing |
+| Proprietary loss prediction model | Actuarial | 3 | Very High | High | Pioneering Bet — long-tail claims history creates defensible model |
+
+**IP Co-development Candidates:** Loss prediction model, fraud signature detection system, claims intelligence platform
+**Typical AI Readiness Score (no signals):** Data 3, Infrastructure 2, Talent 2, Governance 2, Agentic 2 [ASSUMPTION — insurance typically lags on AI maturity]
+
+---
+
+### AI VERTICAL 6 — RETAIL / CONSUMER
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| AI-powered demand forecasting agent | Supply Chain / Merchandising | 1 | Very High | Medium | LLM + ML hybrid reduces forecast error 15–25% [ASSUMPTION — retail benchmark] |
+| Autonomous markdown optimization | Merchandising | 1 | High | Medium | Agent recommends and executes price changes to clear inventory |
+| Personalized product recommendation engine | E-Commerce / Marketing | 1 | High | Low | LLM-powered 1:1 recommendations; proven revenue lift |
+| AI customer service agent (Tier 1) | CX / Operations | 1 | High | Low | Resolves order inquiries, returns, and FAQs autonomously; reduces contact center volume |
+| Supply chain disruption prediction agent | Supply Chain | 2 | High | Medium | Monitors supplier signals, port data, weather — triggers proactive alerts |
+| Autonomous planogram optimization | Merchandising / Store Ops | 2 | Medium | Medium | AI-generated space allocation recommendations per store cluster |
+| Loyalty program personalization engine | Marketing / CRM | 2 | High | Low | AI-personalized offers based on purchase history and behavioral signals |
+| Proprietary shopper intent model | Marketing | 3 | High | Medium | Pioneering Bet — retailer's own purchase + browse + search data creates asset competitors can't match |
+| Visual AI for loss prevention | Operations / Security | 2 | Medium | High | Computer vision for shrink reduction in physical retail |
+
+**IP Co-development Candidates:** Shopper intent model, demand forecasting IP, loyalty personalization engine
+**Typical AI Readiness Score (no signals):** Data 3, Infrastructure 3, Talent 2, Governance 2, Agentic 3 [ASSUMPTION — retail generally ahead on automation]
+
+---
+
+### AI VERTICAL 7 — MANUFACTURING / INDUSTRIAL
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Predictive maintenance agent | Operations / Maintenance | 1 | Very High | Medium | Sensor data + ML predicts equipment failure 7–30 days out; proven ROI in discrete mfg |
+| Autonomous quality inspection (computer vision) | Quality / Operations | 1 | High | Medium | Camera + CV model replaces manual inspection; 99%+ defect detection rate [ASSUMPTION] |
+| AI-assisted S/4HANA migration scoping | IT / Transformation | 1 | High | Low | LLM analyzes existing ECC configuration and generates S/4 migration scope document |
+| Production scheduling optimization agent | Operations / Planning | 2 | High | High | Agent re-sequences production dynamically based on demand, capacity, and material signals |
+| Supply chain risk monitoring agent | Supply Chain | 1 | High | Low | Monitors supplier financials, geopolitical signals, logistics delays |
+| Autonomous procurement negotiation assistant | Procurement | 2 | Medium | Medium | AI drafts negotiation positions and monitors contract terms |
+| Digital twin + AI simulation | Engineering / Operations | 2 | High | Very High | Virtual plant simulation for scenario planning; capital investment justification |
+| Proprietary process optimization model | Operations | 3 | Very High | High | Pioneering Bet — manufacturer's own process data (temps, pressures, yields) creates model no competitor can train |
+
+**IP Co-development Candidates:** Process-specific predictive maintenance model, digital twin IP, quality inspection model
+**Typical AI Readiness Score (no signals):** Data 2, Infrastructure 2, Talent 2, Governance 1, Agentic 2 [ASSUMPTION — manufacturing typically has the most ground to cover]
+
+---
+
+### AI VERTICAL 8 — ENERGY / UTILITIES
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Grid anomaly detection and outage prediction | Grid Operations / Engineering | 1 | Very High | Medium | ML on SCADA/AMI data predicts outages 24–72 hours out; reduces restoration time |
+| Autonomous work order orchestration | Field Operations | 1 | High | Low | Agent routes, schedules, and closes field crew work orders; integrates with SAP PM |
+| Renewable energy output forecasting | Operations / Trading | 1 | High | Medium | ML forecasting for solar/wind generation; improves dispatch planning |
+| AI-assisted NERC CIP compliance monitoring | Cybersecurity / Compliance | 1 | High | Low | Agent monitors control system configurations against NERC CIP standards |
+| Customer energy usage personalization | Customer Experience | 2 | Medium | Low | AI-powered usage insights and conservation recommendations; reduces churn |
+| Predictive transformer failure modeling | Asset Management | 2 | Very High | High | ML trained on historical transformer failure data; reduces catastrophic outage risk |
+| Carbon accounting automation agent | Sustainability / Finance | 2 | High | Medium | Agent aggregates emissions data and generates ESG reporting |
+| Proprietary grid resilience model | Grid Operations | 3 | Very High | Very High | Pioneering Bet — utility's own grid topology + historical outage data is irreplaceable training data |
+
+**IP Co-development Candidates:** Grid resilience model, renewable forecasting model, asset failure prediction IP
+**Typical AI Readiness Score (no signals):** Data 3, Infrastructure 2, Talent 2, Governance 2, Agentic 2 [ASSUMPTION — utilities have data richness but low AI maturity]
+
+---
+
+### AI VERTICAL 9 — TECHNOLOGY / SOFTWARE
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| AI-powered developer productivity platform | Engineering / Product | 1 | High | Low | GitHub Copilot-equivalent or custom LLM fine-tuned on company's codebase |
+| Customer support AI agent (Tier 1–2) | CX / Support | 1 | High | Low | LLM resolves technical support queries; reduces escalation rate 30–50% [ASSUMPTION] |
+| Autonomous incident response agent | Engineering / SRE | 1 | Very High | Medium | Agent detects, triages, and resolves common production incidents autonomously |
+| AI-assisted post-acquisition code consolidation | IT / Engineering | 2 | High | High | LLM analyzes acquired codebase and generates consolidation roadmap |
+| Product usage telemetry insight agent | Product Management | 1 | High | Low | Analyzes product usage signals and generates feature prioritization recommendations |
+| Churn prediction and intervention agent | Customer Success / GTM | 2 | High | Medium | ML churn model + agent triggers proactive intervention at right moments |
+| AI-powered sales intelligence (internal) | Sales / GTM | 1 | High | Low | Internal account intelligence generation using this same skill framework |
+| Proprietary domain LLM | Product | 3 | Very High | High | Pioneering Bet — tech company's proprietary user interaction data can train a product-specific model that competitors cannot match |
+
+**IP Co-development Candidates:** Domain-specific LLM, proprietary telemetry insight model, autonomous incident response playbook
+**Typical AI Readiness Score (no signals):** Data 4, Infrastructure 4, Talent 4, Governance 3, Agentic 3 [ASSUMPTION — tech companies typically lead on AI maturity]
+
+---
+
+### AI VERTICAL 10 — HEALTHCARE PROVIDERS / PAYERS
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Prior authorization automation agent | Revenue Cycle / Clinical | 1 | Very High | Low | Autonomous PA submission and appeal; reduces admin cost and denial rate |
+| Clinical documentation AI assistant | Clinicians / HIM | 1 | High | Low | LLM generates draft clinical notes from encounter data; physician review gate |
+| Care gap identification and outreach agent | Population Health | 1 | High | Medium | Identifies care gaps and triggers proactive patient outreach autonomously |
+| Autonomous claims adjudication (payer) | Claims / Finance | 1 | High | Medium | ML model handles standard claims end-to-end; reduces adjudication cycle |
+| AI-assisted diagnosis support | Clinical | 2 | Very High | High | Requires regulatory approval pathway (FDA SaMD if clinical decision support) |
+| Revenue cycle leakage detection agent | Finance / RCM | 1 | High | Low | ML identifies underbilled encounters and coding gaps in real time |
+| Social determinants of health (SDOH) risk scoring | Population Health | 2 | High | Medium | Integrates SDOH data to predict high-risk patients before acute events |
+| Proprietary readmission prediction model | Clinical / Quality | 2 | Very High | Medium | Hospital's own readmission history creates model more accurate than generic |
+| Drug utilization management AI | Pharmacy / Payer | 2 | High | High | AI-powered formulary and utilization management recommendations |
+
+**IP Co-development Candidates:** Clinical note generation model, readmission prediction model, population health risk engine
+**Typical AI Readiness Score (no signals):** Data 3, Infrastructure 3, Talent 2, Governance 3, Agentic 2 [ASSUMPTION — healthcare typically strong on governance but slow on AI deployment]
+
+---
+
+### AI VERTICAL 11 — FEDERAL / GOVERNMENT
+
+| Use Case | Function | Typical Tier | Business Impact | Complexity | Notes |
+|---|---|---|---|---|---|
+| Automated benefits processing agent | Citizen Services | 1 | Very High | Medium | Autonomously processes standard benefit applications; human review for exceptions |
+| AI-assisted contract review and risk flagging | Acquisition / Contracting | 1 | High | Low | LLM reviews contract terms and flags risk areas; contracting officer review gate |
+| Cybersecurity threat intelligence agent | Cybersecurity / CDM | 1 | Very High | Medium | Monitors threat feeds and maps to agency network posture in real time |
+| AI-powered FOIA response processing | Legal / Records | 1 | High | Low | LLM drafts FOIA response redactions; reviewer gate; reduces backlog |
+| Autonomous IT helpdesk agent (Tier 1) | IT / Service Desk | 1 | Medium | Low | Resolves password resets, access requests, common IT issues autonomously |
+| Grant program fraud detection | Finance / IG | 2 | High | Medium | ML anomaly detection on grant disbursement patterns |
+| AI-assisted acquisition strategy and market research | Acquisition | 2 | High | Medium | Agent synthesizes market research and drafts acquisition strategy documents |
+| Zero Trust architecture AI monitoring | Cybersecurity | 2 | High | High | AI-powered continuous monitoring and risk scoring of zero trust implementation |
+| Mission-specific analytics platform | Mission / Operations | 3 | Very High | Very High | Pioneering Bet — agency's own mission data creates a capability that cannot be replicated externally |
+
+**IP Co-development Candidates:** Typically limited by federal IP rules — focus on data rights and license terms; jointly developed analytics platforms; open-source publication strategies
+**Typical AI Readiness Score (no signals):** Data 2, Infrastructure 3, Talent 2, Governance 3, Agentic 2 [ASSUMPTION — federal agencies typically have governance awareness but low agentic maturity; FITARA scores are a proxy]
+
+---
+
+## AI MATURITY BASELINE BY VERTICAL
+
+Use this table when Dimension 8 research returns insufficient signals. Apply as [ASSUMPTION — vertical baseline; adjust based on confirmed signals].
+
+| Vertical | Data | Infrastructure | Talent | Governance | Agentic | Notes |
+|---|---|---|---|---|---|---|
+| Pharma / Biotech | 3 | 3 | 2 | 3 | 2 | Validated systems slow AI; FDA oversight adds governance |
+| Medical Devices | 2 | 3 | 2 | 3 | 2 | Regulatory complexity; IoT infrastructure often ahead of AI |
+| Genomics / Diagnostics | 4 | 4 | 3 | 2 | 2 | Data-rich; AI talent growing; governance lagging |
+| Banking | 3 | 3 | 3 | 3 | 2 | Fraud detection ahead; core systems lag |
+| Insurance | 3 | 2 | 2 | 2 | 2 | Data exists; AI investment typically lags banking |
+| Retail / Consumer | 3 | 3 | 2 | 2 | 3 | Supply chain automation ahead; AI governance minimal |
+| Manufacturing | 2 | 2 | 2 | 1 | 2 | Sensor data rich; AI investment often OT-side first |
+| Energy / Utilities | 3 | 2 | 2 | 2 | 2 | Grid data is goldmine; IT/OT convergence is barrier |
+| Technology / Software | 4 | 4 | 4 | 3 | 3 | Most AI-mature vertical across all dimensions |
+| Healthcare Providers | 3 | 3 | 2 | 3 | 2 | EHR data rich; governance strong; deployment caution |
+| Federal / Government | 2 | 3 | 2 | 3 | 2 | Cloud mandate helping infrastructure; talent is constraint |

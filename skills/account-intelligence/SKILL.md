@@ -1,17 +1,17 @@
 ---
 name: account-intelligence
-description: "Use this skill when a product firm, consulting firm, system integrator, or federal contractor needs to research a target company or government agency and produce an executive-grade Account Intelligence Report as a formatted .docx file. Handles any industry vertical — Life Sciences, Financial Services, Healthcare, Manufacturing, Energy, Retail, Technology, Federal/Government, and more. Fully automates the pursuit research and document generation process."
+description: "Use this skill when a product firm, consulting firm, system integrator, or federal contractor needs to research a target company or government agency and produce an executive-grade Account Intelligence Report as a formatted .docx file. Handles any industry vertical — Life Sciences, Financial Services, Healthcare, Manufacturing, Energy, Retail, Technology, Federal/Government, and more. Fully automates the pursuit research and document generation process. Includes AI Agentic Solutions vision, IP and Research Opportunity mapping, and high-definition charts and visual dashboards."
 license: Apache-2.0
 metadata:
   author: aviskaar
-  version: "1.0"
-  tags: [sales-intelligence, account-research, enterprise-sales, consulting, federal, docx-generation, pursuit-strategy, account-planning]
+  version: "2.0"
+  tags: [sales-intelligence, account-research, enterprise-sales, consulting, federal, docx-generation, pursuit-strategy, account-planning, ai-agentic, ip-research, data-visualization]
   sub-skills: []
 ---
 
 # Account Intelligence Report Generator
 
-Produce a complete, senior-partner-ready Account Intelligence Report on any target company or government agency. Output is a formatted `.docx` file ready for a C-suite meeting. Works for any industry vertical. Works for federal agencies and programs.
+Produce a complete, senior-partner-ready Account Intelligence Report on any target company or government agency. Output is a formatted `.docx` file with high-definition charts, visual dashboards, AI Agentic Solutions vision, and IP & Research Opportunity mapping — ready for a C-suite meeting. Works for any industry vertical. Works for federal agencies and programs.
 
 ---
 
@@ -182,6 +182,43 @@ This dimension is mandatory for all federal targets. Skip for commercial targets
 
 ---
 
+### Dimension 8 — AI Maturity & Agentic Readiness
+
+**Goal:** Assess the company's current AI posture, active agentic initiatives, and the white space for AI-driven transformation. This informs Section 12 (AI Agentic Solutions Vision) and Section 13 (IP & Research Opportunities).
+
+Search for:
+- Any announced AI programs, LLM adoptions, or GenAI initiatives (earnings calls, press releases, investor days)
+- AI/ML job postings — volume and seniority signal investment stage (pilot vs. production scaling)
+- Research publications, patents, or academic partnerships in AI or data science
+- Chief AI Officer, VP of AI, or Head of Data Science — appointed or hiring (= funded AI program)
+- AI platform partnerships (Microsoft Azure OpenAI, AWS Bedrock, Google Vertex, Databricks, Snowflake, Palantir)
+- Any known agentic workflow deployments (autonomous agents, copilots, RPA + AI, decision automation)
+- IP filings: recent patents related to data, ML models, or proprietary algorithms
+- R&D spending as % of revenue (from 10-K, earnings call) — higher % = stronger innovation culture
+- Academic collaborations, research lab sponsorships, or innovation center announcements
+
+**Signal interpretation:**
+| Signal | What It Means |
+|---|---|
+| Chief AI Officer or VP AI appointed | Funded AI program with executive mandate |
+| 10+ AI/ML job postings | Scaling AI capability — building vs. buying |
+| Azure OpenAI / AWS Bedrock partnership | Cloud-native GenAI buildout underway |
+| GenAI mentioned in earnings call | Board-level priority with budget attached |
+| R&D spend > 8% of revenue | Innovation-led culture; open to IP co-development |
+| AI mentioned in risk factors (10-K) | Regulatory awareness; governance maturity increasing |
+| No AI signals found | Early adopter opportunity; needs foundation before agentic |
+
+**AI Readiness Scoring (score each dimension 1–5):**
+- **Data Maturity** — quality, accessibility, governance of core data assets
+- **Infrastructure** — cloud readiness, MLOps platform, compute availability
+- **Talent** — AI/ML headcount density, data science capability
+- **AI Governance** — responsible AI policies, model risk management
+- **Agentic Readiness** — workflow automation maturity, API-first architecture, tolerance for autonomous systems
+
+This dimension applies to all targets. Federal agencies: also search for AI Executive Order compliance, AI use case inventories (OMB mandate), and CDO/Chief AI Officer appointments.
+
+---
+
 ## PHASE 2 — BUILD THE .DOCX REPORT
 
 After completing all research, generate the report.
@@ -220,7 +257,7 @@ node generate-report.js
 
 ### Step 2.4 — Section order (never reorder)
 
-Generate all 11 sections in this exact sequence:
+Generate all 13 sections in this exact sequence:
 
 ---
 
@@ -403,6 +440,108 @@ One or two pitfalls specific to this account: incumbent relationship to avoid tr
 
 ---
 
+**SECTION 12 — AI Agentic Solutions Vision**
+
+This section presents [YOUR FIRM]'s vision for transforming [TARGET COMPANY] through AI and agentic solutions — grounded in the company's confirmed strategic priorities and AI maturity signals from Dimension 8 research. It must be specific to this company's context, not a generic AI pitch.
+
+**12.1 — AI Readiness Assessment**
+
+A scored evaluation of the company's AI maturity across five dimensions. Present as a color-coded scorecard table with a visual progress indicator for each dimension. Each score (1–5) must be derived from Dimension 8 research signals — not generic.
+
+| Dimension | Score (1–5) | Evidence / Signal | Implication |
+|---|---|---|---|
+| Data Maturity | [1–5] | [Specific signal from research] | [What this means for AI buildout] |
+| Infrastructure Readiness | [1–5] | [Signal] | [Implication] |
+| AI / ML Talent | [1–5] | [Signal] | [Implication] |
+| AI Governance | [1–5] | [Signal] | [Implication] |
+| Agentic Readiness | [1–5] | [Signal] | [Implication] |
+
+Generate a **visual AI Readiness Radar Chart** as a PNG image embedded in the document (using chartjs-node-canvas). The radar plots all five dimensions on a pentagon grid with scores 1–5. Use NAVY fill with 40% opacity and BLUE border.
+
+**12.2 — AI Agentic Use Case Roadmap**
+
+Map 6–10 specific AI agentic use cases to this company, organized into three tiers based on implementation readiness and business impact. Each use case must tie back to a confirmed strategic priority or identified pain point — not a generic AI capability.
+
+| Use Case | Business Function | Strategic Link | Impact | Complexity | Tier |
+|---|---|---|---|---|---|
+| [Specific use case] | [Function] | [Links to Priority X] | [H/M/L] | [H/M/L] | [1/2/3] |
+
+**Tier definitions for AI use cases:**
+- **Tier 1 — Deploy Now (0–6 months):** Foundation models available, low data prep required, quick ROI demonstration
+- **Tier 2 — Build This Year (6–18 months):** Requires data integration or governance work first; high strategic impact
+- **Tier 3 — Innovate Long-Term (18+ months):** Novel agent architectures; potential IP co-development; requires organizational change
+
+Generate a **visual Priority Matrix Chart** (bubble chart) as a PNG image: X-axis = Implementation Complexity, Y-axis = Business Impact, bubble size = estimated value. Color by tier (TEAL = Tier 1, BLUE = Tier 2, NAVY = Tier 3).
+
+**12.3 — [YOUR FIRM]'s Agentic Delivery Model for [TARGET COMPANY]**
+
+Describe specifically how [YOUR FIRM] would deliver the AI agentic vision — not a generic methodology description. Address:
+- Which AI platform(s) would anchor the solution (tied to company's confirmed tech stack)
+- [YOUR FIRM]'s proprietary accelerators, pre-built agents, or AI frameworks relevant to this vertical
+- Named platform partnerships ([YOUR FIRM] + Microsoft / AWS / Google / Databricks + how it applies here)
+- The sequencing: what gets built first and why, tied to the Tier 1 use cases above
+- Governance and responsible AI framework [YOUR FIRM] would put in place for this account
+
+**12.4 — AI Investment Framing**
+
+Two-column framing table — cost of inaction vs. value of action. All figures must be flagged `[ASSUMPTION — basis]`.
+
+| Investment Area | Est. Investment | Est. Annual Value Capture | Payback Period |
+|---|---|---|---|
+
+After the table: a 3–4 sentence narrative on how [YOUR FIRM] would present the AI business case to the CFO of this specific company — referencing their known cost pressures or growth mandate from Section 4.
+
+---
+
+**SECTION 13 — IP & Research Opportunities**
+
+This section maps the intellectual property and research innovation landscape for [TARGET COMPANY] and identifies co-innovation opportunities with [YOUR FIRM]. It is forward-looking — the goal is to identify where jointly developed IP or research partnerships could create durable competitive advantage.
+
+**13.1 — IP Landscape Assessment**
+
+Map the company's current IP posture across three categories. All items must be sourced or explicitly flagged [ASSUMPTION].
+
+| IP Category | Current State | Strength | Gap / Opportunity |
+|---|---|---|---|
+| Patent Portfolio | [Active patents / filing activity / domains] | [H/M/L] | [Where coverage is thin or novel IP could be filed] |
+| Proprietary Data Assets | [What unique data the company generates or holds] | [H/M/L] | [How it could be monetized or protected] |
+| Proprietary Processes / Algorithms | [Any known trade secrets, proprietary models, unique workflows] | [H/M/L] | [What could be formalized, protected, or built on] |
+
+Generate a **visual IP Strength Snapshot** — a horizontal bar chart (PNG image) showing IP strength by category, color-coded by gap severity (TEAL = strong, ORANGE = gap, NAVY = unknown).
+
+**13.2 — Research & Innovation Opportunities**
+
+Identify 4–6 specific areas where [TARGET COMPANY] could invest in applied research or co-develop novel solutions with [YOUR FIRM]. Each opportunity must tie to a confirmed strategic priority or a vertical-specific innovation trend.
+
+| Research Area | Strategic Rationale | Potential Output | [YOUR FIRM] Role | Timeline |
+|---|---|---|---|---|
+| [Area] | [Why this matters for this company now] | [Patent / model / platform / published research] | [Lead / Co-develop / Advisory] | [X months] |
+
+**13.3 — Co-Innovation Model**
+
+Describe how [YOUR FIRM] and [TARGET COMPANY] could structure a co-innovation engagement:
+- **Funding model:** How costs, IP ownership, and commercialization rights would be split
+- **Governance:** Who owns decisions (named roles at both organizations)
+- **IP framework:** What each party brings in, what gets created jointly, how new IP is registered
+- **Milestone structure:** What the 6-month, 12-month, and 24-month outcomes look like
+
+Present as a structured table followed by a narrative paragraph (3–4 sentences) on why this model is appropriate for THIS specific company's culture and risk tolerance — based on research signals.
+
+**13.4 — Pioneering Bets: Where [TARGET COMPANY] Could Lead the Industry**
+
+One of the most intriguing forward-looking sections in the report. Identify 2–3 areas where [TARGET COMPANY] has the unique combination of data, domain position, and strategic intent to become an industry-defining innovator — not just an AI adopter.
+
+For each bet:
+- **The thesis:** What makes this company uniquely positioned (specific data asset + domain depth + strategic moment)
+- **The innovation:** What novel AI capability, product, or process could be built
+- **The competitive moat:** Why competitors could not easily replicate this even if they tried
+- **[YOUR FIRM]'s contribution:** What specific IP, platform, or expertise [YOUR FIRM] brings to make this possible
+- **Risk:** What could prevent this from happening (technology, organizational, regulatory)
+
+Present each bet in a full-width GOLD callout box for visual distinction.
+
+---
+
 ## PHASE 3 — QUALITY GATE
 
 Before saving the file, verify every item:
@@ -417,6 +556,15 @@ Before saving the file, verify every item:
 - [ ] The Section 11 draft email opening is specific to the named person — not a template opener
 - [ ] Federal targets: all contract values are sourced from SAM.gov or flagged [ASSUMPTION]
 - [ ] No section is empty — every section has substantive content or a clearly labeled placeholder
+- [ ] Section 12 AI Readiness scores are grounded in Dimension 8 research — not generic
+- [ ] Section 12 AI use cases are mapped to confirmed strategic priorities from Section 4
+- [ ] Section 12 Radar Chart and Priority Matrix Chart are generated as PNG images and embedded
+- [ ] Section 13 IP assessment covers all three categories (patents, data assets, processes)
+- [ ] Section 13 Pioneering Bets are specific to this company's unique position — not generic AI predictions
+- [ ] Section 13 IP Strength Snapshot chart is generated and embedded
+- [ ] Section 5 Spending Allocation chart (pie/donut) is generated and embedded
+- [ ] Section 8 Opportunity Timeline chart is generated and embedded
+- [ ] All four embedded charts render at correct dimensions (width ≤ 500px in the document)
 
 ---
 
@@ -436,13 +584,41 @@ After saving the file, output exactly three bullets to the user:
 ```
 NAVY   = "1B2A4A"   — cover background, section header bars
 BLUE   = "2E5FA3"   — C-suite org chart boxes, subsection text
-TEAL   = "2E8B7A"   — VP/BU org chart boxes
+TEAL   = "2E8B7A"   — VP/BU org chart boxes, Tier 1 AI use cases
 WHITE  = "FFFFFF"   — text on dark backgrounds
 LIGHT  = "5BA3C9"   — cover company name accent
 MUTED  = "AACCEE"   — cover metadata labels, org chart tenure text
-ORANGE = "CC6600"   — assumption flags: inline, italic
+ORANGE = "CC6600"   — assumption flags: inline, italic; IP gaps
 ALT    = "EEF3FA"   — alternating table row background
+GOLD   = "B8860B"   — Pioneering Bets callout box background (use "FFF8DC" for light gold)
+PURPLE = "6B4FA0"   — AI governance / research accent
+GREEN  = "2E7D32"   — positive AI readiness scores (4–5)
+RED    = "C62828"   — low AI readiness scores (1–2)
+AMBER  = "E65100"   — mid AI readiness scores (3)
 ```
+
+### Chart Specifications (embedded PNG images)
+
+All charts are generated using `chartjs-node-canvas` and embedded via `ImageRun`. Four charts are required:
+
+| Chart | Section | Type | Size (px) | Purpose |
+|---|---|---|---|---|
+| Spending Allocation | Section 5 | Doughnut | 500×400 | Visual breakdown of estimated IT spend by category |
+| Opportunity Timeline | Section 8 | Horizontal Bar (Gantt-style) | 600×300 | Visual map of opportunities by tier and timeline |
+| AI Readiness Radar | Section 12 | Radar | 500×450 | Spider chart of 5 AI maturity dimensions scored 1–5 |
+| IP Strength Snapshot | Section 13 | Horizontal Bar | 500×250 | Strength rating per IP category, color-coded by gap |
+
+**Chart generation requires:**
+```bash
+npm install docx chartjs-node-canvas chart.js canvas
+```
+
+**Chart color palette (for consistency across all charts):**
+- Primary: `#1B2A4A` (NAVY) — dominant bars, fills
+- Secondary: `#2E5FA3` (BLUE) — accent fills
+- Tertiary: `#2E8B7A` (TEAL) — positive/high values
+- Warning: `#CC6600` (ORANGE) — gap/low values
+- Background: `#EEF3FA` (ALT) — chart canvas background
 
 ### Typography
 - Body: 11pt Arial, 1.15 line spacing
@@ -489,3 +665,9 @@ Each box is a table cell with:
 - Never place Confirmed and Inferred platforms in the same Technology Stack column
 - Never mark a spend estimate as "confirmed" unless it came from a filed contract, SEC filing, or official announcement
 - Never produce a report under 10 pages — if research is thin, flag it explicitly and explain what additional research is needed
+- Never write Section 12 AI Readiness scores without grounding each score in a specific Dimension 8 research signal
+- Never present AI use cases in Section 12 that are not tied to a confirmed strategic priority or identified pain point
+- Never write Section 13 Pioneering Bets as generic industry trends — they must be specific to this company's unique data position and market moment
+- Never skip chart generation — all four visual charts are mandatory components of the report
+- Never use placeholder chart images — every chart must be generated with the actual researched data populated
+- Never write Section 13 IP assessment as speculative without noting [ASSUMPTION] — IP portfolio claims must be sourced or explicitly flagged
