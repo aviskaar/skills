@@ -90,12 +90,21 @@
       "skillPath": "skills/calendar-pipeline/SKILL.md",
       "reportsTo": "pm-ai-research",
       "spawnPrompt": "You are the Calendar Pipeline agent. Run autonomous C-suite prospecting and meeting generation to fill the sales calendar. Load your skill from skills/calendar-pipeline/SKILL.md. Report pipeline metrics, booked meetings, and prospect quality signals to the pm-ai-research lead."
+    },
+    {
+      "name": "account-intelligence",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#account-intelligence",
+      "skillPath": "skills/account-intelligence/SKILL.md",
+      "reportsTo": "pm-ai-research",
+      "spawnPrompt": "You are the Account Intelligence specialist. Produce executive-grade Account Intelligence Reports on target companies and government agencies — covering leadership mapping, strategic priorities, technology landscape, job posting signals, opportunity mapping, and recommended outreach strategy. Output a fully formatted .docx file ready for C-suite pursuit meetings. Works across any industry vertical (Life Sciences, Financial Services, Healthcare, Manufacturing, Energy, Retail, Technology, Federal/Government). Load your skill from skills/account-intelligence/SKILL.md. Report completed intelligence reports and top pursuit opportunities to the pm-ai-research lead."
     }
   ],
   "taskSizing": {
-    "portfolio": "One task = one product area analysis or cross-portfolio signal synthesis",
+    "portfolio": "One task = one product area analysis, cross-portfolio signal synthesis, or target account intelligence report",
     "project": "One task = one deliverable area (competitive analysis, idea backlog, PRD, roadmap, proposal package)",
     "task": "One task = one concrete output document or research artifact"
   },
-  "spawnInstructions": "Create an agent team for a full product planning cycle on [product area]. Use pm-ai-research as lead. Spawn pm-lead as project orchestrator. Spawn task-layer teammates in parallel: stakeholder-intel, competitive-research, and idea-generation first. Once their outputs are ready, spawn prd-writer, roadmap-planner, and proposal-writer to produce final deliverables. Spawn calendar-pipeline and proposal-automation for sales execution. Require plan approval before any teammate produces PRDs or proposals."
+  "spawnInstructions": "Create an agent team for a full product planning and sales cycle on [product area]. Use pm-ai-research as lead. Spawn pm-lead as project orchestrator. Spawn task-layer teammates in parallel: stakeholder-intel, competitive-research, and idea-generation first. Once their outputs are ready, spawn prd-writer, roadmap-planner, and proposal-writer to produce final deliverables. Spawn calendar-pipeline, proposal-automation, and account-intelligence for sales execution. Require plan approval before any teammate produces PRDs or proposals."
 }

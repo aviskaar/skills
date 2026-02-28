@@ -1,13 +1,13 @@
 {
   "name": "finance-team",
-  "description": "Fully autonomous finance organization covering financial strategy, revenue operations, accounts payable, payroll, partner finance, and tax compliance.",
+  "description": "Fully autonomous finance organization covering financial strategy, revenue operations, accounts payable, payroll, and tax compliance.",
   "lead": {
     "name": "cfo-finance",
     "agentType": "lead",
     "layer": "strategic",
     "skill": "aviskaar/open-org#cfo-finance",
     "skillPath": "skills/cfo-finance/SKILL.md",
-    "spawnPrompt": "You are the CFO — Chief Financial Officer. Own the full finance function: financial strategy, investor reporting, revenue operations, accounts payable, payroll, partner finance, and tax compliance. Maintain the single source of truth for all company numbers, drive budget allocation, manage cash flow, ensure regulatory compliance, and produce board-ready financial reports. Load your skill from skills/cfo-finance/SKILL.md. Require plan approval before any teammate begins producing financial deliverables."
+    "spawnPrompt": "You are the CFO — Chief Financial Officer. Own the full finance function: financial strategy, investor reporting, revenue operations, accounts payable, payroll, and tax compliance. Maintain the single source of truth for all company numbers, drive budget allocation, manage cash flow, ensure regulatory compliance, and produce board-ready financial reports. Load your skill from skills/cfo-finance/SKILL.md. Require plan approval before any teammate begins producing financial deliverables."
   },
   "members": [
     {
@@ -83,15 +83,6 @@
       "spawnPrompt": "You are the Salary Management specialist. Maintain salary bands, process compensation changes, manage equity grants, and produce total compensation statements. Load your skill from skills/salary-management/SKILL.md. Report compensation changes and salary band coverage to the payroll-compensation teammate."
     },
     {
-      "name": "partner-finance",
-      "agentType": "teammate",
-      "layer": "task",
-      "skill": "aviskaar/open-org#partner-finance",
-      "skillPath": "skills/partner-finance/SKILL.md",
-      "reportsTo": "cfo-finance",
-      "spawnPrompt": "You are the Partner Finance specialist. Manage partner billing, reseller pricing, revenue-share calculations, and partner financial reporting. Load your skill from skills/partner-finance/SKILL.md. Report partner revenue contributions and billing reconciliations to the cfo-finance lead."
-    },
-    {
       "name": "tax-compliance",
       "agentType": "teammate",
       "layer": "task",
@@ -106,5 +97,5 @@
     "orchestrator": "One task = one domain deliverable (AP aging report, payroll run, revenue recognition schedule)",
     "task": "One task = one concrete financial output (invoice batch, commission calculation, expense report, tax filing)"
   },
-  "spawnInstructions": "Create an agent team for a full financial close cycle. Use cfo-finance as lead. Spawn orchestrators in parallel: revenue-operations, accounts-payable, and payroll-compensation. Each orchestrator coordinates their task-layer teammates. Spawn partner-finance and tax-compliance directly under the lead for specialized reporting. Require plan approval before any teammate produces financial deliverables."
+  "spawnInstructions": "Create an agent team for a full financial close cycle. Use cfo-finance as lead. Spawn orchestrators in parallel: revenue-operations, accounts-payable, and payroll-compensation. Each orchestrator coordinates their task-layer teammates. Spawn tax-compliance directly under the lead for specialized reporting. Require plan approval before any teammate produces financial deliverables."
 }
