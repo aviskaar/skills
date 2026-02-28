@@ -70,6 +70,8 @@ OpenOrg generalizes AI skills for enterprise automation, enabling fully autonomo
   - [Marketing Skills](#marketing-skills)
   - [Strategic Partnerships & Alliances Skills](#strategic-partnerships--alliances-skills)
   - [Investor Relations & Fundraising Skills](#investor-relations--fundraising-skills)
+  - [Finance & Operations Skills](#finance--operations-skills)
+  - [Security & Compliance Skills](#security--compliance-skills)
 - [Using Skills](#-using-skills)
 - [Creating a Skill](#-creating-a-skill)
 - [Contributing](#-contributing)
@@ -171,6 +173,7 @@ graph TD
 | [pm-lead](skills/pm-lead/) | Product | End-to-end product discovery for specific product areas. |
 | [proposal-automation](skills/proposal-automation/) | Pre-Sales | Transforms customer briefs into complete commercial packages and POCs. |
 | [calendar-pipeline](skills/calendar-pipeline/) | Sales | Autonomous engine for C-suite prospecting and meeting generation. |
+| [account-intelligence](skills/account-intelligence/) | Sales Intelligence | Produces executive-grade Account Intelligence Reports (.docx) for enterprise pursuit meetings across any industry vertical. |
 
 ### Marketing Skills
 Automating the full marketing department — from brand and content through demand generation and retention.
@@ -267,6 +270,86 @@ graph TD
 | [investor-calendar](skills/investor-calendar/) | Calendar Engine | Pack the founder's calendar with investor meetings — scheduling, pre-meeting briefs, day-of prep, post-meeting follow-up, and round momentum management. |
 | [due-diligence-prep](skills/due-diligence-prep/) | DD Engine | Build and organize the investor data room — financials, legal, cap table, technical architecture, customer references, and full DD Q&A preparation. |
 | [fundraising-analytics](skills/fundraising-analytics/) | Intelligence | Track conversion funnel, measure outreach effectiveness, forecast round close, analyze investor sentiment, and produce board-ready fundraising reports. |
+
+### Finance & Operations Skills
+Fully autonomous finance department — from financial strategy and revenue operations through payroll, AP, tax compliance, and partner program finance.
+
+#### Finance Team Hierarchy
+```mermaid
+graph TD
+    CFO[cfo-finance] --> RO[revenue-operations]
+    CFO --> AP[accounts-payable]
+    CFO --> PC[payroll-compensation]
+    CFO --> TC[tax-compliance]
+
+    RO --> IM[invoice-management]
+    RO --> CT[commission-tracker]
+
+    AP --> POM[purchase-order-management]
+    AP --> EM[expense-management]
+
+    PC --> SM[salary-management]
+```
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [cfo-finance](skills/cfo-finance/) | Strategic | CFO orchestrator: financial strategy, investor reporting, revenue ops, AP, payroll, and tax compliance. |
+| [revenue-operations](skills/revenue-operations/) | Orchestrator | VP Revenue Ops: customer invoicing, recurring billing, revenue recognition, and commission payout. |
+| [invoice-management](skills/invoice-management/) | Task | AR: invoice generation, tracking, collections, and aging reports. |
+| [commission-tracker](skills/commission-tracker/) | Task | Sales Comp: calculate, track, and process commission payouts, accelerators, SPIFFs, and clawbacks. |
+| [accounts-payable](skills/accounts-payable/) | Orchestrator | VP AP: vendor invoice processing, PO management, and employee expense reimbursements. |
+| [purchase-order-management](skills/purchase-order-management/) | Task | PO creation, three-way matching, vendor onboarding, and procurement controls. |
+| [expense-management](skills/expense-management/) | Task | Employee expense reports, policy enforcement, and reimbursement workflows. |
+| [payroll-compensation](skills/payroll-compensation/) | Orchestrator | VP Payroll: payroll processing, benefits administration, and compensation planning. |
+| [salary-management](skills/salary-management/) | Task | Salary bands, compensation changes, equity grants, and total compensation statements. |
+| [tax-compliance](skills/tax-compliance/) | Task | Corporate tax, sales tax, VAT, transfer pricing, and R&D tax credits. |
+
+### Security & Compliance Skills
+Fully autonomous enterprise security organization — from risk governance and compliance through SOC operations, AppSec, infrastructure security, and AI ethics.
+
+#### Security Team Hierarchy
+```mermaid
+graph TD
+    CISO[ciso] --> CG[compliance-governance]
+    CISO --> SO[security-operations]
+    CISO --> AS[application-security]
+    CISO --> IS[infrastructure-security]
+    CISO --> AES[ai-ethics-security]
+    CISO --> ST[security-trainer]
+
+    CG --> CA[compliance-auditor]
+    CG --> IC[industry-compliance]
+
+    SO --> TH[threat-hunter]
+    SO --> IR[incident-responder]
+    SO --> SRE[sre-operations]
+
+    AS --> PT[penetration-tester]
+
+    IS --> IAM[iam-specialist]
+    IS --> NDS[network-data-security]
+
+    AES --> ASA[ai-security-analyst]
+```
+
+| Skill | Layer | Description |
+|-------|-------|-------------|
+| [ciso](skills/ciso/) | Strategic | CISO orchestrator: enterprise security strategy, risk governance, and board-level reporting. |
+| [compliance-governance](skills/compliance-governance/) | Orchestrator | VP Compliance: SOC 2, ISO 27001, HIPAA, GDPR, EU AI Act, and industry-specific frameworks. |
+| [compliance-auditor](skills/compliance-auditor/) | Task | Audit evidence collection, control testing, SOC 2 readiness, and GRC platform management. |
+| [industry-compliance](skills/industry-compliance/) | Task | Vertical-specific compliance: HIPAA, PCI-DSS, SOX, FedRAMP, and financial services. |
+| [security-operations](skills/security-operations/) | Orchestrator | VP SOC: threat monitoring, incident detection, and SRE reliability. |
+| [threat-hunter](skills/threat-hunter/) | Task | Proactive threat hunting, anomaly detection, and IOC intelligence. |
+| [incident-responder](skills/incident-responder/) | Task | Incident containment, eradication, recovery, and post-incident reporting. |
+| [sre-operations](skills/sre-operations/) | Task | Platform reliability, SLO compliance, incident runbooks, and operational security controls. |
+| [application-security](skills/application-security/) | Orchestrator | VP AppSec: secure SDLC, SAST/DAST toolchains, vulnerability management, and bug bounty. |
+| [penetration-tester](skills/penetration-tester/) | Task | Authorized penetration tests, red team exercises, and vulnerability assessments. |
+| [infrastructure-security](skills/infrastructure-security/) | Orchestrator | VP Infra Security: cloud security posture, network architecture, encryption, and IAM governance. |
+| [iam-specialist](skills/iam-specialist/) | Task | RBAC, least-privilege, privileged access management, and SSO/MFA architecture. |
+| [network-data-security](skills/network-data-security/) | Task | Network segmentation, DLP controls, encryption policies, and data classification. |
+| [ai-ethics-security](skills/ai-ethics-security/) | Orchestrator | VP AI Security & Ethics: AI system security, responsible AI governance, and EU AI Act compliance. |
+| [ai-security-analyst](skills/ai-security-analyst/) | Task | AI threat modeling, prompt injection testing, LLM security hardening, and adversarial assessments. |
+| [security-trainer](skills/security-trainer/) | Task | Security awareness training, phishing simulations, and role-based compliance education. |
 
 ---
 

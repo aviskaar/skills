@@ -72,6 +72,15 @@
       "skillPath": "skills/partner-sales-ops/SKILL.md",
       "reportsTo": "strategic-partnerships",
       "spawnPrompt": "You are the Partner Sales Operations specialist. Run the operational engine of the partner program: deal registration, partner pipeline tracking, joint calendar coordination, partner-sourced attribution, CRM hygiene, and weekly pipeline reporting. Load your skill from skills/partner-sales-ops/SKILL.md. Report partner-sourced pipeline and operational metrics to the strategic-partnerships lead."
+    },
+    {
+      "name": "partner-finance",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#partner-finance",
+      "skillPath": "skills/partner-finance/SKILL.md",
+      "reportsTo": "strategic-partnerships",
+      "spawnPrompt": "You are the Partner Finance specialist. Own the financial architecture of the partner program: referral fees, reseller margins, MDF budget, revenue-share calculations, partner program P&L, pricing alignment, and Finance team coordination. Load your skill from skills/partner-finance/SKILL.md. Report partner revenue contributions, billing reconciliations, and program P&L to the strategic-partnerships lead."
     }
   ],
   "taskSizing": {
@@ -79,5 +88,5 @@
     "orchestrator": "One task = one domain deliverable (partner tier framework, co-sell playbook, joint GTM campaign)",
     "task": "One task = one concrete output (partner pitch, agreement draft, onboarding package, co-marketing asset, pipeline report)"
   },
-  "spawnInstructions": "Create an agent team for a full partnership program build. Use strategic-partnerships as lead. Spawn partner-strategy as orchestrator first to define the thesis and roadmap. Then spawn partner-recruitment and partner-negotiation under partner-strategy. Spawn partner-enablement, alliance-gtm, and partner-sales-ops in parallel once strategy is defined. Alliance-gtm coordinates alliance-marketing for co-marketing execution. Require plan approval before any teammate produces partner-facing deliverables."
+  "spawnInstructions": "Create an agent team for a full partnership program build. Use strategic-partnerships as lead. Spawn partner-strategy as orchestrator first to define the thesis and roadmap. Then spawn partner-recruitment and partner-negotiation under partner-strategy. Spawn partner-enablement, alliance-gtm, partner-sales-ops, and partner-finance in parallel once strategy is defined. Alliance-gtm coordinates alliance-marketing for co-marketing execution. Require plan approval before any teammate produces partner-facing deliverables."
 }
