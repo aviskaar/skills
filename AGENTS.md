@@ -57,16 +57,29 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 
 Open Org skill hierarchies map naturally onto agent team structures. Each orchestrator skill becomes the **team lead**; specialist skills become **teammates**.
 
-### Example: Research Team
+Pre-built team configurations live in `.claude/teams/`. Load any team by name:
+
+```
+Create an agent team using the research-team configuration.
+```
+
+---
+
+### Research Team (`research-team`)
 
 ```
 computer-scientist (team lead)
 ├── principal-scientist
 │   ├── lead-researcher
+│   │   ├── ai-engineer
+│   │   │   └── auto-website-builder
 │   │   ├── hypothesis-generation
 │   │   ├── literature-synthesis
 │   │   ├── experiment-design
-│   │   └── research-writing
+│   │   ├── code-replication
+│   │   ├── research-writing
+│   │   ├── ieee-paper-generator
+│   │   └── research-paper-review
 │   └── auto-benchmark
 ```
 
@@ -79,7 +92,76 @@ hypothesis generation, literature synthesis, and experiment design.
 Require plan approval before any teammate writes output.
 ```
 
-### Example: Marketing Team
+---
+
+### Engineering Team (`engineering-team`)
+
+```
+ai-engineer (team lead)
+└── auto-website-builder
+```
+
+**Spawn this team:**
+
+```
+Create an agent team to build [product] from a research brief or PRD.
+Use ai-engineer as lead for architecture, backend, and AI/ML integration.
+Spawn auto-website-builder for the complete web presence and frontend codebase.
+Require plan approval before any teammate produces code.
+```
+
+---
+
+### Enterprise Agent Team (`enterprise-agent-team`)
+
+```
+dynamic-enterprise-agent (team lead)
+├── enterprise-signal-listener   (Phase 0 — Listen)
+├── enterprise-problem-decoder   (Phase 1 — Decode)
+├── enterprise-agent-builder     (Phases 2+3 — Build)
+└── enterprise-agent-shipper     (Phases 4+5 — Ship)
+```
+
+**Spawn this team:**
+
+```
+Create an agent team to build an enterprise AI agent for [client problem].
+Use dynamic-enterprise-agent as lead. Spawn teammates sequentially through
+the Listen → Decode → Build → Ship pipeline. Target: agent deployed before
+the client meeting ends.
+```
+
+---
+
+### GTM / Sales Team (`gtm-team`)
+
+```
+pm-ai-research (team lead)
+├── pm-lead
+│   ├── stakeholder-intel
+│   ├── competitive-research
+│   ├── idea-generation
+│   ├── prd-writer
+│   ├── roadmap-planner
+│   └── proposal-writer
+├── proposal-automation
+├── calendar-pipeline
+└── account-intelligence
+```
+
+**Spawn this team:**
+
+```
+Create an agent team for a full product planning cycle on [product area].
+Use pm-ai-research as lead. Spawn pm-lead as project orchestrator with
+task-layer teammates for research, then prd-writer and roadmap-planner
+for deliverables. Spawn calendar-pipeline and account-intelligence for
+sales execution.
+```
+
+---
+
+### Marketing Team (`marketing-team`)
 
 ```
 cmo-marketing (team lead)
@@ -89,8 +171,12 @@ cmo-marketing (team lead)
 ├── demand-gen
 │   ├── paid-ads-manager
 │   └── lead-routing
-└── product-marketing
-    └── customer-intel
+├── product-marketing
+│   └── customer-intel
+├── community-growth
+│   └── community-builder
+├── events-webinars
+└── retention-marketing
 ```
 
 **Spawn this team:**
@@ -100,6 +186,115 @@ Create an agent team for a product launch campaign.
 Use cmo-marketing as lead. Spawn content-marketing, demand-gen,
 and product-marketing teammates. Have them coordinate on messaging
 before each produces their deliverables.
+```
+
+---
+
+### Strategic Partnerships Team (`partnerships-team`)
+
+```
+strategic-partnerships (team lead)
+├── partner-strategy
+│   ├── partner-recruitment
+│   └── partner-negotiation
+├── partner-enablement
+├── alliance-gtm
+│   └── alliance-marketing
+├── partner-sales-ops
+└── partner-finance
+```
+
+**Spawn this team:**
+
+```
+Create an agent team to build a full partner program.
+Use strategic-partnerships as lead. Spawn partner-strategy first to
+define thesis and roadmap, then partner-recruitment and partner-negotiation.
+Spawn partner-enablement, alliance-gtm, partner-sales-ops, and
+partner-finance in parallel once strategy is set.
+```
+
+---
+
+### Investor Relations Team (`investor-relations-team`)
+
+```
+cro-investor-relations (team lead)
+├── investor-research
+├── pitch-deck-builder
+├── investor-outreach
+├── investor-calendar
+├── due-diligence-prep
+└── fundraising-analytics
+```
+
+**Spawn this team:**
+
+```
+Create an agent team for a fundraising round.
+Use cro-investor-relations as lead. Spawn investor-research first, then
+pitch-deck-builder and investor-outreach in parallel. Spawn investor-calendar
+for meeting management, due-diligence-prep once interest is confirmed,
+and fundraising-analytics throughout for pipeline visibility.
+```
+
+---
+
+### Finance Team (`finance-team`)
+
+```
+cfo-finance (team lead)
+├── revenue-operations
+│   ├── invoice-management
+│   └── commission-tracker
+├── accounts-payable
+│   ├── purchase-order-management
+│   └── expense-management
+├── payroll-compensation
+│   └── salary-management
+└── tax-compliance
+```
+
+**Spawn this team:**
+
+```
+Create an agent team for a full financial close cycle.
+Use cfo-finance as lead. Spawn revenue-operations, accounts-payable,
+and payroll-compensation as orchestrators in parallel — each coordinating
+their task-layer teammates. Spawn tax-compliance for specialized reporting.
+```
+
+---
+
+### Security Team (`security-team`)
+
+```
+ciso (team lead)
+├── compliance-governance
+│   ├── compliance-auditor
+│   └── industry-compliance
+├── security-operations
+│   ├── threat-hunter
+│   ├── incident-responder
+│   └── sre-operations
+├── application-security
+│   └── penetration-tester
+├── infrastructure-security
+│   ├── iam-specialist
+│   └── network-data-security
+├── ai-ethics-security
+│   └── ai-security-analyst
+└── security-trainer
+```
+
+**Spawn this team:**
+
+```
+Create an agent team for an enterprise security program review.
+Use ciso as lead. Spawn compliance-governance, security-operations,
+application-security, infrastructure-security, and ai-ethics-security
+as VP orchestrators in parallel — each coordinating their task-layer
+teammates. Spawn security-trainer for org-wide enablement.
 ```
 
 ---
