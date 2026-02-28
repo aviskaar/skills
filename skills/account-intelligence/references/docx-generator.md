@@ -1,12 +1,18 @@
 # .docx Generation Script — Node.js Template
 
-This file provides the complete scaffold for generating the Account Intelligence Report as a formatted `.docx` file using the `docx` npm package (v8.x).
+This file provides the complete scaffold for generating the Account Intelligence Report as a formatted `.docx` file using the `docx` npm package (v8.x), with high-definition embedded charts via `chartjs-node-canvas`.
 
 **Instructions for use:**
 1. Copy the script below into a new file: `generate-report.js`
 2. Populate the `data` object at the top with all research findings
 3. Anywhere a value is estimated or inferred, append the inline assumption text using the `assumption()` helper (see Section 2)
-4. Run: `npm install docx && node generate-report.js`
+4. Run: `npm install docx chartjs-node-canvas chart.js canvas && node generate-report.js`
+
+**Chart dependencies:** The script generates four high-definition PNG charts embedded directly in the .docx:
+- Spending Allocation doughnut chart (Section 5)
+- Opportunity Timeline bar chart (Section 8)
+- AI Readiness Radar chart (Section 12)
+- IP Strength Snapshot horizontal bar chart (Section 13)
 
 ---
 
@@ -15,17 +21,19 @@ This file provides the complete scaffold for generating the Account Intelligence
 ```javascript
 // ============================================================
 // Account Intelligence Report Generator
-// Requires: npm install docx
+// Requires: npm install docx chartjs-node-canvas chart.js canvas
 // Usage: node generate-report.js
 // ============================================================
 
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   WidthType, BorderStyle, AlignmentType, ShadingType, VerticalAlign,
-  Header, PageBreak, convertInchesToTwip, UnderlineType, TableLayoutType
+  Header, PageBreak, convertInchesToTwip, UnderlineType, TableLayoutType,
+  ImageRun
 } = require('docx');
 const fs = require('fs');
 const path = require('path');
+const { ChartJSNodeCanvas } = require('chartjs-node-canvas');
 
 // ============================================================
 // COLOR CONSTANTS
@@ -39,6 +47,26 @@ const MUTED  = "AACCEE";
 const ORANGE = "CC6600";
 const ALT    = "EEF3FA";
 const BLACK  = "000000";
+const GOLD   = "FFF8DC";   // Pioneering Bets callout background
+const GOLDBORDER = "B8860B"; // Pioneering Bets border accent
+const PURPLE = "6B4FA0";   // AI governance / research accent
+const GREEN  = "2E7D32";   // AI readiness strong (4–5)
+const RED    = "C62828";   // AI readiness weak (1–2)
+const AMBER  = "E65100";   // AI readiness mid (3)
+const LIGHTGOLD = "FFF3CD"; // IP section row alt
+
+// Chart colors (hex without #, for chartjs)
+const CHART_COLORS = {
+  navy:   '#1B2A4A',
+  blue:   '#2E5FA3',
+  teal:   '#2E8B7A',
+  light:  '#5BA3C9',
+  orange: '#CC6600',
+  alt:    '#EEF3FA',
+  purple: '#6B4FA0',
+  green:  '#2E7D32',
+  amber:  '#E65100'
+};
 
 // ============================================================
 // RESEARCH DATA — POPULATE FROM PHASE 1 RESEARCH
@@ -198,6 +226,130 @@ const data = {
     bestTiming:    "{{SPECIFIC DATE WINDOW AND THE REASON}}",
     pitfall1:      "{{SPECIFIC PITFALL 1}}",
     pitfall2:      "{{SPECIFIC PITFALL 2}}"
+  },
+
+  // ---- AI AGENTIC VISION (Section 12) ----
+  aiVision: {
+    // AI Readiness scores — each dimension scored 1–5 from Dimension 8 research
+    readinessScores: [
+      { dimension: "Data Maturity",         score: 0, evidence: "{{SPECIFIC SIGNAL FROM RESEARCH}}", implication: "{{WHAT THIS MEANS FOR AI BUILDOUT}}" },
+      { dimension: "Infrastructure Readiness", score: 0, evidence: "{{SIGNAL}}", implication: "{{IMPLICATION}}" },
+      { dimension: "AI / ML Talent",        score: 0, evidence: "{{SIGNAL}}", implication: "{{IMPLICATION}}" },
+      { dimension: "AI Governance",         score: 0, evidence: "{{SIGNAL}}", implication: "{{IMPLICATION}}" },
+      { dimension: "Agentic Readiness",     score: 0, evidence: "{{SIGNAL}}", implication: "{{IMPLICATION}}" }
+    ],
+    // Agentic use cases — tied to confirmed strategic priorities
+    useCases: [
+      {
+        name:           "{{SPECIFIC USE CASE — NOT 'AI AUTOMATION'}}",
+        function:       "{{BUSINESS FUNCTION: Finance / Ops / HR / Supply Chain / etc.}}",
+        strategicLink:  "{{Links to Priority X from Section 4}}",
+        impact:         "{{High / Medium / Low}}",
+        complexity:     "{{High / Medium / Low}}",
+        tier:           "1",   // 1 = Deploy Now, 2 = Build This Year, 3 = Innovate Long-Term
+        valueEstimate:  "${{X}}M",
+        valueBasis:     "{{BASIS FOR ESTIMATE}}"
+      },
+      {
+        name: "{{USE CASE 2}}", function: "{{FUNCTION}}", strategicLink: "{{LINK}}",
+        impact: "{{H/M/L}}", complexity: "{{H/M/L}}", tier: "1",
+        valueEstimate: "${{X}}M", valueBasis: "{{BASIS}}"
+      },
+      {
+        name: "{{USE CASE 3}}", function: "{{FUNCTION}}", strategicLink: "{{LINK}}",
+        impact: "{{H/M/L}}", complexity: "{{H/M/L}}", tier: "2",
+        valueEstimate: "${{X}}M", valueBasis: "{{BASIS}}"
+      },
+      {
+        name: "{{USE CASE 4}}", function: "{{FUNCTION}}", strategicLink: "{{LINK}}",
+        impact: "{{H/M/L}}", complexity: "{{H/M/L}}", tier: "2",
+        valueEstimate: "${{X}}M", valueBasis: "{{BASIS}}"
+      },
+      {
+        name: "{{USE CASE 5}}", function: "{{FUNCTION}}", strategicLink: "{{LINK}}",
+        impact: "{{H/M/L}}", complexity: "{{H/M/L}}", tier: "3",
+        valueEstimate: "${{X}}M", valueBasis: "{{BASIS}}"
+      }
+    ],
+    deliveryModel:    "{{PARAGRAPH: HOW YOUR FIRM DELIVERS — SPECIFIC PLATFORMS, ACCELERATORS, SEQUENCING, GOVERNANCE}}",
+    platformAnchors:  "{{SPECIFIC AI PLATFORMS FROM COMPANY'S CONFIRMED TECH STACK THAT ANCHOR THE SOLUTION}}",
+    investmentTable: [
+      { area: "{{INVESTMENT AREA 1}}", investment: "${{X}}M", valueBasis: "{{BASIS}}", valueCapture: "${{Y}}M", payback: "{{X months}}" },
+      { area: "{{INVESTMENT AREA 2}}", investment: "${{X}}M", valueBasis: "{{BASIS}}", valueCapture: "${{Y}}M", payback: "{{X months}}" },
+      { area: "{{INVESTMENT AREA 3}}", investment: "${{X}}M", valueBasis: "{{BASIS}}", valueCapture: "${{Y}}M", payback: "{{X months}}" }
+    ],
+    cfoNarrative:     "{{3-4 SENTENCES: HOW YOUR FIRM WOULD PRESENT THE AI BUSINESS CASE TO THE CFO — SPECIFIC TO THIS COMPANY'S COST PRESSURES OR GROWTH MANDATE}}"
+  },
+
+  // ---- IP & RESEARCH OPPORTUNITIES (Section 13) ----
+  ipResearch: {
+    // IP landscape across three categories
+    ipLandscape: [
+      {
+        category:    "Patent Portfolio",
+        currentState: "{{ACTIVE PATENTS / FILING ACTIVITY / DOMAINS — sourced or flagged}}",
+        strength:    "{{High / Medium / Low}}",
+        gap:         "{{WHERE COVERAGE IS THIN OR NOVEL IP COULD BE FILED}}"
+      },
+      {
+        category:    "Proprietary Data Assets",
+        currentState: "{{WHAT UNIQUE DATA THE COMPANY GENERATES OR HOLDS}}",
+        strength:    "{{High / Medium / Low}}",
+        gap:         "{{HOW IT COULD BE MONETIZED OR PROTECTED}}"
+      },
+      {
+        category:    "Proprietary Processes / Algorithms",
+        currentState: "{{KNOWN TRADE SECRETS, PROPRIETARY MODELS, UNIQUE WORKFLOWS}}",
+        strength:    "{{High / Medium / Low}}",
+        gap:         "{{WHAT COULD BE FORMALIZED, PROTECTED, OR BUILT ON}}"
+      }
+    ],
+    // Research & innovation opportunities
+    researchOpportunities: [
+      {
+        area:         "{{RESEARCH AREA 1 — SPECIFIC}}",
+        rationale:    "{{WHY THIS MATTERS FOR THIS COMPANY NOW}}",
+        output:       "{{PATENT / MODEL / PLATFORM / PUBLISHED RESEARCH}}",
+        firmRole:     "{{Lead / Co-develop / Advisory}}",
+        timeline:     "{{X months}}"
+      },
+      {
+        area: "{{RESEARCH AREA 2}}", rationale: "{{RATIONALE}}",
+        output: "{{OUTPUT}}", firmRole: "{{ROLE}}", timeline: "{{X months}}"
+      },
+      {
+        area: "{{RESEARCH AREA 3}}", rationale: "{{RATIONALE}}",
+        output: "{{OUTPUT}}", firmRole: "{{ROLE}}", timeline: "{{X months}}"
+      },
+      {
+        area: "{{RESEARCH AREA 4}}", rationale: "{{RATIONALE}}",
+        output: "{{OUTPUT}}", firmRole: "{{ROLE}}", timeline: "{{X months}}"
+      }
+    ],
+    // Co-innovation model
+    coInnovation: {
+      fundingModel:      "{{HOW COSTS, IP OWNERSHIP, AND COMMERCIALIZATION RIGHTS WOULD BE SPLIT}}",
+      governance:        "{{WHO OWNS DECISIONS — NAMED ROLES AT BOTH ORGANIZATIONS}}",
+      ipFramework:       "{{WHAT EACH PARTY BRINGS IN, WHAT GETS CREATED JOINTLY, HOW NEW IP IS REGISTERED}}",
+      milestones:        "{{6-MONTH, 12-MONTH, 24-MONTH OUTCOMES}}",
+      modelNarrative:    "{{3-4 SENTENCES: WHY THIS MODEL FITS THIS COMPANY'S CULTURE AND RISK TOLERANCE}}"
+    },
+    // Pioneering Bets — 2–3 industry-defining innovation opportunities
+    pioneeringBets: [
+      {
+        title:           "{{PIONEERING BET 1 TITLE}}",
+        thesis:          "{{WHAT MAKES THIS COMPANY UNIQUELY POSITIONED — SPECIFIC DATA ASSET + DOMAIN DEPTH + STRATEGIC MOMENT}}",
+        innovation:      "{{WHAT NOVEL AI CAPABILITY, PRODUCT, OR PROCESS COULD BE BUILT}}",
+        moat:            "{{WHY COMPETITORS COULD NOT EASILY REPLICATE THIS}}",
+        firmContribution:"{{WHAT YOUR FIRM BRINGS — SPECIFIC IP, PLATFORM, OR EXPERTISE}}",
+        risk:            "{{WHAT COULD PREVENT THIS — TECHNOLOGY / ORGANIZATIONAL / REGULATORY}}"
+      },
+      {
+        title: "{{PIONEERING BET 2 TITLE}}",
+        thesis: "{{THESIS}}", innovation: "{{INNOVATION}}",
+        moat: "{{MOAT}}", firmContribution: "{{FIRM CONTRIBUTION}}", risk: "{{RISK}}"
+      }
+    ]
   }
 };
 
@@ -355,6 +507,275 @@ function navyBox(paragraphText) {
           spacing: { before: 140, after: 140 },
           indent: { left: 180, right: 180 }
         })]
+      })]
+    })]
+  });
+}
+
+// ============================================================
+// CHART GENERATION HELPERS (chartjs-node-canvas)
+// ============================================================
+
+// Generates a chart as a PNG Buffer
+async function generateChart(type, chartData, options, width = 550, height = 380) {
+  const canvas = new ChartJSNodeCanvas({
+    width, height,
+    backgroundColour: '#FFFFFF',
+    chartCallback: (ChartJS) => {
+      ChartJS.defaults.font.family = 'Arial';
+      ChartJS.defaults.color = '#1B2A4A';
+    }
+  });
+  return canvas.renderToBuffer({ type, data: chartData, options });
+}
+
+// Embeds a chart buffer as an ImageRun in a centered Paragraph
+function chartImage(buffer, widthPx = 490, heightPx = 340) {
+  return new Paragraph({
+    children: [
+      new ImageRun({
+        data: buffer,
+        transformation: { width: widthPx, height: heightPx }
+      })
+    ],
+    alignment: AlignmentType.CENTER,
+    spacing: { before: 100, after: 120 }
+  });
+}
+
+// Spending Allocation doughnut chart (Section 5)
+async function buildSpendingChart(spendingData) {
+  const labels = spendingData
+    .filter(r => r.category !== 'Total IT Spend (Est.)')
+    .map(r => r.category);
+  const values = spendingData
+    .filter(r => r.category !== 'Total IT Spend (Est.)')
+    .map(r => parseFloat(r.estimate.replace(/[^0-9.]/g, '')) || 10);
+  const colors = [
+    CHART_COLORS.navy, CHART_COLORS.blue, CHART_COLORS.teal,
+    CHART_COLORS.light, CHART_COLORS.purple, CHART_COLORS.amber
+  ];
+  return generateChart('doughnut', {
+    labels,
+    datasets: [{
+      data: values,
+      backgroundColor: colors.slice(0, labels.length),
+      borderColor: '#FFFFFF',
+      borderWidth: 3,
+      hoverOffset: 8
+    }]
+  }, {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Estimated IT Spend Allocation',
+        font: { size: 14, weight: 'bold' },
+        color: '#1B2A4A',
+        padding: { bottom: 12 }
+      },
+      legend: {
+        position: 'right',
+        labels: { font: { size: 11 }, color: '#1B2A4A', padding: 12, boxWidth: 16 }
+      }
+    },
+    cutout: '58%'
+  }, 550, 320);
+}
+
+// Opportunity Timeline horizontal bar chart (Section 8)
+async function buildOpportunityChart(opportunities) {
+  const tier1 = opportunities.filter(o => o.tier === '1');
+  const tier2 = opportunities.filter(o => o.tier === '2');
+  const tier3 = opportunities.filter(o => o.tier === '3');
+  const allOpps = [...tier1, ...tier2, ...tier3];
+  const labels = allOpps.map(o => o.label.length > 32 ? o.label.substring(0, 32) + '…' : o.label);
+  const starts = allOpps.map(o => parseInt(o.tier) === 1 ? 0 : parseInt(o.tier) === 2 ? 6 : 18);
+  const durations = allOpps.map(o => parseInt(o.tier) === 1 ? 6 : parseInt(o.tier) === 2 ? 12 : 12);
+  const bgColors = allOpps.map(o =>
+    o.tier === '1' ? CHART_COLORS.teal : o.tier === '2' ? CHART_COLORS.blue : CHART_COLORS.navy
+  );
+  return generateChart('bar', {
+    labels,
+    datasets: [
+      { data: starts, backgroundColor: 'transparent', borderColor: 'transparent', barPercentage: 0.6 },
+      { data: durations, backgroundColor: bgColors, borderRadius: 4, barPercentage: 0.6,
+        label: 'Opportunity Window (months)' }
+    ]
+  }, {
+    indexAxis: 'y',
+    plugins: {
+      title: {
+        display: true,
+        text: 'Opportunity Timeline (months from now)',
+        font: { size: 13, weight: 'bold' },
+        color: '#1B2A4A',
+        padding: { bottom: 10 }
+      },
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ctx.datasetIndex === 1 ? ` ${ctx.raw} months` : ''
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        max: 32,
+        ticks: { callback: v => `M${v}`, color: '#1B2A4A', font: { size: 10 } },
+        grid: { color: '#EEF3FA' }
+      },
+      y: { stacked: true, ticks: { color: '#1B2A4A', font: { size: 10 } }, grid: { display: false } }
+    }
+  }, 600, Math.max(280, allOpps.length * 44 + 80));
+}
+
+// AI Readiness Radar chart (Section 12)
+async function buildAIRadarChart(readinessScores) {
+  const labels = readinessScores.map(r => r.dimension);
+  const scores = readinessScores.map(r => r.score);
+  return generateChart('radar', {
+    labels,
+    datasets: [{
+      label: 'AI Readiness Score',
+      data: scores,
+      backgroundColor: 'rgba(27, 42, 74, 0.35)',
+      borderColor: '#2E5FA3',
+      borderWidth: 2.5,
+      pointBackgroundColor: '#2E5FA3',
+      pointBorderColor: '#FFFFFF',
+      pointRadius: 5,
+      pointHoverRadius: 7
+    }]
+  }, {
+    scales: {
+      r: {
+        min: 0,
+        max: 5,
+        ticks: {
+          stepSize: 1,
+          display: true,
+          font: { size: 10 },
+          color: '#AACCEE',
+          backdropColor: 'transparent'
+        },
+        pointLabels: { font: { size: 11, weight: 'bold' }, color: '#1B2A4A' },
+        grid: { color: '#AACCEE' },
+        angleLines: { color: '#AACCEE' }
+      }
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: 'AI Readiness Assessment',
+        font: { size: 14, weight: 'bold' },
+        color: '#1B2A4A',
+        padding: { bottom: 10 }
+      },
+      legend: { display: false }
+    }
+  }, 460, 400);
+}
+
+// IP Strength Snapshot horizontal bar chart (Section 13)
+async function buildIPChart(ipLandscape) {
+  const labels = ipLandscape.map(ip => ip.category);
+  const strengthMap = { 'High': 5, 'Medium': 3, 'Low': 1 };
+  const values = ipLandscape.map(ip => strengthMap[ip.strength] || 2);
+  const colors = ipLandscape.map(ip =>
+    ip.strength === 'High' ? CHART_COLORS.teal :
+    ip.strength === 'Medium' ? CHART_COLORS.blue :
+    CHART_COLORS.orange
+  );
+  return generateChart('bar', {
+    labels,
+    datasets: [{
+      label: 'IP Strength',
+      data: values,
+      backgroundColor: colors,
+      borderRadius: 5,
+      barPercentage: 0.55
+    }]
+  }, {
+    indexAxis: 'y',
+    plugins: {
+      title: {
+        display: true,
+        text: 'IP Strength by Category',
+        font: { size: 13, weight: 'bold' },
+        color: '#1B2A4A',
+        padding: { bottom: 10 }
+      },
+      legend: { display: false }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 5,
+        ticks: {
+          callback: v => ['', 'Low', '', 'Med', '', 'High'][v] || '',
+          color: '#1B2A4A',
+          font: { size: 11 }
+        },
+        grid: { color: '#EEF3FA' }
+      },
+      y: { ticks: { color: '#1B2A4A', font: { size: 12, weight: 'bold' } }, grid: { display: false } }
+    }
+  }, 500, 240);
+}
+
+// AI Readiness score color (based on score 1–5)
+function scoreColor(score) {
+  if (score >= 4) return GREEN;
+  if (score === 3) return AMBER;
+  return RED;
+}
+
+// Colored score badge cell for AI readiness table
+function scoreBadgeCell(score) {
+  const color = scoreColor(score);
+  const bars = '■'.repeat(score) + '□'.repeat(5 - score);
+  return new TableCell({
+    shading: { fill: color, type: ShadingType.CLEAR, color: 'auto' },
+    borders: noBorder,
+    verticalAlign: VerticalAlign.CENTER,
+    children: [new Paragraph({
+      children: [
+        new TextRun({ text: `${score}/5  `, color: WHITE, bold: true, size: 22, font: 'Arial' }),
+        new TextRun({ text: bars, color: WHITE, size: 18, font: 'Arial' })
+      ],
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 60, after: 60 }
+    })]
+  });
+}
+
+// Gold callout box for Pioneering Bets
+function goldBox(title, paragraphTexts) {
+  const children = [
+    new Paragraph({
+      children: [new TextRun({ text: `★ ${title}`, color: GOLDBORDER, bold: true, size: 24, font: 'Arial' })],
+      spacing: { before: 120, after: 80 },
+      indent: { left: 160 }
+    }),
+    ...paragraphTexts.map(t => new Paragraph({
+      children: [new TextRun({ text: t, color: '3D2B00', size: 22, font: 'Arial' })],
+      spacing: { after: 80 },
+      indent: { left: 160, right: 160 }
+    }))
+  ];
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    rows: [new TableRow({
+      children: [new TableCell({
+        shading: { fill: GOLD, type: ShadingType.CLEAR, color: 'auto' },
+        borders: {
+          top:    { style: BorderStyle.SINGLE, size: 8, color: GOLDBORDER },
+          bottom: { style: BorderStyle.SINGLE, size: 8, color: GOLDBORDER },
+          left:   { style: BorderStyle.SINGLE, size: 8, color: GOLDBORDER },
+          right:  { style: BorderStyle.SINGLE, size: 8, color: GOLDBORDER }
+        },
+        children
       })]
     })]
   });
@@ -780,77 +1201,305 @@ const section11 = [
 ];
 
 // ============================================================
-// ASSEMBLE AND SAVE DOCUMENT
+// SECTION 12 — AI AGENTIC SOLUTIONS VISION
+// (built async — requires chart generation)
 // ============================================================
-const doc = new Document({
-  styles: {
-    default: {
-      document: {
-        run: { font: "Arial", size: 22 }
+async function buildSection12() {
+  const radarBuf = await buildAIRadarChart(data.aiVision.readinessScores);
+
+  // AI Readiness scorecard table (colored score badges)
+  const readinessTable = new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    layout: TableLayoutType.FIXED,
+    rows: [
+      new TableRow({
+        tableHeader: true,
+        children: ['Dimension', 'Score', 'Evidence / Signal', 'Implication'].map(h =>
+          new TableCell({
+            shading: { fill: NAVY, type: ShadingType.CLEAR, color: 'auto' },
+            borders: noBorder,
+            children: [new Paragraph({
+              children: [new TextRun({ text: h, color: WHITE, bold: true, size: 22, font: 'Arial' })],
+              spacing: { before: 60, after: 60 },
+              indent: { left: 80 }
+            })]
+          })
+        )
+      }),
+      ...data.aiVision.readinessScores.map((r, i) =>
+        new TableRow({
+          children: [
+            new TableCell({
+              shading: i % 2 === 1 ? { fill: ALT, type: ShadingType.CLEAR, color: 'auto' } : undefined,
+              borders: { top: { style: BorderStyle.SINGLE, size: 1, color: 'DDDDDD' }, bottom: { style: BorderStyle.SINGLE, size: 1, color: 'DDDDDD' }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } },
+              children: [new Paragraph({ children: [new TextRun({ text: r.dimension, bold: true, size: 22, font: 'Arial' })], spacing: { before: 60, after: 60 }, indent: { left: 80 } })]
+            }),
+            scoreBadgeCell(r.score),
+            new TableCell({
+              shading: i % 2 === 1 ? { fill: ALT, type: ShadingType.CLEAR, color: 'auto' } : undefined,
+              borders: { top: { style: BorderStyle.SINGLE, size: 1, color: 'DDDDDD' }, bottom: { style: BorderStyle.SINGLE, size: 1, color: 'DDDDDD' }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } },
+              children: [new Paragraph({ children: [new TextRun({ text: r.evidence, size: 20, font: 'Arial', color: '333333' })], spacing: { before: 60, after: 60 }, indent: { left: 80 } })]
+            }),
+            new TableCell({
+              shading: i % 2 === 1 ? { fill: ALT, type: ShadingType.CLEAR, color: 'auto' } : undefined,
+              borders: { top: { style: BorderStyle.SINGLE, size: 1, color: 'DDDDDD' }, bottom: { style: BorderStyle.SINGLE, size: 1, color: 'DDDDDD' }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } },
+              children: [new Paragraph({ children: [new TextRun({ text: r.implication, size: 20, font: 'Arial', italics: true })], spacing: { before: 60, after: 60 }, indent: { left: 80 } })]
+            })
+          ]
+        })
+      )
+    ]
+  });
+
+  // Tier color mapping for use case table
+  const tierBg = { '1': 'D0F0E8', '2': 'D6E4F7', '3': 'D5D0E8' };
+  const tierLabel = { '1': 'Tier 1 — Deploy Now', '2': 'Tier 2 — Build This Year', '3': 'Tier 3 — Innovate Long-Term' };
+
+  const useCaseTable = dataTable(
+    ['Use Case', 'Function', 'Strategic Link', 'Impact', 'Complexity', 'Tier'],
+    data.aiVision.useCases.map(uc => [
+      uc.name,
+      uc.function,
+      uc.strategicLink,
+      uc.impact,
+      uc.complexity,
+      tierLabel[uc.tier] || `Tier ${uc.tier}`
+    ]),
+    [28, 14, 22, 9, 12, 15]
+  );
+
+  const investmentTable = dataTable(
+    ['Investment Area', 'Est. Investment', 'Est. Annual Value Capture', 'Payback'],
+    data.aiVision.investmentTable.map(row => [
+      row.area,
+      [new TextRun({ text: row.investment, size: 22, font: 'Arial' }), assumption(row.valueBasis)],
+      row.valueCapture,
+      row.payback
+    ]),
+    [30, 18, 32, 20]
+  );
+
+  return [
+    spacer(10),
+    sectionHeader('Section 12 — AI Agentic Solutions Vision'),
+    spacer(6),
+    subsection('12.1 — AI Readiness Assessment'),
+    body('Each dimension scored 1–5 based on confirmed research signals. Green = strong foundation (4–5), Amber = developing (3), Red = early stage (1–2).'),
+    spacer(6),
+    readinessTable,
+    spacer(10),
+    subsection('AI Readiness Radar'),
+    chartImage(radarBuf, 420, 370),
+    spacer(10),
+    subsection('12.2 — AI Agentic Use Case Roadmap'),
+    body('Use cases ranked by business impact and implementation readiness, mapped to confirmed strategic priorities. All value estimates are [ASSUMPTION — basis provided].'),
+    spacer(4),
+    useCaseTable,
+    spacer(10),
+    subsection('12.3 — AI Delivery Model for ' + data.company.name),
+    body(data.aiVision.deliveryModel),
+    spacer(4),
+    body([
+      new TextRun({ text: 'Platform Anchors: ', bold: true, size: 22, font: 'Arial', color: BLUE }),
+      new TextRun({ text: data.aiVision.platformAnchors, size: 22, font: 'Arial' })
+    ]),
+    spacer(10),
+    subsection('12.4 — AI Investment Framing'),
+    spacer(4),
+    investmentTable,
+    spacer(8),
+    body([
+      new TextRun({ text: 'CFO Business Case: ', bold: true, size: 22, font: 'Arial', color: BLUE }),
+      new TextRun({ text: data.aiVision.cfoNarrative, size: 22, font: 'Arial' })
+    ])
+  ];
+}
+
+// ============================================================
+// SECTION 13 — IP & RESEARCH OPPORTUNITIES
+// (built async — requires chart generation)
+// ============================================================
+async function buildSection13() {
+  const ipChartBuf = await buildIPChart(data.ipResearch.ipLandscape);
+
+  const ipTable = dataTable(
+    ['IP Category', 'Current State', 'Strength', 'Gap / Opportunity'],
+    data.ipResearch.ipLandscape.map(ip => [
+      ip.category,
+      ip.currentState,
+      ip.strength,
+      ip.gap
+    ]),
+    [18, 32, 12, 38]
+  );
+
+  const researchTable = dataTable(
+    ['Research Area', 'Strategic Rationale', 'Potential Output', `${data.pursuer.firm} Role`, 'Timeline'],
+    data.ipResearch.researchOpportunities.map(r => [
+      r.area, r.rationale, r.output, r.firmRole, r.timeline
+    ]),
+    [20, 28, 20, 18, 14]
+  );
+
+  const coInnoTable = dataTable(
+    ['Dimension', 'Structure'],
+    [
+      ['Funding Model',    data.ipResearch.coInnovation.fundingModel],
+      ['Governance',       data.ipResearch.coInnovation.governance],
+      ['IP Framework',     data.ipResearch.coInnovation.ipFramework],
+      ['Milestone Plan',   data.ipResearch.coInnovation.milestones]
+    ],
+    [22, 78]
+  );
+
+  const pioneeringBetBlocks = [];
+  data.ipResearch.pioneeringBets.forEach((bet, i) => {
+    pioneeringBetBlocks.push(spacer(10));
+    pioneeringBetBlocks.push(
+      goldBox(bet.title, [
+        `Thesis: ${bet.thesis}`,
+        `The Innovation: ${bet.innovation}`,
+        `Competitive Moat: ${bet.moat}`,
+        `${data.pursuer.firm} Contribution: ${bet.firmContribution}`,
+        `Risk to Watch: ${bet.risk}`
+      ])
+    );
+  });
+
+  return [
+    spacer(10),
+    sectionHeader('Section 13 — IP & Research Opportunities'),
+    spacer(6),
+    subsection('13.1 — IP Landscape Assessment'),
+    body('Analysis of current IP posture across patents, proprietary data, and processes. Sourced where confirmed; all inferences flagged [ASSUMPTION].'),
+    spacer(4),
+    ipTable,
+    spacer(8),
+    subsection('IP Strength Snapshot'),
+    chartImage(ipChartBuf, 460, 220),
+    spacer(10),
+    subsection('13.2 — Research & Innovation Opportunities'),
+    spacer(4),
+    researchTable,
+    spacer(10),
+    subsection('13.3 — Co-Innovation Model'),
+    spacer(4),
+    coInnoTable,
+    spacer(8),
+    body(data.ipResearch.coInnovation.modelNarrative),
+    spacer(10),
+    subsection('13.4 — Pioneering Bets: Where ' + data.company.name + ' Could Lead the Industry'),
+    body(`The following represent ${data.pursuer.firm}'s highest-conviction bets on where ${data.company.name} has the unique combination of data, domain position, and strategic moment to define the next era in its industry.`),
+    ...pioneeringBetBlocks
+  ];
+}
+
+// ============================================================
+// ASSEMBLE AND SAVE DOCUMENT (async — awaits chart generation)
+// ============================================================
+async function buildAndSaveDocument() {
+  // Generate charts in parallel
+  const [spendingChart, opportunityChart, section12Elements, section13Elements] = await Promise.all([
+    buildSpendingChart(data.techLandscape.spending),
+    buildOpportunityChart(data.opportunities),
+    buildSection12(),
+    buildSection13()
+  ]);
+
+  // Inject spending chart into section 5
+  const section5WithChart = [
+    ...section5,
+    spacer(8),
+    subsection('Spending Allocation Overview'),
+    chartImage(spendingChart, 490, 300)
+  ];
+
+  // Inject opportunity chart into section 8
+  const section8WithChart = [
+    ...section8,
+    spacer(8),
+    subsection('Opportunity Timeline Overview'),
+    chartImage(opportunityChart, 540, Math.max(240, data.opportunities.length * 44 + 80))
+  ];
+
+  const doc = new Document({
+    styles: {
+      default: {
+        document: {
+          run: { font: "Arial", size: 22 }
+        }
       }
-    }
-  },
-  sections: [
-    // Section A: Cover page — no header, minimal margins
-    {
-      properties: {
-        page: {
-          margin: {
-            top:    convertInchesToTwip(0.3),
-            bottom: convertInchesToTwip(0.3),
-            left:   convertInchesToTwip(0.3),
-            right:  convertInchesToTwip(0.3)
-          }
-        }
-      },
-      children: [coverPage]
     },
-    // Section B: Main report — standard margins, header from page 2
-    {
-      properties: {
-        page: {
-          margin: {
-            top:    convertInchesToTwip(1.0),
-            bottom: convertInchesToTwip(1.0),
-            left:   convertInchesToTwip(1.0),
-            right:  convertInchesToTwip(1.0)
+    sections: [
+      // Section A: Cover page — no header, minimal margins
+      {
+        properties: {
+          page: {
+            margin: {
+              top:    convertInchesToTwip(0.3),
+              bottom: convertInchesToTwip(0.3),
+              left:   convertInchesToTwip(0.3),
+              right:  convertInchesToTwip(0.3)
+            }
           }
-        }
+        },
+        children: [coverPage]
       },
-      headers: {
-        default: pageHeader
-      },
-      children: [
-        ...section1,
-        ...section2,
-        ...section3,
-        ...section4,
-        ...section5,
-        ...section6,
-        ...section7,
-        ...section8,
-        ...section9,
-        ...section10,
-        ...section11,
-        spacer(20)
-      ]
-    }
-  ]
-});
+      // Section B: Main report — standard margins, header from page 2
+      {
+        properties: {
+          page: {
+            margin: {
+              top:    convertInchesToTwip(1.0),
+              bottom: convertInchesToTwip(1.0),
+              left:   convertInchesToTwip(1.0),
+              right:  convertInchesToTwip(1.0)
+            }
+          }
+        },
+        headers: {
+          default: pageHeader
+        },
+        children: [
+          ...section1,
+          ...section2,
+          ...section3,
+          ...section4,
+          ...section5WithChart,
+          ...section6,
+          ...section7,
+          ...section8WithChart,
+          ...section9,
+          ...section10,
+          ...section11,
+          ...section12Elements,
+          ...section13Elements,
+          spacer(20)
+        ]
+      }
+    ]
+  });
 
-// Output path
-const outputDir  = "/mnt/user-data/outputs";
-const outputFile = path.join(
-  outputDir,
-  `${data.company.name.replace(/[^a-z0-9]/gi, '_')}_Account_Intelligence_${data.pursuer.firm.replace(/[^a-z0-9]/gi, '_')}.docx`
-);
+  // Output path
+  const outputDir  = "/mnt/user-data/outputs";
+  const outputFile = path.join(
+    outputDir,
+    `${data.company.name.replace(/[^a-z0-9]/gi, '_')}_Account_Intelligence_${data.pursuer.firm.replace(/[^a-z0-9]/gi, '_')}.docx`
+  );
 
-if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-Packer.toBuffer(doc).then(buffer => {
+  const buffer = await Packer.toBuffer(doc);
   fs.writeFileSync(outputFile, buffer);
   console.log(`\n✓ Report saved to: ${outputFile}\n`);
-}).catch(err => {
+  console.log(`  ✓ Sections 1–11 (core intelligence)`);
+  console.log(`  ✓ Section 12 — AI Agentic Solutions Vision (with Radar chart)`);
+  console.log(`  ✓ Section 13 — IP & Research Opportunities (with IP Strength chart)`);
+  console.log(`  ✓ Section 5 — Spending Allocation doughnut chart embedded`);
+  console.log(`  ✓ Section 8 — Opportunity Timeline chart embedded\n`);
+}
+
+buildAndSaveDocument().catch(err => {
   console.error("Error generating report:", err);
   process.exit(1);
 });
@@ -885,3 +1534,25 @@ Follow the `subsection()` + `dataTable()` or `body()` pattern. All elements are 
 ### Testing Without Full Data
 
 Run the script with placeholder strings in place to verify formatting before populating all research findings. The `[ASSUMPTION]` flags will appear in orange italic regardless of placeholder content.
+
+### AI Readiness Scores — How to Assign
+
+Each dimension in `data.aiVision.readinessScores` takes a score of 1–5:
+- **1** — No evidence of capability; pre-foundation stage
+- **2** — Early experiments; no production AI deployment
+- **3** — Isolated AI use cases in production; no enterprise-wide approach
+- **4** — Multiple production AI deployments; enterprise data platform in place
+- **5** — Advanced AI programs; agentic workflows live; AI governance mature
+
+Scores trigger color coding in the scorecard: 4–5 = GREEN, 3 = AMBER, 1–2 = RED.
+
+### Chart Rendering Issues
+
+- If `ChartJSNodeCanvas` fails: ensure `canvas` and `chart.js` are installed alongside `chartjs-node-canvas`
+- If chart images appear blurry: increase `width`/`height` parameters in `generateChart()` and decrease the `transformation` display size proportionally for retina-equivalent quality
+- If chart text is clipped: increase the `height` parameter in the specific chart builder function
+- If the spending doughnut has too many labels: filter `spendingData` to the top 5 categories by value before building the chart
+
+### Pioneering Bets — Gold Box Formatting
+
+The `goldBox()` helper uses a warm gold fill (`FFF8DC`) with a dark gold border (`B8860B`). If more than 2 bets are defined, they render as stacked gold boxes separated by spacers. Limit to 3 bets maximum — more reduces impact. Each bet title is prefixed with a ★ symbol automatically.
