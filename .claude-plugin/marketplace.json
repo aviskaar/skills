@@ -167,6 +167,19 @@
       "strict": false
     },
     {
+      "name": "ollama-multi-model-writer",
+      "source": "./skills/ollama-multi-model-writer",
+      "description": "Write research paper sections locally using Ollama models on GPU — DeepSeek-R1 for methods/results, Phi-4-reasoning for abstract/intro/conclusions, GLM-4.7-Flash for full drafts and synthesis. Fully offline, no cloud APIs.",
+      "version": "1.0.0",
+      "author": { "name": "aviskaar" },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/aviskaar/open-org/tree/main/skills/ollama-multi-model-writer",
+      "keywords": ["research", "ollama", "local-llm", "research-paper", "multi-model", "deepseek", "phi4", "glm", "writing", "gpu"],
+      "category": "Research",
+      "commands": ["./SKILL.md"],
+      "strict": false
+    },
+    {
       "name": "auto-website-builder",
       "source": "./skills/auto-website-builder",
       "description": "Produce investor-grade websites and complete Next.js codebases.",
