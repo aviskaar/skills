@@ -14,6 +14,7 @@ metadata:
     - research-paper-review
     - research-writing
     - ieee-paper-generator
+    - ollama-multi-model-writer
 ---
 
 # Lead Researcher
@@ -216,6 +217,21 @@ Use when the target output is a submission to an IEEE conference or journal:
 
 **Carry forward:** Draft manuscript and list of outstanding gaps.
 
+### 7c — Local Ollama Multi-Model Draft (`ollama-multi-model-writer`)
+
+Use when the user wants to run paper writing locally on GPU using Ollama models (no cloud APIs):
+
+1. **Verify prerequisites**: Confirm Ollama is running and the required models are available — `deepseek-r1:7b`, `phi4-reasoning`, `glm4:9b-chat-q4_K_M`. If any are missing, surface the pull commands to the user before proceeding.
+2. **Pass full context**: Forward the Research Brief, finalized hypothesis, literature synthesis, experiment plan, and results summary to `ollama-multi-model-writer`.
+3. **Model routing** (handled by sub-skill):
+   - DeepSeek-R1 → Methods, Results, Experimental Setup
+   - Phi-4-reasoning → Abstract, Introduction, Conclusions
+   - GLM-4.7-Flash → Full-paper synthesis and consistency pass
+4. **Review the output**: Inspect the produced `paper-{topic}-draft.md` for `[PLACEHOLDER]` and `[RESULT NEEDED]` tags and surface them to the user as a numbered list of outstanding items.
+5. **Optional handoff**: If the user wants IEEE formatting, pass the draft to `ieee-paper-generator` after the Ollama draft is complete.
+
+**Carry forward:** Draft manuscript at `paper-{topic}-draft.md`, outstanding items list, model attribution table.
+
 ---
 
 ## Stage 8 — Final Review & Handoff
@@ -271,6 +287,7 @@ Use these shortcuts when the user's intent is clear:
 | "Review this paper and help me extend it" | Stage 4 → 2 → 3 → 5 → 7 | Stage 6 unless user wants replication |
 | "Replicate this paper and beat it" | Stage 4 → 6 → 2 → 5 → 7 | — |
 | "I have results, write the paper" | Stage 7 directly | Stages 2–6 (reference prior work if available) |
+| "Write it locally on my GPU with Ollama" | Stage 7c (`ollama-multi-model-writer`) | Stages 2–6 (pass context if available) |
 | "Design experiments for this hypothesis" | Stage 3 → 5 | Stages 2 (hypothesis given), 4, 6, 7 |
 
 ---
@@ -285,6 +302,6 @@ Use these shortcuts when the user's intent is clear:
 | 4 | Paper review report with differentiation analysis (if activated) |
 | 5 | Experiment plan (markdown) |
 | 6 | `REPLICATION.md` with gap analysis table (if activated) |
-| 7 | Draft manuscript (section-by-section or full IEEE format) |
+| 7 | Draft manuscript (section-by-section, full IEEE format, or local Ollama multi-model draft) |
 | 8 | Handoff summary and open items list |
 | All | Research Log with stage-by-stage entries |

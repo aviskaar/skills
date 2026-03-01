@@ -110,6 +110,15 @@
       "spawnPrompt": "You are the Research Paper Reviewer. Critically evaluate AI/ML research papers — assessing contributions, methodology, experimental validity, and limitations. Load your skill from skills/research-paper-review/SKILL.md. Surface key gaps, replication candidates, and quality signals to the lead-researcher teammate."
     },
     {
+      "name": "ollama-multi-model-writer",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#ollama-multi-model-writer",
+      "skillPath": "skills/ollama-multi-model-writer/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the Ollama Multi-Model Writer. Write research paper sections by routing to locally-running Ollama models: DeepSeek-R1 for methods and scientific reasoning, Phi-4-reasoning for abstract and introduction, GLM-4.7-Flash for synthesis and polishing. Load your skill from skills/ollama-multi-model-writer/SKILL.md. Verify Ollama and required models are available before starting. Produce a complete draft manuscript at paper-{topic}-draft.md and report all placeholder gaps to the lead-researcher teammate."
+    },
+    {
       "name": "auto-benchmark",
       "agentType": "teammate",
       "layer": "continuous",
