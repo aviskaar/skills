@@ -139,6 +139,7 @@ graph TD
 | [hypothesis-generation](skills/hypothesis-generation/) | Task | Generate and stress-test novel research hypotheses. |
 | [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a large body of research papers. |
 | [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate publication-ready IEEE conference and journal papers. |
+| [ollama-multi-model-writer](skills/ollama-multi-model-writer/) | Task | Write research papers locally on GPU using Ollama — DeepSeek-R1 for methods/results, Phi-4-reasoning for abstract/intro/conclusions, GLM-4.7-Flash for synthesis. Fully offline. |
 
 ### Engineering Skills
 Transforming research into products with high-converting web presence.
