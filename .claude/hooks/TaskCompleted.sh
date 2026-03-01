@@ -85,6 +85,13 @@ case "${TEAMMATE}" in
     fi
     ;;
 
+  ollama-multi-model-writer)
+    if ! file_exists_matching "paper*.md" && ! file_exists_matching "manuscript*.md"; then
+      echo "FEEDBACK: Task '${TASK}' cannot be marked complete. The ollama-multi-model-writer teammate must produce a draft paper file (e.g. 'paper-topic-draft.md') before completing." >&2
+      exit 2
+    fi
+    ;;
+
   # All other teammates — no file-based gate, allow completion
   *)
     exit 0
