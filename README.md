@@ -27,15 +27,16 @@
 ## 🚀 Quick Start
 
 ```bash
-# Clone the repo
-git clone https://github.com/aviskaar/open-org.git
-cd open-org
+# Step 1 — Add the open-org marketplace to Claude Code
+/plugin marketplace add aviskaar/open-org
 
-# Browse available skills
-ls skills/
+# Step 2 — Browse available skills in the Discover tab
+/plugin
 
-# Load a skill into Claude Code with one command
-/plugin install aviskaar/open-org#lead-researcher
+# Step 3 — Install only the skills you need
+/plugin install lead-researcher@open-org
+/plugin install ciso@open-org
+/plugin install cmo-marketing@open-org
 ```
 
 ---
@@ -73,6 +74,7 @@ OpenOrg generalizes AI skills for enterprise automation, enabling fully autonomo
   - [Finance & Operations Skills](#finance--operations-skills)
   - [Security & Compliance Skills](#security--compliance-skills)
 - [Using Skills](#-using-skills)
+  - [Claude Code — Plugin Marketplace](#claude-code--plugin-marketplace)
 - [Creating a Skill](#-creating-a-skill)
 - [Contributing](#-contributing)
 - [Roadmap](#-roadmap)
@@ -355,10 +357,54 @@ graph TD
 
 ## 🚀 Using Skills
 
-### Claude Code
-Install directly into your project:
+### Claude Code — Plugin Marketplace
+
+This repository is a Claude Code plugin marketplace. Add it once and selectively install only the skills you need — no need to install everything.
+
+**Step 1: Add the marketplace**
+
+Add a GitHub repository that contains a `.claude-plugin/marketplace.json` file using the `owner/repo` format — where `owner` is the GitHub username or organization and `repo` is the repository name. For example, `aviskaar/open-org` refers to the `open-org` repository owned by `aviskaar`:
+
 ```bash
-/plugin install aviskaar/open-org#research-paper-review
+/plugin marketplace add aviskaar/open-org
+```
+
+This registers the catalog with Claude Code so you can browse what's available. No plugins are installed yet.
+
+**Step 2: Browse and install individual skills**
+
+Run `/plugin` to open the plugin manager and go to the **Discover** tab to browse all available skills. You can install only the ones relevant to your work:
+
+```bash
+# Install a single skill
+/plugin install lead-researcher@open-org
+
+# Or install a few specific skills
+/plugin install ciso@open-org
+/plugin install cfo-finance@open-org
+/plugin install cmo-marketing@open-org
+```
+
+**You don't have to install all skills** — the marketplace is just a catalog. Pick only what you need.
+
+**Installation scopes**
+
+When prompted, choose a scope:
+- **User scope** (default): install for yourself across all projects
+- **Project scope**: install for your whole team (adds to `.claude/settings.json`)
+- **Local scope**: install for yourself in this repository only
+
+**Managing installed skills**
+
+```bash
+# List installed plugins
+/plugin
+
+# Disable a skill without uninstalling
+/plugin disable lead-researcher@open-org
+
+# Uninstall a skill
+/plugin uninstall lead-researcher@open-org
 ```
 
 ### Claude.ai
