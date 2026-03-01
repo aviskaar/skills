@@ -41,6 +41,11 @@
 
 <img width="954" height="573" alt="image" src="https://github.com/user-attachments/assets/e7e466a8-4b6e-4f9e-91ce-ecc5105a6716" />
 
+Make sure to enable Auto Update to get new skills updated in claude code.
+
+<img width="926" height="426" alt="image" src="https://github.com/user-attachments/assets/52f1c354-1381-441d-818e-65cd90da89b7" />
+
+
 ---
 
 ## 🌐 Vision
