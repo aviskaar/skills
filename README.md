@@ -39,6 +39,8 @@
 /plugin install cmo-marketing@open-org
 ```
 
+<img width="954" height="573" alt="image" src="https://github.com/user-attachments/assets/e7e466a8-4b6e-4f9e-91ce-ecc5105a6716" />
+
 ---
 
 ## 🌐 Vision
