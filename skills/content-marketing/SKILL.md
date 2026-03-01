@@ -6,6 +6,10 @@ metadata:
   author: aviskaar
   version: "1.0"
   tags: [content, SEO, blog, articles, press-release, medium, linkedin, editorial, whitepaper, distribution, B2B, brand]
+  sub-skills:
+    - seo-automation
+    - whitepaper-engine
+    - press-release-writer
 ---
 
 # Content Marketing — VP Content & Editorial
@@ -115,30 +119,17 @@ Meta description: [150 chars, includes keyword, has a hook]
 
 Use for: product launches, funding rounds, partnerships, awards, customer milestones.
 
-### 3.1 Press Release Structure
+Delegate all press release production to `press-release-writer`. That skill covers Forbes-tier structure, news angle mining, headline engineering, strategic quote crafting, journalist targeting, wire distribution, and social amplification.
 
-```
-FOR IMMEDIATE RELEASE
+When commissioning `press-release-writer`, provide:
+- Announcement type (funding / product / partnership / executive hire / milestone / research)
+- Core facts: the what, the proof point (number or named logo), and the timing rationale
+- Target publications or journalist names if known
+- Embargo date if applicable
 
-[HEADLINE — newsy, specific, no jargon]
-[Subheadline — one additional context sentence]
-
-[CITY, DATE] — [Company] today announced [what], [why it matters in one sentence].
-
-[Paragraph 1: The news. Who, what, when, where, why.]
-[Paragraph 2: The impact. What does this mean for customers/market?]
-[Paragraph 3: Customer or partner quote validating the news.]
-[Paragraph 4: C-level quote with strategic context.]
-[Paragraph 5: Product/feature details or milestone specifics.]
-[Boilerplate: company description, 3 sentences.]
-
-Contact:
-[Name, Title, Email, Phone]
-```
-
-**Distribution channels:**
-- Wire: PR Newswire, Business Wire, or Globe Newswire
-- Direct: pitch to 10–15 target journalists covering the space
+**Distribution channels (summary):**
+- Wire: PR Newswire, Business Wire, or Globe Newswire (see `press-release-writer` for wire selection guide)
+- Direct: pitch to 10–15 target journalists (see `press-release-writer` for pitch templates)
 - Owned: blog, LinkedIn company page, X/Twitter, press page on website
 - Community: post in relevant Slack/Discord communities after wire
 

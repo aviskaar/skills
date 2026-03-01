@@ -414,6 +414,19 @@
       "strict": false
     },
     {
+      "name": "press-release-writer",
+      "source": "./skills/press-release-writer",
+      "description": "Forbes-tier press release writer: news angle mining, viral headline engineering, strategic quote crafting, journalist targeting, wire distribution, and social amplification playbook.",
+      "version": "1.0.0",
+      "author": { "name": "aviskaar" },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/aviskaar/open-org/tree/main/skills/press-release-writer",
+      "keywords": ["press-release", "PR", "media", "journalism", "communications", "viral", "earned-media", "pitching", "Forbes", "distribution"],
+      "category": "Marketing",
+      "commands": ["./SKILL.md"],
+      "strict": false
+    },
+    {
       "name": "demand-gen",
       "source": "./skills/demand-gen",
       "description": "VP Demand Gen: pipeline creation, paid ads, and lead routing.",
