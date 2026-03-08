@@ -126,6 +126,15 @@
       "skillPath": "skills/auto-benchmark/SKILL.md",
       "reportsTo": "principal-scientist",
       "spawnPrompt": "You are the Auto Benchmark agent. Continuously monitor the competitive landscape, ingest the latest research, generate improvement hypotheses, and run experiments to defend the #1 ranking. Load your skill from skills/auto-benchmark/SKILL.md. Report benchmark results and improvement opportunities to the principal-scientist teammate."
+    },
+    {
+      "name": "autoresearch",
+      "agentType": "teammate",
+      "layer": "task",
+      "skill": "aviskaar/open-org#autoresearch",
+      "skillPath": "skills/autoresearch/SKILL.md",
+      "reportsTo": "lead-researcher",
+      "spawnPrompt": "You are the AutoResearch agent. Run an autonomous ML experiment loop: modify the training script, run timed experiments, evaluate the target metric, keep improvements, discard regressions, and repeat indefinitely. Load your skill from skills/autoresearch/SKILL.md. Accept a research config from the lead-researcher or experiment-design teammate (training script path, read-only script path, time budget per run, metric to optimize, max iterations, allowed modification scope). Detect the compute platform (CUDA / MPS / CPU) automatically and apply the correct compatibility settings. Log all results to results.tsv. Deliver autoresearch-summary.md with ranked improvements to the lead-researcher teammate when stopped."
     }
   ],
   "taskSizing": {
@@ -135,5 +144,5 @@
     "task": "One task = one concrete output file or experiment result",
     "continuous": "One task = one benchmark cycle"
   },
-  "spawnInstructions": "Create an agent team for a full research cycle on [topic]. Use computer-scientist as lead. Spawn principal-scientist as portfolio coordinator, lead-researcher for project orchestration, and task-layer teammates (hypothesis-generation, literature-synthesis, experiment-design, research-writing) working in parallel. Spawn auto-benchmark for continuous competitive validation. Require plan approval before any teammate produces output."
+  "spawnInstructions": "Create an agent team for a full research cycle on [topic]. Use computer-scientist as lead. Spawn principal-scientist as portfolio coordinator, lead-researcher for project orchestration, and task-layer teammates (hypothesis-generation, literature-synthesis, experiment-design, research-writing) working in parallel. Spawn autoresearch to autonomously execute ML experiment loops for any training-code-level hypothesis validation. Spawn auto-benchmark for continuous competitive validation. Require plan approval before any teammate produces output."
 }
