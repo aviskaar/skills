@@ -76,6 +76,19 @@
       "strict": false
     },
     {
+      "name": "autoresearch",
+      "source": "./skills/autoresearch",
+      "description": "Autonomous ML experiment loop: modify training code, run timed experiments, keep improvements, and repeat indefinitely across CUDA / Apple Silicon MPS / CPU / Windows.",
+      "version": "1.0.0",
+      "author": { "name": "aviskaar" },
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/aviskaar/open-org/tree/main/skills/autoresearch",
+      "keywords": ["research", "autonomous", "ml-training", "experiment-loop", "overnight", "cross-platform", "cuda", "mps", "apple-silicon"],
+      "category": "Research",
+      "commands": ["./SKILL.md"],
+      "strict": false
+    },
+    {
       "name": "hypothesis-generation",
       "source": "./skills/hypothesis-generation",
       "description": "Generate and stress-test novel research hypotheses.",

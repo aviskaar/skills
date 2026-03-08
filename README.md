@@ -126,6 +126,7 @@ graph TD
     LR --> CR[code-replication]
     LR --> RW[research-writing]
     LR --> IPG[ieee-paper-generator]
+    LR --> AR[autoresearch]
     AE --> AWB[auto-website-builder]
 ```
 
@@ -140,6 +141,7 @@ graph TD
 | [literature-synthesis](skills/literature-synthesis/) | Task | Synthesize findings across a large body of research papers. |
 | [ieee-paper-generator](skills/ieee-paper-generator/) | Task | Generate publication-ready IEEE conference and journal papers. |
 | [ollama-multi-model-writer](skills/ollama-multi-model-writer/) | Task | Write research papers locally on GPU using Ollama — DeepSeek-R1 for methods/results, Phi-4-reasoning for abstract/intro/conclusions, GLM-4.7-Flash for synthesis. Fully offline. |
+| [autoresearch](skills/autoresearch/) | Task | Autonomous ML experiment loop — modify training code, run user-configured timed experiments, keep improvements, discard regressions, repeat indefinitely. Cross-platform: CUDA / Apple Silicon MPS / CPU / Windows. |
 
 ### Engineering Skills
 Transforming research into products with high-converting web presence.
@@ -466,6 +468,7 @@ We welcome contributions from the community! Skills live in the [/skills](skills
 ```text
 .
 ├── skills/                   # Individual skill packages
+│   ├── autoresearch/             # Research — autonomous ML experiment loop
 │   ├── hypothesis-generation/    # Research — task
 │   ├── lead-researcher/          # Research — project orchestrator
 │   ├── ai-engineer/              # Engineering — orchestrator
