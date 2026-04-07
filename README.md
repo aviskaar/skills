@@ -1,6 +1,6 @@
 <p align="center">
   <img src="open-org-logo.png" alt="Open Org Logo" width="200">
-  <h1 align="center">Open Org</h1>
+  <img src="image.png" alt="Open Org" width="400">
 </p>
 
 <p align="center">
