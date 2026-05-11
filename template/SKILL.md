@@ -1,7 +1,11 @@
 ---
 name: template-skill
-description: Replace with a description of the skill and when the agent should use it. Write this as a trigger condition: "Use this skill when..."
+description: "Replace with a description of the skill and when the agent should use it. Write this as a trigger condition: 'Use this skill when...'"
 license: Apache-2.0
+platforms: [claude, codex, hermes]
+required_environment_variables: []
+requires_tools: []
+fallback_for_toolsets: []
 metadata:
   author: aviskaar
   version: "1.0"

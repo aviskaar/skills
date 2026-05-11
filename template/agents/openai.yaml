@@ -1,0 +1,8 @@
+interface:
+  display_name: "template-skill"
+  default_prompt: "Use the template-skill to [describe what it does]"
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies: {}
