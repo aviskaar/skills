@@ -100,11 +100,15 @@ A skill lives in its own directory with a `SKILL.md` file at the root. This stru
 
 ```text
 my-skill/
-├── SKILL.md          # Required: instructions + metadata frontmatter
-├── scripts/          # Optional: executable helpers
-├── references/       # Optional: additional docs loaded on-demand
-└── assets/           # Optional: static resources, templates, data
+├── SKILL.md              # Required: instructions + metadata frontmatter
+├── agents/              # Optional: platform-specific configs (openai.yaml for Codex)
+├── scripts/             # Optional: executable helpers
+├── references/          # Optional: additional docs loaded on-demand
+├── templates/           # Optional: Hermes-compatible templates, forms, configs
+└── assets/              # Optional: static resources, templates, data
 ```
+
+**Multi-platform support:** Skills work across [Claude Code](https://claude.ai/code), [OpenAI Codex](https://developers.openai.com/codex/skills), and [Nous Research Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills). Add `agents/openai.yaml` for Codex compatibility. See [spec/README.md](spec/README.md) for the full compatibility matrix.
 
 ---
 
@@ -433,6 +437,11 @@ Start from the [template](template/SKILL.md). A valid skill requires YAML frontm
 ---
 name: my-skill
 description: "Use this skill when..."
+license: Apache-2.0
+platforms: [claude, codex, hermes]
+required_environment_variables: []
+requires_tools: []
+fallback_for_toolsets: []
 metadata:
   author: your-name
   version: "1.0"
@@ -441,6 +450,8 @@ metadata:
 # Instructions
 Detailed behavioral instructions go here.
 ```
+
+For **Codex compatibility**, also add `agents/openai.yaml` (see [template/agents/openai.yaml](template/agents/openai.yaml)).
 
 **Best Practices:**
 - **Trigger-focused:** Write descriptions as activation conditions.
@@ -475,6 +486,8 @@ We welcome contributions from the community! Skills live in the [/skills](skills
 │   ├── cmo-marketing/            # Marketing — strategic orchestrator
 │   └── ...
 ├── template/                 # Starter template for new skills
+│    ├── SKILL.md                 # Skill template with extended frontmatter
+│    └── agents/openai.yaml       # Codex companion config template
 └── spec/                     # Agent Skills Specification reference
 ```
 
